@@ -1,8 +1,10 @@
 import remarkGfm from 'remark-gfm';
+import type { Plugin } from '../types';
+import Del from './Del.svelte';
+import ListItem from './ListItem.svelte';
 import Table from './Table.svelte';
 import TableCell from './TableCell.svelte';
 import TableRow from './TableRow.svelte';
-import type { Plugin } from '../types';
 
 export { Table, TableCell, TableRow };
 
@@ -11,6 +13,8 @@ export const gfmPlugin: Plugin = {
 	renderer: {
 		table: Table,
 		tableCell: TableCell,
-		tableRow: TableRow
+		tableRow: TableRow,
+		listItem: ListItem,
+		delete: Del
 	}
 };
