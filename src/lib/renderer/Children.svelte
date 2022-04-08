@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Node } from './types';
+	import type { Node } from '../types';
 	import Renderer from './Renderer.svelte';
 
 	export let children: Node[];

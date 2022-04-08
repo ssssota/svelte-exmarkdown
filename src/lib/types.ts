@@ -1,8 +1,9 @@
-import type { SvelteComponent } from "svelte";
-import type { Plugin as UnifiedPlugin } from "unified"
+import type { SvelteComponent } from 'svelte';
+import type { Pluggable } from 'unified';
+export type { Node } from 'unist';
 
 export type ComponentsMap = Record<string, typeof SvelteComponent>;
 export type Plugin = {
-  remarkPlugin?: UnifiedPlugin;
-  renderer?: ComponentsMap;
-}
+	remarkPlugin?: Pluggable;
+	renderer?: ComponentsMap;
+};

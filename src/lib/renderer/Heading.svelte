@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Node } from './types';
+	import type { Node } from '../types';
 	import Children from './Children.svelte';
 
 	export let depth: number;

@@ -1,17 +1,14 @@
 <script lang="ts">
-	import remarkParse from 'remark-parse';
 	import { setContext } from 'svelte';
-	import { unified } from 'unified';
 	import { componentsContextKey, createComponentsContextValue } from './contexts';
 	import Renderer, { defaultComponents } from './renderer';
-	import type { Plugin } from './types';
-	import { nonNullable } from './utils';
+	import type { Node, Plugin } from './types';
+	import { createParser, nonNullable } from './utils';
 
 	export let input: string;
 	export let plugins: Plugin[] = [];
-	const parse = unified()
-		.use(remarkParse)
-		.use(plugins.map((plugin) => plugin.remarkPlugin).filter(nonNullable)).parse;
+	let parse: (md: string) => Node;
+	$: parse = createParser(plugins);
 
 	const componentsContextValue = createComponentsContextValue({});
 	$: componentsContextValue.set({
@@ -21,14 +18,10 @@
 			.filter(nonNullable)
 			.reduce((acc, cur) => ({ ...acc, ...cur }), {})
 	});
-	$: setContext(componentsContextKey, componentsContextValue);
+	setContext(componentsContextKey, componentsContextValue);
 
-	let result = parse(input);
+	let result: Node;
 	$: result = parse(input);
 </script>
 
-<div {...$$props}>
-	<Renderer astNode={result} />
-</div>
-
-<pre>{JSON.stringify(result, null, '  ')}</pre>
+<Renderer astNode={result} />

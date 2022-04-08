@@ -1,52 +1,74 @@
 lockfileVersion: 5.3
 
-specifiers:
-  '@sveltejs/adapter-auto': next
-  '@sveltejs/kit': next
-  '@types/unist': ^2.0.6
-  '@typescript-eslint/eslint-plugin': ^5.10.1
-  '@typescript-eslint/parser': ^5.10.1
-  eslint: ^7.32.0
-  eslint-config-prettier: ^8.3.0
-  eslint-plugin-svelte3: ^3.2.1
-  prettier: ^2.5.1
-  prettier-plugin-svelte: ^2.5.0
-  remark-gfm: ^3.0.1
-  remark-math: ^5.1.1
-  remark-parse: ^10.0.1
-  svelte: ^3.44.0
-  svelte-check: ^2.2.6
-  svelte-preprocess: ^4.10.1
-  svelte2tsx: ^0.5.6
-  tslib: ^2.3.1
-  typescript: ~4.6.2
-  unified: ^10.1.2
-  unified-stream: ^2.0.0
+importers:
 
-dependencies:
-  remark-gfm: 3.0.1
-  remark-math: 5.1.1
-  remark-parse: 10.0.1
-  unified: 10.1.2
-  unified-stream: 2.0.0
+  .:
+    specifiers:
+      '@sveltejs/adapter-auto': next
+      '@sveltejs/kit': next
+      '@types/unist': ^2.0.6
+      '@typescript-eslint/eslint-plugin': ^5.10.1
+      '@typescript-eslint/parser': ^5.10.1
+      eslint: ^7.32.0
+      eslint-config-prettier: ^8.3.0
+      eslint-plugin-svelte3: ^3.2.1
+      prettier: ^2.5.1
+      prettier-plugin-svelte: ^2.5.0
+      remark-gfm: ^3.0.1
+      remark-math: ^5.1.1
+      remark-parse: ^10.0.1
+      svelte: ^3.44.0
+      svelte-check: ^2.2.6
+      svelte-preprocess: ^4.10.1
+      svelte2tsx: ^0.5.6
+      tslib: ^2.3.1
+      typescript: ~4.6.2
+      unified: ^10.1.2
+    dependencies:
+      remark-gfm: 3.0.1
+      remark-math: 5.1.1
+      remark-parse: 10.0.1
+      unified: 10.1.2
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0-next.34
+      '@sveltejs/kit': 1.0.0-next.308_svelte@3.46.6
+      '@types/unist': 2.0.6
+      '@typescript-eslint/eslint-plugin': 5.18.0_93fd1b55dafbdf76506419beaedce909
+      '@typescript-eslint/parser': 5.18.0_eslint@7.32.0+typescript@4.6.3
+      eslint: 7.32.0
+      eslint-config-prettier: 8.5.0_eslint@7.32.0
+      eslint-plugin-svelte3: 3.4.1_eslint@7.32.0+svelte@3.46.6
+      prettier: 2.6.2
+      prettier-plugin-svelte: 2.6.0_prettier@2.6.2+svelte@3.46.6
+      svelte: 3.46.6
+      svelte-check: 2.4.6_svelte@3.46.6
+      svelte-preprocess: 4.10.5_svelte@3.46.6+typescript@4.6.3
+      svelte2tsx: 0.5.6_svelte@3.46.6+typescript@4.6.3
+      tslib: 2.3.1
+      typescript: 4.6.3
 
-devDependencies:
-  '@sveltejs/adapter-auto': 1.0.0-next.34
-  '@sveltejs/kit': 1.0.0-next.308_svelte@3.46.6
-  '@types/unist': 2.0.6
-  '@typescript-eslint/eslint-plugin': 5.18.0_93fd1b55dafbdf76506419beaedce909
-  '@typescript-eslint/parser': 5.18.0_eslint@7.32.0+typescript@4.6.3
-  eslint: 7.32.0
-  eslint-config-prettier: 8.5.0_eslint@7.32.0
-  eslint-plugin-svelte3: 3.4.1_eslint@7.32.0+svelte@3.46.6
-  prettier: 2.6.2
-  prettier-plugin-svelte: 2.6.0_prettier@2.6.2+svelte@3.46.6
-  svelte: 3.46.6
-  svelte-check: 2.4.6_svelte@3.46.6
-  svelte-preprocess: 4.10.5_svelte@3.46.6+typescript@4.6.3
-  svelte2tsx: 0.5.6_svelte@3.46.6+typescript@4.6.3
-  tslib: 2.3.1
-  typescript: 4.6.3
+  plugins/sxm-plugin-gfm:
+    specifiers:
+      '@sveltejs/adapter-auto': next
+      '@sveltejs/kit': next
+      remark-gfm: ^3.0.1
+      svelte: ^3.44.0
+      svelte-check: ^2.2.6
+      svelte-exmarkdown: workspace:../../package
+      svelte-preprocess: ^4.10.1
+      tslib: ^2.3.1
+      typescript: ~4.6.2
+    dependencies:
+      remark-gfm: 3.0.1
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0-next.34
+      '@sveltejs/kit': 1.0.0-next.308_svelte@3.46.6
+      svelte: 3.46.6
+      svelte-check: 2.4.6_svelte@3.46.6
+      svelte-exmarkdown: link:../../package
+      svelte-preprocess: 4.10.5_svelte@3.46.6+typescript@4.6.3
+      tslib: 2.3.1
+      typescript: 4.6.3
 
 packages:
 
@@ -641,6 +663,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [android]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -649,6 +672,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [android]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -657,6 +681,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -665,6 +690,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -673,6 +699,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [freebsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -681,6 +708,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [freebsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -689,6 +717,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -697,6 +726,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -705,6 +735,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -713,6 +744,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -721,6 +753,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [mips64el]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -729,6 +762,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ppc64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -737,6 +771,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [riscv64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -745,6 +780,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [s390x]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -753,6 +789,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [netbsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -761,6 +798,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [openbsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -769,6 +807,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [sunos]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -777,6 +816,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [win32]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -785,6 +825,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -793,6 +834,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [win32]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -1063,6 +1105,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -2243,13 +2286,6 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
-
-  /unified-stream/2.0.0:
-    resolution: {integrity: sha512-KdwODjgqGsTbHMLqm57qLxNAkbCboD5EMPC4BULs/9iy5ZTsw3xgc0BUjeCmABt/yfZt0k7rgkBLcdiZ8LwZug==}
-    dependencies:
-      unified: 10.1.2
-      vfile: 5.3.2
-    dev: false
 
   /unified/10.1.2:
     resolution: {integrity: sha512-pUSWAi/RAnVy1Pif2kAoeWNBa3JVrx0MId2LASj8G+7AiHWoKZNTomq6LG326T68U7/e263X6fTdcXIy7XnF7Q==}

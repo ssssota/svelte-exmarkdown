@@ -4,6 +4,4 @@
 	export let value: string = '';
 </script>
 
-<pre>
-  <code class={lang !== null ? `language-${lang}` : ''}>{value}</code>
-</pre>
+<pre><code class={lang !== null ? `language-${lang}` : ''}>{value.trim()}</code></pre>

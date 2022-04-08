@@ -1,4 +1,5 @@
 import type { ComponentsMap } from '$lib/types';
+import Blockquote from './Blockquote.svelte';
 import Children from './Children.svelte';
 import Code from './Code.svelte';
 import Emphasis from './Emphasis.svelte';
@@ -11,9 +12,6 @@ import ListItem from './ListItem.svelte';
 import Paragraph from './Paragraph.svelte';
 import Renderer from './Renderer.svelte';
 import Strong from './Strong.svelte';
-import Table from './Table.svelte';
-import TableCell from './TableCell.svelte';
-import TableRow from './TableRow.svelte';
 import Text from './Text.svelte';
 import ThematicBreak from './ThematicBreak.svelte';
 
@@ -22,9 +20,6 @@ export const defaultComponents: ComponentsMap = {
 	heading: Heading,
 	text: Text,
 	paragraph: Paragraph,
-	table: Table,
-	tableRow: TableRow,
-	tableCell: TableCell,
 	list: List,
 	listItem: ListItem,
 	link: Link,
@@ -33,7 +28,8 @@ export const defaultComponents: ComponentsMap = {
 	thematicBreak: ThematicBreak,
 	inlineCode: InlineCode,
 	code: Code,
-	image: Image
+	image: Image,
+	blockquote: Blockquote
 };
 export {
 	Children,
@@ -48,10 +44,8 @@ export {
 	Paragraph,
 	Renderer,
 	Strong,
-	Table,
-	TableCell,
-	TableRow,
 	Text,
-	ThematicBreak
+	ThematicBreak,
+	Blockquote
 };
 export default Renderer;

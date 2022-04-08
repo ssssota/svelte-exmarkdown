@@ -8,7 +8,14 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		vite: {
+			server: {
+				fs: {
+					allow: ['./package/', './plugins/sxm-plugin-gfm/package/']
+				}
+			}
+		}
 	}
 };
 
