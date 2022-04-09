@@ -6,4 +6,5 @@
 	export let properties: Record<string, unknown>;
 </script>
 
+<!-- svelte-ignore a11y-missing-attribute -->
 <a {...classNameTransform(properties)}><Children {children} /></a>
