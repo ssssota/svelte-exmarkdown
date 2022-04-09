@@ -43,5 +43,14 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ssssota/svelte-exmarkdown.git"
-	}
+	},
+	"keywords": [
+		"svelte",
+		"markdown",
+		"remark",
+		"unified",
+		"commonmark",
+		"gfm",
+		"plugin"
+	]
 }
