@@ -5,7 +5,7 @@
 	import type { Node, Plugin } from './types';
 	import { createParser, nonNullable } from './utils';
 
-	export let input: string;
+	export let md: string;
 	export let plugins: Plugin[] = [];
 	let parse: (md: string) => Node;
 	$: parse = createParser(plugins);
@@ -21,7 +21,7 @@
 	setContext(componentsContextKey, componentsContextValue);
 
 	let result: Node;
-	$: result = parse(input);
+	$: result = parse(md);
 </script>
 
 <Renderer astNode={result} />

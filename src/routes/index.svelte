@@ -6,7 +6,7 @@
 	import '../app.css';
 	let gfm = true;
 	let ast = false;
-	let input = `
+	let md = `
 # test
 
 hello
@@ -36,17 +36,17 @@ hello
 </header>
 
 <main>
-	<textarea class="input" bind:value={input} />
+	<textarea class="input" bind:value={md} />
 
 	<section class="output">
 		{#if ast}
 			<pre>{JSON.stringify(
-					parse(input),
+					parse(md),
 					(key, value) => (key === 'position' ? undefined : value),
 					'  '
 				)}</pre>
 		{:else}
-			<SvelteExmarkdown {input} {plugins} />
+			<SvelteExmarkdown {md} {plugins} />
 		{/if}
 	</section>
 </main>
