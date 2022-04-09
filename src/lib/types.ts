@@ -7,3 +7,4 @@ export type Plugin = {
 	renderer?: ComponentsMap;
 };
 export type Node = ReturnType<FrozenProcessor['parse']>;
+export type Parser = (md: string) => Node;

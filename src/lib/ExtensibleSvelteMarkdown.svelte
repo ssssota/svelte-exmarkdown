@@ -2,12 +2,12 @@
 	import { setContext } from 'svelte';
 	import { componentsContextKey, createComponentsContextValue } from './contexts';
 	import Renderer, { defaultComponents } from './renderer';
-	import type { Node, Plugin } from './types';
+	import type { Node, Parser, Plugin } from './types';
 	import { createParser, nonNullable } from './utils';
 
 	export let md: string;
 	export let plugins: Plugin[] = [];
-	let parse: (md: string) => Node;
+	let parse: Parser;
 	$: parse = createParser(plugins);
 
 	const componentsContextValue = createComponentsContextValue({});
