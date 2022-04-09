@@ -51,6 +51,7 @@
 
 <style>
 	nav {
+		padding: 1em 0;
 		width: 100%;
 		display: flex;
 		gap: 1em;

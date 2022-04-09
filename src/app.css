@@ -13,3 +13,10 @@ body {
 	font-family: 'Roboto', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
 		Meiryo, sans-serif;
 }
+
+main pre[class*='language-'] {
+	background: transparent;
+	padding: 0;
+	margin: initial;
+	overflow: initial;
+}
