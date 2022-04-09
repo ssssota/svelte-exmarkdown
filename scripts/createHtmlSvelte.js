@@ -45,7 +45,7 @@ tagNamesHaveChildren.map((tagName) =>
 	export let children: Node[];
 	export let properties: Record<string, unknown>;
 </script>
-
+${tagName === 'a' ? '\n<!-- svelte-ignore a11y-missing-attribute -->' : ''}
 <${tagName} {...classNameTransform(properties)}><Children {children} /></${tagName}>
 `
 	)
