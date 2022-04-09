@@ -1,40 +1,42 @@
-# create-svelte
+# svelte-exmarkdown
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Svelte component to render markdown.
 
-## Creating a project
+## Motivation
 
-If you're seeing this, you've probably already done this step. Congrats!
+[svelte-markdown](https://www.npmjs.com/package/svelte-markdown) is a good component package.
+However, it is not extensible. You cannot use custom syntax(e.g. KaTeX).
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+[MDsveX](https://www.npmjs.com/package/mdsvex) is another good package.
+However, it is a preprocessor. Not suitable for dynamic rendering.
 
-# create a new project in my-app
-npm init svelte@next my-app
+We need **pluggable** and **dynamic** markdown renderer in svelte like [react-markdown](https://www.npmjs.com/package/react-markdown).
+
+## Usage
+
+```svelte
+<script>
+	import Markdown from 'svelte-exmarkdown';
+	let md = '# Hello world!';
+</script>
+
+<textarea bind:value={md} />
+<Markdown {md} />
 ```
 
-> Note: the `@next` is temporary
+with GFM
 
-## Developing
+```svelte
+<script>
+	import Markdown from 'svelte-exmarkdown';
+	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
+	let md = '# Hello world!';
+</script>
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+<textarea bind:value={md} />
+<Markdown {md} plugins={[gfmPlugin]} />
 ```
 
-## Building
+## Playground
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+https://ssssota.github.io/svelte-exmarkdown
