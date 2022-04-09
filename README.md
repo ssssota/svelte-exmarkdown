@@ -37,6 +37,6 @@ with GFM
 <Markdown {md} plugins={[gfmPlugin]} />
 ```
 
-## Playground
+## Playground & Documents
 
 https://ssssota.github.io/svelte-exmarkdown
