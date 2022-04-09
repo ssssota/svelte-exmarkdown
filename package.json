@@ -54,5 +54,6 @@
 		"commonmark",
 		"gfm",
 		"plugin"
-	]
+	],
+	"license": "MIT"
 }
