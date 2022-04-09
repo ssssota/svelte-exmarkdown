@@ -6,17 +6,18 @@
 		<link rel="icon" href="/svelte-exmarkdown/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content=""><title>svelte-exmarkdown</title><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown." data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.googleapis.com" data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" data-svelte="svelte-dn03qt"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" data-svelte="svelte-dn03qt">
-	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/__layout.svelte-d494661c.css">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/__layout.svelte-941799d2.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/__layout.svelte-05342fdb.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/_slug_.svelte-7b98f175.css">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-e362e485.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-4e6ed2b7.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-3744744e.js">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/index-9c0ff923.css">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-7f4615d8.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-b63dd270.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-62a5bd2c.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/paths-396f020f.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-92843e08.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/__layout.svelte-b9f78086.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-da46eb33.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-0c6c4fd5.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-8e204715.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/__layout.svelte-ddcb3052.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-6f6ccf6e.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-1751fd82.js">
 	</head>
 	<body>
 		<div>
@@ -33,46 +34,42 @@
 <p>Let&#39;s make custom plugin!</p>
 <p>You can override per tag.</p>
 <p><em>Pre.svelte</em></p>
-<pre><code class="language-jsx" className="language-jsx">&lt;script lang=&quot;ts&quot;&gt;
-	import { classNameTransform } from &#39;svelte-exmarkdown/utils&#39;;
-	import type { Node } from &#39;svelte-exmarkdown/types&#39;;
-	import Children from &#39;svelte-exmarkdown/renderer/Children.svelte&#39;;
-	export let children: Node[];
-	export let properties: Record&lt;string, unknown&gt;;
-  const copy = () =&gt; window
-    .navigator
-    .clipboard
-    .writeText(children[0][&#39;children&#39;][0].value);
-&lt;/script&gt;
+<pre><code class="language-svelte svelte-e4hkjf" className="language-svelte"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+	<span class="token keyword">import</span> <span class="token punctuation">{</span> classNameTransform <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown/utils'</span><span class="token punctuation">;</span>
+	<span class="token keyword">import</span> type <span class="token punctuation">{</span> Node <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown/types'</span><span class="token punctuation">;</span>
+	<span class="token keyword">import</span> Children <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown/renderer/Children.svelte'</span><span class="token punctuation">;</span>
+	<span class="token keyword">export</span> <span class="token keyword">let</span> <span class="token literal-property property">children</span><span class="token operator">:</span> Node<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">export</span> <span class="token keyword">let</span> <span class="token literal-property property">properties</span><span class="token operator">:</span> Record<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> unknown<span class="token operator">></span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> <span class="token function-variable function">copy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> window<span class="token punctuation">.</span>navigator<span class="token punctuation">.</span>clipboard<span class="token punctuation">.</span><span class="token function">writeText</span><span class="token punctuation">(</span>children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'children'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 
-&lt;div&gt;
-  &lt;button on:click={copy}&gt;copy!&lt;/button&gt;
-  &lt;pre {...classNameTransform(properties)}&gt;&lt;Children {children} /&gt;&lt;/pre&gt;
-&lt;/div&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">on:</span>click=</span><span class="token language-javascript"><span class="token punctuation">{</span>copy<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>copy!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span> <span class="token language-javascript"><span class="token punctuation">{</span><span class="token operator">...</span><span class="token function">classNameTransform</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Children</span> <span class="token language-javascript"><span class="token punctuation">{</span>children<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
-&lt;style&gt;
-  div {
-    position: relative;
-  }
-  button {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-&lt;/style&gt;
-
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+	<span class="token selector">div</span> <span class="token punctuation">{</span>
+		<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token selector">button</span> <span class="token punctuation">{</span>
+		<span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+		<span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+		<span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<!-- HTML_TAG_END --></code></pre>
 <p><em>App.svelte</em></p>
-<pre><code class="language-jsx" className="language-jsx">&lt;script&gt;
-  import Markdown from &#39;svelte-exmarkdown&#39;;
-  import Pre from &#39;./Pre.svelte&#39;;
-  export let md;
-  /** @type {import(&#39;svelte-exmarkdown&#39;).Plugin[]} */
-  const plugins = [{ renderer: { pre: Pre } }];
-&lt;/script&gt;
+<pre><code class="language-svelte svelte-e4hkjf" className="language-svelte"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
+	<span class="token keyword">import</span> Pre <span class="token keyword">from</span> <span class="token string">'./Pre.svelte'</span><span class="token punctuation">;</span>
+	<span class="token keyword">export</span> <span class="token keyword">let</span> md<span class="token punctuation">;</span>
+	<span class="token comment">/** @type {import('svelte-exmarkdown').Plugin[]} */</span>
+	<span class="token keyword">const</span> plugins <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">renderer</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">pre</span><span class="token operator">:</span> Pre <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 
-&lt;Markdown {md} {plugins} /&gt;
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Markdown</span> <span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token language-javascript"><span class="token punctuation">{</span>plugins<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+<!-- HTML_TAG_END --></code></pre>
 
 <nav class="svelte-1qiqlfz"><a href="/svelte-exmarkdown/docs/02-plugin" class="svelte-1qiqlfz">Plugin system</a>
 	<div class="svelte-1qiqlfz"></div>
@@ -80,10 +77,10 @@
 </div>
 
 
-		<script type="module" data-hydrate="3jrnkq">
-		import { start } from "/svelte-exmarkdown/_app/start-e362e485.js";
+		<script type="module" data-hydrate="ikpud0">
+		import { start } from "/svelte-exmarkdown/_app/start-7f4615d8.js";
 		start({
-			target: document.querySelector('[data-hydrate="3jrnkq"]').parentNode,
+			target: document.querySelector('[data-hydrate="ikpud0"]').parentNode,
 			paths: {"base":"/svelte-exmarkdown","assets":"/svelte-exmarkdown"},
 			session: {},
 			route: true,
@@ -93,14 +90,14 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/svelte-exmarkdown/_app/pages/__layout.svelte-92843e08.js"),
-						import("/svelte-exmarkdown/_app/pages/docs/__layout.svelte-b9f78086.js"),
-						import("/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-da46eb33.js")
+					import("/svelte-exmarkdown/_app/pages/__layout.svelte-8e204715.js"),
+						import("/svelte-exmarkdown/_app/pages/docs/__layout.svelte-ddcb3052.js"),
+						import("/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-6f6ccf6e.js")
 				],
 				params: {slug:"03-override-component"},
 				routeId: "docs/[slug]"
 			}
 		});
-	</script><script type="application/json" sveltekit:data-type="props">{"md":"# Override component\n\nIf you want to change styles, you can override components.\n\n## Copy button for code block\n\nLet's make custom plugin!\n\nYou can override per tag.\n\n_Pre.svelte_\n\n```jsx\n\u003Cscript lang=\"ts\">\n\timport { classNameTransform } from 'svelte-exmarkdown/utils';\n\timport type { Node } from 'svelte-exmarkdown/types';\n\timport Children from 'svelte-exmarkdown/renderer/Children.svelte';\n\texport let children: Node[];\n\texport let properties: Record\u003Cstring, unknown>;\n  const copy = () => window\n    .navigator\n    .clipboard\n    .writeText(children[0]['children'][0].value);\n\u003C/script>\n\n\u003Cdiv>\n  \u003Cbutton on:click={copy}>copy!\u003C/button>\n  \u003Cpre {...classNameTransform(properties)}>\u003CChildren {children} />\u003C/pre>\n\u003C/div>\n\n\u003Cstyle>\n  div {\n    position: relative;\n  }\n  button {\n    position: absolute;\n    top: 0;\n    right: 0;\n  }\n\u003C/style>\n\n```\n\n_App.svelte_\n\n```jsx\n\u003Cscript>\n  import Markdown from 'svelte-exmarkdown';\n  import Pre from './Pre.svelte';\n  export let md;\n  /** @type {import('svelte-exmarkdown').Plugin[]} */\n  const plugins = [{ renderer: { pre: Pre } }];\n\u003C/script>\n\n\u003CMarkdown {md} {plugins} />\n```\n","prev":["02-plugin","Plugin system"]}</script></div>
+	</script><script type="application/json" sveltekit:data-type="props">{"md":"# Override component\n\nIf you want to change styles, you can override components.\n\n## Copy button for code block\n\nLet's make custom plugin!\n\nYou can override per tag.\n\n_Pre.svelte_\n\n```svelte\n\u003Cscript lang=\"ts\">\n\timport { classNameTransform } from 'svelte-exmarkdown/utils';\n\timport type { Node } from 'svelte-exmarkdown/types';\n\timport Children from 'svelte-exmarkdown/renderer/Children.svelte';\n\texport let children: Node[];\n\texport let properties: Record\u003Cstring, unknown>;\n\tconst copy = () => window.navigator.clipboard.writeText(children[0]['children'][0].value);\n\u003C/script>\n\n\u003Cdiv>\n\t\u003Cbutton on:click={copy}>copy!\u003C/button>\n\t\u003Cpre {...classNameTransform(properties)}>\u003CChildren {children} />\u003C/pre>\n\u003C/div>\n\n\u003Cstyle>\n\tdiv {\n\t\tposition: relative;\n\t}\n\tbutton {\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tright: 0;\n\t}\n\u003C/style>\n```\n\n_App.svelte_\n\n```svelte\n\u003Cscript>\n\timport Markdown from 'svelte-exmarkdown';\n\timport Pre from './Pre.svelte';\n\texport let md;\n\t/** @type {import('svelte-exmarkdown').Plugin[]} */\n\tconst plugins = [{ renderer: { pre: Pre } }];\n\u003C/script>\n\n\u003CMarkdown {md} {plugins} />\n```\n","prev":["02-plugin","Plugin system"]}</script></div>
 	</body>
 </html>
