@@ -18,4 +18,6 @@
 	});
 </script>
 
-{@html svg}
+<div>
+	{@html svg}
+</div>
