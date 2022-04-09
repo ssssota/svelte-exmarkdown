@@ -13,3 +13,8 @@ export const createParser = (plugins: Plugin[]): Parser => {
 		.use(plugins.map((plugin) => plugin.rehypePlugin).filter(nonNullable));
 	return (md: string) => processor.runSync(processor.parse(md), md);
 };
+
+export const classNameTransform = <T extends Record<string, unknown>>(obj: T): T => ({
+	class: obj['className'],
+	...obj
+});

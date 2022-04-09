@@ -39,13 +39,14 @@ tagNamesHaveChildren.map((tagName) =>
 	writeFileSync(
 		join(dir, `${upperFirst(tagName)}.svelte`),
 		`<script lang="ts">
+	import { classNameTransform } from '../../utils';
 	import type { Node } from '$lib/types';
 	import Children from '../Children.svelte';
 	export let children: Node[];
 	export let properties: Record<string, unknown>;
 </script>
 
-<${tagName} {...properties}><Children {children} /></${tagName}>
+<${tagName} {...classNameTransform(properties)}><Children {children} /></${tagName}>
 `
 	)
 );
@@ -53,10 +54,11 @@ tagNamesHaveNoChild.map((tagName) =>
 	writeFileSync(
 		join(dir, `${upperFirst(tagName)}.svelte`),
 		`<script lang="ts">
+	import { classNameTransform } from '../../utils';
 	export let properties: Record<string, unknown>;
 </script>
 
-<${tagName} {...properties} />
+<${tagName} {...classNameTransform(properties)} />
 `
 	)
 );
