@@ -1,18 +1,21 @@
 {
 	"name": "svelte-exmarkdown",
-	"version": "0.0.1",
+	"version": "0.0.0-development",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
-		"prepare": "svelte-kit sync",
+		"prepare": "svelte-kit sync && husky install",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"fmt": "prettier --write --plugin-search-dir=. ."
+		"fmt": "prettier --write --plugin-search-dir=. .",
+		"semantic-release": "semantic-release"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^16.2.3",
+		"@commitlint/config-conventional": "^16.2.1",
 		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.10.1",
@@ -20,8 +23,10 @@
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^3.2.1",
+		"husky": "^7.0.0",
 		"prettier": "^2.5.1",
 		"prettier-plugin-svelte": "^2.5.0",
+		"semantic-release": "^19.0.2",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.6",
 		"svelte-preprocess": "^4.10.1",
@@ -34,5 +39,9 @@
 		"remark-gfm": "^3.0.1",
 		"remark-parse": "^10.0.1",
 		"unified": "^10.1.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ssssota/svelte-exmarkdown.git"
 	}
 }
