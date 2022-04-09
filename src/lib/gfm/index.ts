@@ -1,20 +1,23 @@
 import remarkGfm from 'remark-gfm';
 import type { Plugin } from '../types';
 import Del from './Del.svelte';
-import ListItem from './ListItem.svelte';
 import Table from './Table.svelte';
-import TableCell from './TableCell.svelte';
-import TableRow from './TableRow.svelte';
-
-export { Table, TableCell, TableRow };
+import Tbody from './Tbody.svelte';
+import Thead from './Thead.svelte';
+import Tr from './Tr.svelte';
+import Th from './Th.svelte';
+import Td from './Td.svelte';
 
 export const gfmPlugin: Plugin = {
 	remarkPlugin: remarkGfm,
 	renderer: {
+		del: Del,
 		table: Table,
-		tableCell: TableCell,
-		tableRow: TableRow,
-		listItem: ListItem,
-		delete: Del
+		tbody: Tbody,
+		thead: Thead,
+		tr: Tr,
+		th: Th,
+		td: Td
 	}
 };
+export { Table, Tbody, Thead, Tr, Th, Td };

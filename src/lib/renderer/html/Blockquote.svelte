@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Node } from '$lib/types';
-	import Children from '../renderer/Children.svelte';
+	import Children from '../Children.svelte';
 	export let children: Node[];
 	export let properties: Record<string, unknown>;
 </script>
 
-<table {...properties}><Children {children} /></table>
+<blockquote {...properties}><Children {children} /></blockquote>

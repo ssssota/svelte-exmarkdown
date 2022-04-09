@@ -5,4 +5,4 @@
 	export let properties: Record<string, unknown>;
 </script>
 
-<table {...properties}><Children {children} /></table>
+<th {...properties}><Children {children} /></th>
