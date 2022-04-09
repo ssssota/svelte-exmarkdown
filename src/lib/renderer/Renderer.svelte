@@ -11,8 +11,6 @@
 	$: node = astNode as AnyNode;
 
 	const components = getComponentsContext();
-
-	console.log({ astNode, node, components });
 </script>
 
 {#if node.type === 'root'}
