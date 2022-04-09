@@ -10,7 +10,7 @@ npm install svelte-exmarkdown
 
 ## Basic usage
 
-```jsx
+```svelte
 <script>
 	import Markdown from 'svelte-exmarkdown';
 	let md = '# Hello world!';
@@ -22,7 +22,7 @@ npm install svelte-exmarkdown
 
 with GFM(GitHub Flavored Markdown)
 
-```jsx
+```svelte
 <script>
 	import Markdown from 'svelte-exmarkdown';
 	import { gfmPlugin } from 'svelte-exmarkdown/gfm';

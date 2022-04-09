@@ -9,6 +9,7 @@ importers:
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       '@types/mermaid': ^8.2.9
+      '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.10.1
       '@typescript-eslint/parser': ^5.10.1
       eslint: ^7.32.0
@@ -18,6 +19,8 @@ importers:
       mermaid: ^9.0.0
       prettier: ^2.5.1
       prettier-plugin-svelte: ^2.5.0
+      prism-svelte: ^0.5.0
+      prismjs: ^1.27.0
       remark-gfm: ^3.0.1
       remark-parse: ^10.0.1
       remark-rehype: ^10.1.0
@@ -41,6 +44,7 @@ importers:
       '@sveltejs/adapter-static': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.310_svelte@3.46.6
       '@types/mermaid': 8.2.9
+      '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.18.0_93fd1b55dafbdf76506419beaedce909
       '@typescript-eslint/parser': 5.18.0_eslint@7.32.0+typescript@4.6.3
       eslint: 7.32.0
@@ -50,6 +54,8 @@ importers:
       mermaid: 9.0.0
       prettier: 2.6.2
       prettier-plugin-svelte: 2.6.0_prettier@2.6.2+svelte@3.46.6
+      prism-svelte: 0.5.0
+      prismjs: 1.27.0
       semantic-release: 19.0.2
       svelte: 3.46.6
       svelte-check: 2.4.6_svelte@3.46.6
@@ -713,6 +719,10 @@ packages:
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: true
+
+  /@types/prismjs/1.26.0:
+    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: true
 
   /@types/pug/2.0.6:
@@ -4151,6 +4161,15 @@ packages:
     resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: true
+
+  /prism-svelte/0.5.0:
+    resolution: {integrity: sha512-db91Bf3pRGKDPz1lAqLFSJXeW13mulUJxhycysFpfXV5MIK7RgWWK2E5aPAa71s8TCzQUXxF5JOV42/iOs6QkA==}
+    dev: true
+
+  /prismjs/1.27.0:
+    resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}
+    engines: {node: '>=6'}
     dev: true
 
   /process-nextick-args/2.0.1:

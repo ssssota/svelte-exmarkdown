@@ -5,12 +5,13 @@
 	import { gfmPlugin } from '$lib/gfm';
 	import type { Parser, Plugin } from '$lib/types';
 	import { createParser } from '$lib/utils';
+	import { highlightPlugin } from '../prism';
 	import Readme from '../../README.md?raw';
 	let gfm = true;
 	let ast = false;
 	let md = Readme;
 	let plugins: Plugin[];
-	$: plugins = [...(gfm ? [gfmPlugin] : [])];
+	$: plugins = [...(gfm ? [gfmPlugin] : []), highlightPlugin];
 	let parse: Parser;
 	$: parse = createParser(plugins);
 </script>

@@ -7,6 +7,7 @@
 	import H4 from '$lib/renderer/html/H4.svelte';
 	import H5 from '$lib/renderer/html/H5.svelte';
 	import H6 from '$lib/renderer/html/H6.svelte';
+	import { highlightPlugin } from '../../prism';
 	import { mermaidPlugin } from '../../mermaid';
 	export let md: string;
 	export let prev: [string, string] | undefined;
@@ -15,6 +16,7 @@
 	const plugins: Plugin[] = [
 		gfmPlugin,
 		mermaidPlugin,
+		highlightPlugin,
 		{
 			renderer: {
 				h1: H2,
