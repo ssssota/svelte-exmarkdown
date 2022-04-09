@@ -26,6 +26,7 @@ importers:
       tslib: ^2.3.1
       typescript: ~4.6.2
       unified: ^10.1.2
+      water.css: ^2.1.1
     dependencies:
       remark-gfm: 3.0.1
       remark-parse: 10.0.1
@@ -50,6 +51,7 @@ importers:
       svelte2tsx: 0.5.6_svelte@3.46.6+typescript@4.6.3
       tslib: 2.3.1
       typescript: 4.6.3
+      water.css: 2.1.1
 
   plugins/sxm-plugin-gfm:
     specifiers:
@@ -4263,6 +4265,10 @@ packages:
       rollup: 2.70.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /water.css/2.1.1:
+    resolution: {integrity: sha512-gkO5byC+pZ7ndEV18hs/RmxKoDtEZXx06tZU4ocI3IBdv4xV64tlhjIFbDjurysRnNkiy2oQTr8PakRyzZWPJw==}
     dev: true
 
   /webidl-conversions/3.0.1:

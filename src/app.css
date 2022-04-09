@@ -10,4 +10,6 @@ body {
 
 body {
 	max-width: 100vw;
+	font-family: 'Roboto', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
+		Meiryo, sans-serif;
 }

@@ -1,9 +1,8 @@
 <script lang="ts">
 	import SvelteExmarkdown from '$lib';
 	import { gfmPlugin } from '$lib/gfm';
-	import type { Node, Plugin } from '$lib/types';
+	import type { Parser, Plugin } from '$lib/types';
 	import { createParser } from '$lib/utils';
-	import '../app.css';
 	let gfm = true;
 	let ast = false;
 	let md = `
@@ -17,52 +16,58 @@ hello
 `;
 	let plugins: Plugin[];
 	$: plugins = [...(gfm ? [gfmPlugin] : [])];
-	let parse: (md: string) => Node;
+	let parse: Parser;
 	$: parse = createParser(plugins);
 </script>
 
-<svelte:head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css" />
-</svelte:head>
+<div class="wrapper">
+	<header>
+		<h1>svelte-exmarkdown</h1>
+		<div class="spacer" />
+		<div>
+			<label><input type="checkbox" bind:checked={gfm} />GFM</label>
+		</div>
+		<div>
+			<label><input type="checkbox" bind:checked={ast} />AST</label>
+		</div>
+	</header>
 
-<header>
-	<h1>svelte-exmarkdown</h1>
-	<div>
-		<label><input type="checkbox" bind:checked={gfm} />GFM</label>
-	</div>
-	<div>
-		<label><input type="checkbox" bind:checked={ast} />AST</label>
-	</div>
-</header>
+	<main>
+		<textarea class="input" bind:value={md} />
 
-<main>
-	<textarea class="input" bind:value={md} />
-
-	<section class="output">
-		{#if ast}
-			<pre>{JSON.stringify(
-					parse(md),
-					(key, value) => (key === 'position' ? undefined : value),
-					'  '
-				)}</pre>
-		{:else}
-			<SvelteExmarkdown {md} {plugins} />
-		{/if}
-	</section>
-</main>
+		<section class="output">
+			{#if ast}
+				<pre>{JSON.stringify(
+						parse(md),
+						(key, value) => (key === 'position' ? undefined : value),
+						'  '
+					)}</pre>
+			{:else}
+				<SvelteExmarkdown {md} {plugins} />
+			{/if}
+		</section>
+	</main>
+</div>
 
 <style>
-	:root {
-		--header-height: 5em;
+	.wrapper {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
 	}
 	header {
-		height: var(--header-height);
+		padding: 0 2em;
 		display: flex;
+		flex-wrap: wrap;
 		align-items: baseline;
+	}
+	.spacer {
+		flex-grow: 1;
 	}
 	main {
 		display: flex;
-		height: calc(100vh - var(--header-height));
+		flex-grow: 1;
 	}
 	.input,
 	.output {
@@ -70,10 +75,10 @@ hello
 		width: 50%;
 		overflow-y: auto;
 	}
-
 	.input {
-		background-color: #f5f5f5;
 		resize: none;
+		font-family: monospace;
+		font-size: 1.2em;
 	}
 	.output {
 		padding: 1em 2em;
