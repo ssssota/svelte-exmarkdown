@@ -12,7 +12,6 @@ _Pre.svelte_
 
 ```svelte
 <script lang="ts">
-	import { classNameTransform } from 'svelte-exmarkdown/utils';
 	import type { Node } from 'svelte-exmarkdown/types';
 	import Children from 'svelte-exmarkdown/renderer/Children.svelte';
 	export let children: Node[];
@@ -22,7 +21,7 @@ _Pre.svelte_
 
 <div>
 	<button on:click={copy}>copy!</button>
-	<pre {...classNameTransform(properties)}><Children {children} /></pre>
+	<pre {...properties}><Children {children} /></pre>
 </div>
 
 <style>

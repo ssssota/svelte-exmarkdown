@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { classNameTransform } from '../lib/utils';
 	import type { Node } from '$lib/types';
 	import Children from '../lib/renderer/Children.svelte';
 	import Mermaid from './Mermaid.svelte';
@@ -14,5 +13,5 @@
 {#if Array.isArray(child.properties.className) && child.properties.className.includes('language-mermaid')}
 	<Mermaid {code} />
 {:else}
-	<pre {...classNameTransform(properties)}><Children {children} /></pre>
+	<pre {...properties}><Children {children} /></pre>
 {/if}

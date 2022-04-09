@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "node scripts/createHtmlSvelte && svelte-kit build",
-		"package": "svelte-kit package",
+		"build": "svelte-kit build",
+		"package": "node scripts/createHtmlSvelte && svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync && husky install",
 		"check": "svelte-check --tsconfig ./tsconfig.json",

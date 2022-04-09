@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { classNameTransform } from '../../utils';
 	import type { Node } from '$lib/types';
 	import Children from '../Children.svelte';
 	export let children: Node[];
@@ -7,4 +6,4 @@
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
-<a {...classNameTransform(properties)}><Children {children} /></a>
+<a {...properties}><Children {children} /></a>
