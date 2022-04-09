@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - run: pnpm i
+      - run: pnpm lint
+      - run: pnpm build
+      - run: pnpm package
