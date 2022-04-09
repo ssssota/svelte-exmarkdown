@@ -1,6 +1,6 @@
 {
 	"name": "svelte-exmarkdown",
-	"version": "0.0.0-development",
+	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
