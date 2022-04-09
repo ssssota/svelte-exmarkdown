@@ -14,7 +14,12 @@ export const createParser = (plugins: Plugin[]): Parser => {
 	return (md: string) => processor.runSync(processor.parse(md), md);
 };
 
-export const classNameTransform = <T extends Record<string, unknown>>(obj: T): T => ({
-	class: obj['className'],
-	...obj
-});
+export const classNameTransform = <T extends Record<string, unknown>>(obj: T): T => {
+	if (Array.isArray(obj.className)) {
+		return {
+			class: obj.className.join(' '),
+			...obj
+		};
+	}
+	return obj;
+};
