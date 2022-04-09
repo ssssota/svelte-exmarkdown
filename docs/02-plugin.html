@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/svelte-exmarkdown/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="content-security-policy" content=""><title>svelte-exmarkdown</title><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown." data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.googleapis.com" data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" data-svelte="svelte-dn03qt"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" data-svelte="svelte-dn03qt">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/__layout.svelte-d494661c.css">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/__layout.svelte-05342fdb.css">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/_slug_.svelte-7b98f175.css">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-4f2c724c.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-f49a0ed9.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-480a3f71.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/paths-396f020f.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-b65c69af.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/__layout.svelte-8e559aec.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-a8d22e74.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-9dc88848.js">
+	</head>
+	<body>
+		<div>
+
+
+
+
+<div class="wrapper"><header class="svelte-ajl5ts"><h1><a href="/svelte-exmarkdown" class="svelte-ajl5ts">svelte-exmarkdown</a></h1></header>
+	<main class="svelte-ajl5ts"><h2>Plugin system</h2>
+<p>This library uses 
+<a href="https://github.com/unifiedjs/unified">unified</a>.
+Therefore, you can use 
+<a href="https://github.com/remarkjs/remark">remark</a> or 
+<a href="https://github.com/rehypejs/rehype">rehype</a> plugins.</p>
+<h3>Rendering flow</h3>
+<pre><code class="language-mermaid" className="language-mermaid">graph TD
+  Markdown -- string --&gt; remark-parse
+  subgraph unified
+    remark-parse -- mdast --&gt; remarkPlugins
+    remarkPlugins -- mdast --&gt; remark-rehype
+    remark-rehype -- hast --&gt; rehypePlugins
+  end
+  rehypePlugins -- hast-component-mapping --&gt; SvelteComponent
+</code></pre>
+<h3>API</h3>
+<pre><code class="language-ts" className="language-ts">export type ComponentsMap = Record&lt;string, typeof SvelteComponent&gt;;
+export type Plugin = {
+	remarkPlugin?: Pluggable;
+	rehypePlugin?: Pluggable;
+	renderer?: ComponentsMap;
+};
+</code></pre>
+<h3>GFM(GitHub Flavored Markdown) Plugin</h3>
+<p><code>gfmPlugin</code> is the only plugin that comes with the library.</p>
+<p>It includes 
+<a href="https://github.com/remarkjs/remark-gfm">remark-gfm</a> and some component map(e.g. <code>table</code>, <code>tbody</code>, etc..).</p>
+<p><em>definition</em></p>
+<pre><code class="language-ts" className="language-ts">export const gfmPlugin: Plugin = {
+	remarkPlugin: remarkGfm,
+	renderer: {
+		del: Del,
+		table: Table,
+		tbody: Tbody,
+		thead: Thead,
+		tr: Tr,
+		th: Th,
+		td: Td
+	}
+};
+</code></pre>
+
+<nav class="svelte-1qiqlfz"><a href="/svelte-exmarkdown/docs/01-getting-started" class="svelte-1qiqlfz">Getting started</a>
+	<a href="/svelte-exmarkdown/docs/03-override-component" class="svelte-1qiqlfz">Override component</a>
+</nav></main>
+</div>
+
+
+		<script type="module" data-hydrate="1hsq6k9">
+		import { start } from "/svelte-exmarkdown/_app/start-4f2c724c.js";
+		start({
+			target: document.querySelector('[data-hydrate="1hsq6k9"]').parentNode,
+			paths: {"base":"/svelte-exmarkdown","assets":"/svelte-exmarkdown"},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [
+					import("/svelte-exmarkdown/_app/pages/__layout.svelte-b65c69af.js"),
+						import("/svelte-exmarkdown/_app/pages/docs/__layout.svelte-8e559aec.js"),
+						import("/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-a8d22e74.js")
+				],
+				params: {slug:"02-plugin"},
+				routeId: "docs/[slug]"
+			}
+		});
+	</script><script type="application/json" sveltekit:data-type="props">{"md":"# Plugin system\n\nThis library uses [unified](https://github.com/unifiedjs/unified).\nTherefore, you can use [remark](https://github.com/remarkjs/remark) or [rehype](https://github.com/rehypejs/rehype) plugins.\n\n## Rendering flow\n\n```mermaid\ngraph TD\n  Markdown -- string --> remark-parse\n  subgraph unified\n    remark-parse -- mdast --> remarkPlugins\n    remarkPlugins -- mdast --> remark-rehype\n    remark-rehype -- hast --> rehypePlugins\n  end\n  rehypePlugins -- hast-component-mapping --> SvelteComponent\n```\n\n## API\n\n```ts\nexport type ComponentsMap = Record\u003Cstring, typeof SvelteComponent>;\nexport type Plugin = {\n\tremarkPlugin?: Pluggable;\n\trehypePlugin?: Pluggable;\n\trenderer?: ComponentsMap;\n};\n```\n\n## GFM(GitHub Flavored Markdown) Plugin\n\n`gfmPlugin` is the only plugin that comes with the library.\n\nIt includes [remark-gfm](https://github.com/remarkjs/remark-gfm) and some component map(e.g. `table`, `tbody`, etc..).\n\n_definition_\n\n```ts\nexport const gfmPlugin: Plugin = {\n\tremarkPlugin: remarkGfm,\n\trenderer: {\n\t\tdel: Del,\n\t\ttable: Table,\n\t\ttbody: Tbody,\n\t\tthead: Thead,\n\t\ttr: Tr,\n\t\tth: Th,\n\t\ttd: Td\n\t}\n};\n```\n","prev":["01-getting-started","Getting started"],"next":["03-override-component","Override component"]}</script></div>
+	</body>
+</html>
