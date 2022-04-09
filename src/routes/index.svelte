@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	import SvelteExmarkdown from '$lib';
 	import { gfmPlugin } from '$lib/gfm';
 	import type { Parser, Plugin } from '$lib/types';
@@ -17,11 +19,16 @@
 	<header>
 		<h1>svelte-exmarkdown</h1>
 		<div class="spacer" />
-		<div>
-			<label><input type="checkbox" bind:checked={gfm} />GFM</label>
-		</div>
-		<div>
-			<label><input type="checkbox" bind:checked={ast} />AST</label>
+		<div class="right">
+			<div>
+				<label><input type="checkbox" bind:checked={gfm} />GFM</label>
+			</div>
+			<div>
+				<label><input type="checkbox" bind:checked={ast} />AST</label>
+			</div>
+			<div>
+				<a class="link" href="{base}/docs">Docs</a>
+			</div>
 		</div>
 	</header>
 
@@ -57,6 +64,10 @@
 	}
 	.spacer {
 		flex-grow: 1;
+	}
+	.right {
+		display: flex;
+		gap: 1em;
 	}
 	main {
 		display: flex;
