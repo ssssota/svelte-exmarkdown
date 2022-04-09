@@ -28,6 +28,10 @@
 	];
 </script>
 
+<p>
+	<a href="{base}/docs">&lt; Back to index</a>
+</p>
+
 <Markdown {md} {plugins} />
 
 <nav>
