@@ -1,7 +1,11 @@
+<script lang="ts">
+	import { base } from '$app/paths';
+</script>
+
 <div class="wrapper">
 	<header>
 		<h1>
-			<a href=".."> svelte-exmarkdown</a>
+			<a href={base}> svelte-exmarkdown</a>
 		</h1>
 	</header>
 	<main>
