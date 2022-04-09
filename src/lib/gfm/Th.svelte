@@ -5,4 +5,6 @@
 	export let properties: Record<string, unknown>;
 </script>
 
-<th {...properties}><Children {children} /></th>
+<th {...properties} style:text-align={typeof properties.align === 'string' ? properties.align : ''}>
+	<Children {children} />
+</th>
