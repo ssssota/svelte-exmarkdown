@@ -18,6 +18,7 @@ jobs:
       - run: pnpm i
       - run: pnpm package
       - name: Release
+        run: npx semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
