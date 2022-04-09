@@ -29,7 +29,8 @@ export const defaultComponents: ComponentsMap = {
 	inlineCode: InlineCode,
 	code: Code,
 	image: Image,
-	blockquote: Blockquote
+	blockquote: Blockquote,
+	html: Text
 };
 export {
 	Children,
