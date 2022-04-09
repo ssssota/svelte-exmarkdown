@@ -1,4 +1,4 @@
-import{S as de,i as ue,s as pe,e as i,t as V,k as P,c,a as u,h as R,d,m as S,b as v,g as ce,H as a,T as oe,U as K,o as W,p as me,q as Y,V as fe,n as he,w as ve,x as _e,y as ge,B as ke,j as we,E as ie}from"../chunks/index-b63dd270.js";import{b as be}from"../chunks/paths-396f020f.js";import{g as Ee,h as ye,f as je,E as Me}from"../chunks/index-1751fd82.js";import"../chunks/index-62a5bd2c.js";var De=`# svelte-exmarkdown
+import{S as de,i as ue,s as pe,e as i,t as V,k as P,c,a as u,h as R,d,m as S,b as v,g as ce,H as a,T as oe,U as K,o as W,p as me,q as Y,V as fe,n as he,w as ve,x as _e,y as ge,B as ke,j as we,E as ie}from"../chunks/index-b63dd270.js";import{b as be}from"../chunks/paths-396f020f.js";import{g as Ee,h as ye,e as je,E as Me}from"../chunks/index-33b194f1.js";import"../chunks/index-62a5bd2c.js";var De=`# svelte-exmarkdown
 
 Svelte component to render markdown.
 
