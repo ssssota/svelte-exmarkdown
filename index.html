@@ -9,13 +9,13 @@
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/__layout.svelte-1828f48b.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/index.svelte-2210b4c5.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/index-9c0ff923.css">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-81d98ee0.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-b63dd270.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-62a5bd2c.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-f66221b4.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-c6f1ae3b.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-a4fe4242.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/paths-396f020f.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-8e204715.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/index.svelte-5bfa11e6.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-33b194f1.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-8aeb5346.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/index.svelte-05fea8ec.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-668897bd.js">
 	</head>
 	<body>
 		<div>
@@ -73,19 +73,29 @@ with GFM
 https://ssssota.github.io/svelte-exmarkdown
 </textarea>
 
-		<section class="output svelte-3jzqc2"><h1>svelte-exmarkdown</h1>
-<p>Svelte component to render markdown.</p>
-<h2>Motivation</h2>
-<p>
-<a href="https://www.npmjs.com/package/svelte-markdown">svelte-markdown</a> is a good component package.
+		<section class="output svelte-3jzqc2">
+	<h1>svelte-exmarkdown</h1>
+
+	<p>Svelte component to render markdown.</p>
+
+	<h2>Motivation</h2>
+
+	<p>
+	<a href="https://www.npmjs.com/package/svelte-markdown">svelte-markdown</a> is a good component package.
 However, it is not extensible. You cannot use custom syntax(e.g. KaTeX).</p>
-<p>
-<a href="https://www.npmjs.com/package/mdsvex">MDsveX</a> is another good package.
+
+	<p>
+	<a href="https://www.npmjs.com/package/mdsvex">MDsveX</a> is another good package.
 However, it is a preprocessor. Not suitable for dynamic rendering.</p>
-<p>We need <strong>pluggable</strong> and <strong>dynamic</strong> markdown renderer in svelte like 
-<a href="https://www.npmjs.com/package/react-markdown">react-markdown</a>.</p>
-<h2>Usage</h2>
-<pre><code className="language-svelte" class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+
+	<p>We need 
+	<strong>pluggable</strong> and 
+	<strong>dynamic</strong> markdown renderer in svelte like 
+	<a href="https://www.npmjs.com/package/react-markdown">react-markdown</a>.</p>
+
+	<h2>Usage</h2>
+
+	<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
 	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
 	<span class="token keyword">let</span> md <span class="token operator">=</span> <span class="token string">'# Hello world!'</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
@@ -93,8 +103,10 @@ However, it is a preprocessor. Not suitable for dynamic rendering.</p>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name"><span class="token namespace">bind:</span>value=</span><span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Markdown</span> <span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
 <!-- HTML_TAG_END --></code></pre>
-<p>with GFM</p>
-<pre><code className="language-svelte" class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+
+	<p>with GFM</p>
+
+	<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
 	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
 	<span class="token keyword">import</span> <span class="token punctuation">{</span> gfmPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown/gfm'</span><span class="token punctuation">;</span>
 	<span class="token keyword">let</span> md <span class="token operator">=</span> <span class="token string">'# Hello world!'</span><span class="token punctuation">;</span>
@@ -103,16 +115,18 @@ However, it is a preprocessor. Not suitable for dynamic rendering.</p>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name"><span class="token namespace">bind:</span>value=</span><span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Markdown</span> <span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token attr-name">plugins=</span><span class="token language-javascript"><span class="token punctuation">{</span><span class="token punctuation">[</span>gfmPlugin<span class="token punctuation">]</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
 <!-- HTML_TAG_END --></code></pre>
-<h2>Playground &amp; Documents</h2>
-<p>
-<a href="https://ssssota.github.io/svelte-exmarkdown">https://ssssota.github.io/svelte-exmarkdown</a></p></section></main>
+
+	<h2>Playground &amp; Documents</h2>
+
+	<p>
+	<a href="https://ssssota.github.io/svelte-exmarkdown">https://ssssota.github.io/svelte-exmarkdown</a></p></section></main>
 </div>
 
 
-		<script type="module" data-hydrate="1y0yhs0">
-		import { start } from "/svelte-exmarkdown/_app/start-81d98ee0.js";
+		<script type="module" data-hydrate="ufdvz4">
+		import { start } from "/svelte-exmarkdown/_app/start-f66221b4.js";
 		start({
-			target: document.querySelector('[data-hydrate="1y0yhs0"]').parentNode,
+			target: document.querySelector('[data-hydrate="ufdvz4"]').parentNode,
 			paths: {"base":"/svelte-exmarkdown","assets":"/svelte-exmarkdown"},
 			session: {},
 			route: true,
@@ -122,8 +136,8 @@ However, it is a preprocessor. Not suitable for dynamic rendering.</p>
 				status: 200,
 				error: null,
 				nodes: [
-					import("/svelte-exmarkdown/_app/pages/__layout.svelte-8e204715.js"),
-						import("/svelte-exmarkdown/_app/pages/index.svelte-5bfa11e6.js")
+					import("/svelte-exmarkdown/_app/pages/__layout.svelte-8aeb5346.js"),
+						import("/svelte-exmarkdown/_app/pages/index.svelte-05fea8ec.js")
 				],
 				params: {},
 				routeId: ""
