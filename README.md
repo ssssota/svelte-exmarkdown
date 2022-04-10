@@ -14,6 +14,9 @@ We need **pluggable** and **dynamic** markdown renderer in svelte like [react-ma
 
 ## Usage
 
+You must **use svelte@3.47 or higher version**.
+This library is use `<svelte:element />`.
+
 ```svelte
 <script>
 	import Markdown from 'svelte-exmarkdown';
