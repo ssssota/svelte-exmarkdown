@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Node } from '../types';
+	import type { HastNode } from '../types';
 	import Renderer from './Renderer.svelte';
 
-	export let children: Node[];
+	export let children: HastNode[];
 </script>
 
 {#each children as child, __index}

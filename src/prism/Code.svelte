@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { Node } from '$lib/types';
+	import type { HastNode } from '$lib/types';
 	import Children from '../lib/renderer/Children.svelte';
 	import Prismjs from 'prismjs';
 	import 'prism-svelte';
-	export let children: Node[];
+	export let children: HastNode[];
 	export let properties: Record<string, unknown>;
 
 	let lang: string | undefined;

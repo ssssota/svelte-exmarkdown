@@ -4,7 +4,7 @@
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
-		"package": "node scripts/createHtmlSvelte && svelte-kit package",
+		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync && husky install",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
@@ -32,7 +32,7 @@
 		"prism-svelte": "^0.5.0",
 		"prismjs": "^1.27.0",
 		"semantic-release": "^19.0.2",
-		"svelte": "^3.44.0",
+		"svelte": "^3.47.0",
 		"svelte-check": "^2.2.6",
 		"svelte-preprocess": "^4.10.1",
 		"svelte2tsx": "^0.5.6",
