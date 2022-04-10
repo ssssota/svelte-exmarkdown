@@ -9,13 +9,13 @@
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/__layout.svelte-1828f48b.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/index.svelte-2210b4c5.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/index-9c0ff923.css">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-f66221b4.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-2502efb8.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-c6f1ae3b.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-a4fe4242.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/paths-396f020f.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-8aeb5346.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/index.svelte-05fea8ec.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-668897bd.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/index.svelte-a7149157.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-de48f8df.js">
 	</head>
 	<body>
 		<div>
@@ -44,6 +44,9 @@ However, it is a preprocessor. Not suitable for dynamic rendering.
 We need **pluggable** and **dynamic** markdown renderer in svelte like [react-markdown](https://www.npmjs.com/package/react-markdown).
 
 ## Usage
+
+You must **use svelte@3.47 or higher version**.
+This library is use `<svelte:element />`.
 
 ```svelte
 <script>
@@ -95,6 +98,10 @@ However, it is a preprocessor. Not suitable for dynamic rendering.</p>
 
 	<h2>Usage</h2>
 
+	<p>You must 
+	<strong>use svelte@3.47 or higher version</strong>.
+This library is use <code class="svelte-e4hkjf">&lt;svelte:element /&gt;</code>.</p>
+
 	<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
 	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
 	<span class="token keyword">let</span> md <span class="token operator">=</span> <span class="token string">'# Hello world!'</span><span class="token punctuation">;</span>
@@ -123,10 +130,10 @@ However, it is a preprocessor. Not suitable for dynamic rendering.</p>
 </div>
 
 
-		<script type="module" data-hydrate="ufdvz4">
-		import { start } from "/svelte-exmarkdown/_app/start-f66221b4.js";
+		<script type="module" data-hydrate="1j3kzox">
+		import { start } from "/svelte-exmarkdown/_app/start-2502efb8.js";
 		start({
-			target: document.querySelector('[data-hydrate="ufdvz4"]').parentNode,
+			target: document.querySelector('[data-hydrate="1j3kzox"]').parentNode,
 			paths: {"base":"/svelte-exmarkdown","assets":"/svelte-exmarkdown"},
 			session: {},
 			route: true,
@@ -137,7 +144,7 @@ However, it is a preprocessor. Not suitable for dynamic rendering.</p>
 				error: null,
 				nodes: [
 					import("/svelte-exmarkdown/_app/pages/__layout.svelte-8aeb5346.js"),
-						import("/svelte-exmarkdown/_app/pages/index.svelte-05fea8ec.js")
+						import("/svelte-exmarkdown/_app/pages/index.svelte-a7149157.js")
 				],
 				params: {},
 				routeId: ""
