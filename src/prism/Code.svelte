@@ -8,11 +8,11 @@
 
 	let lang: string | undefined;
 	$: lang = String(properties.class).match(/language-(\w+)/)?.[1];
-	let child: any;
+	let child: HastNode;
 	$: child = children[0];
 </script>
 
-{#if lang == null || Prismjs.languages[lang] == null}<code {...properties}
+{#if lang == null || Prismjs.languages[lang] == null || child?.type !== 'text'}<code {...properties}
 		><Children {children} /></code
 	>{:else}<code {...properties}
 		>{@html Prismjs.highlight(child.value, Prismjs.languages[lang], lang)}</code
