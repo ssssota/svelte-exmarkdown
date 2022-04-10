@@ -20,7 +20,7 @@
 	<header>
 		<h1>svelte-exmarkdown</h1>
 		<div class="spacer" />
-		<div class="right">
+		<nav class="right">
 			<div>
 				<label><input type="checkbox" bind:checked={gfm} />GFM</label>
 			</div>
@@ -30,7 +30,17 @@
 			<div>
 				<a class="link" href="{base}/docs">Docs</a>
 			</div>
-		</div>
+			<div>
+				<a class="link" target="_blank" href="https://www.npmjs.com/package/svelte-exmarkdown">
+					npm
+				</a>
+			</div>
+			<div>
+				<a class="link" target="_blank" href="https://github.com/ssssota/svelte-exmarkdown">
+					GitHub
+				</a>
+			</div>
+		</nav>
 	</header>
 
 	<main>
