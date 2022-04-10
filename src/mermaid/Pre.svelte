@@ -11,7 +11,7 @@
 		child.type === 'element' && child.children[0]?.type === 'text' ? child.children[0].value : '';
 </script>
 
-{#if child.type === 'element' && Array.isArray(child.properties?.className) && child.properties?.className?.includes('language-mermaid')}
+{#if child.type === 'element' && typeof child.properties?.class === 'string' && child.properties?.class?.includes('language-mermaid')}
 	<Mermaid {code} />
 {:else}
 	<pre {...properties}><Children {children} /></pre>
