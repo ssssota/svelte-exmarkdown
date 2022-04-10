@@ -18,5 +18,7 @@ jobs:
           cache: pnpm
       - run: pnpm i
       - run: pnpm lint
+      - run: pnpm t
+      - run: pnpm check
       - run: pnpm build
       - run: pnpm package
