@@ -61,6 +61,7 @@
 		"type": "git",
 		"url": "https://github.com/ssssota/svelte-exmarkdown.git"
 	},
+	"homepage": "https://ssssota.github.io/svelte-exmarkdown",
 	"keywords": [
 		"svelte",
 		"markdown",
