@@ -10,13 +10,13 @@
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/__layout.svelte-f9e74218.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/_slug_.svelte-9f9f7132.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/index-9c0ff923.css">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-7c879dfd.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-8015f913.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-c6f1ae3b.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-a4fe4242.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/paths-396f020f.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-8aeb5346.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/__layout.svelte-792f10c4.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-f123f962.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-b7de016e.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-de48f8df.js">
 	</head>
 	<body>
@@ -44,15 +44,7 @@ Therefore, you can use
 	<a href="https://github.com/rehypejs/rehype">rehype</a> plugins.</p>
 
 	<h2>Rendering flow</h2>
-<pre><code class="language-mermaid svelte-e4hkjf">graph TD
-  Markdown -- string --&gt; remark-parse
-  subgraph unified
-    remark-parse -- mdast --&gt; remarkPlugins
-    remarkPlugins -- mdast --&gt; remark-rehype
-    remark-rehype -- hast --&gt; rehypePlugins
-  end
-  rehypePlugins -- hast-component-mapping --&gt; SvelteComponent
-</code></pre>
+<div><!-- HTML_TAG_START --><!-- HTML_TAG_END --></div>
 
 	<h2>API</h2>
 <pre><code class="language-ts svelte-e4hkjf">export type ComponentsMap = Record&lt;string, typeof SvelteComponent&gt;;
@@ -92,10 +84,10 @@ export type Plugin = {
 </div>
 
 
-		<script type="module" data-hydrate="rukfuw">
-		import { start } from "/svelte-exmarkdown/_app/start-7c879dfd.js";
+		<script type="module" data-hydrate="tc8e7v">
+		import { start } from "/svelte-exmarkdown/_app/start-8015f913.js";
 		start({
-			target: document.querySelector('[data-hydrate="rukfuw"]').parentNode,
+			target: document.querySelector('[data-hydrate="tc8e7v"]').parentNode,
 			paths: {"base":"/svelte-exmarkdown","assets":"/svelte-exmarkdown"},
 			session: {},
 			route: true,
@@ -107,7 +99,7 @@ export type Plugin = {
 				nodes: [
 					import("/svelte-exmarkdown/_app/pages/__layout.svelte-8aeb5346.js"),
 						import("/svelte-exmarkdown/_app/pages/docs/__layout.svelte-792f10c4.js"),
-						import("/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-f123f962.js")
+						import("/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-b7de016e.js")
 				],
 				params: {slug:"02-plugin"},
 				routeId: "docs/[slug]"
