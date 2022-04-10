@@ -1,27 +1,31 @@
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified, type Plugin as UnifiedPlugin } from 'unified';
-import type { Plugin, Parser, Node } from './types';
+import type { Plugin, Parser, UnistNode, HastNode } from './types';
 
 export const nonNullable = <T>(value: T | null | undefined): value is T => value != null;
 
-const transform = (node: Node) => {
-	const properties = (node as unknown as { properties?: Record<string, unknown> }).properties;
-	if (properties === undefined || !Array.isArray(properties.className)) return;
-	properties.class = properties.className.join(' ');
+const transform = (node: HastNode) => {
+	if (
+		node.type !== 'element' ||
+		node.properties === undefined ||
+		!Array.isArray(node.properties.className)
+	)
+		return;
+	node.properties.class = node.properties.className.join(' ');
+	delete node.properties.className;
 };
 
-const visit = (visitor: (node: Node) => unknown, node: Node) => {
+const visit = (visitor: (node: HastNode) => unknown, node: HastNode) => {
 	visitor(node);
-	const children = (node as unknown as { children?: Node[] }).children;
-	if (children == null) return;
-	children.forEach((child) => visit(visitor, child));
+	if (node.type === 'comemnt' || node.type === 'doctype' || node.type === 'text') return;
+	node.children?.forEach((child) => visit(visitor, child));
 };
 
 const rehypeReactClassNameToSvelteClass: UnifiedPlugin = () => {
-	return (node: Node, _file, done) => {
+	return (node: UnistNode, _file, done) => {
 		try {
-			visit(transform, node);
+			visit(transform, node as HastNode);
 			done();
 		} catch (e) {
 			if (e instanceof Error) return done(e);

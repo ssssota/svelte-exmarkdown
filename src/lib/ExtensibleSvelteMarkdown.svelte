@@ -2,7 +2,7 @@
 	import { setContext } from 'svelte';
 	import { componentsContextKey, createComponentsContextValue } from './contexts';
 	import Renderer, { defaultComponents } from './renderer';
-	import type { Node, Parser, Plugin } from './types';
+	import type { Parser, Plugin, HastNode } from './types';
 	import { createParser, nonNullable } from './utils';
 
 	export let md: string;
@@ -20,8 +20,8 @@
 	});
 	setContext(componentsContextKey, componentsContextValue);
 
-	let result: Node;
-	$: result = parse(md);
+	let result: HastNode;
+	$: result = parse(md) as HastNode;
 </script>
 
 <Renderer astNode={result} />

@@ -7,5 +7,22 @@ export type Plugin = {
 	rehypePlugin?: Pluggable;
 	renderer?: ComponentsMap;
 };
-export type Node = ReturnType<FrozenProcessor['parse']>;
-export type Parser = (md: string) => Node;
+
+export type UnistNode = ReturnType<FrozenProcessor['parse']>;
+export type HastProperties = Record<string, unknown>;
+export type HastParent = { children: (HastElement | HastDoctype | HastComment | HastText)[] };
+export type HastLiteral = { value: string };
+export type HastRoot = HastParent & { type: 'root' };
+export type HastElement = HastParent & {
+	type: 'element';
+	tagName: string;
+	properties?: HastProperties;
+	content?: HastRoot;
+	children: (HastElement | HastComment | HastText)[];
+};
+export type HastDoctype = UnistNode & { type: 'doctype' };
+export type HastComment = HastLiteral & { type: 'comemnt' };
+export type HastText = HastLiteral & { type: 'text' };
+export type HastNode = HastRoot | HastElement | HastDoctype | HastComment | HastText;
+
+export type Parser = (md: string) => UnistNode;
