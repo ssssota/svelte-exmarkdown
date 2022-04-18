@@ -149,4 +149,22 @@ describe('Markdown(CommonMark)', () => {
 		ctx.rerender({ md: '***\n---\n___' });
 		[...ctx.container.children[0].children].forEach((el) => expect(el.outerHTML).toBe('<hr>'));
 	});
+
+	it('should render image', () => {
+		const ctx = render(Markdown, { md: '![]()' });
+		const img1 = screen.getByAltText('') as HTMLImageElement;
+		expect(img1.outerHTML).toBe('<img src="" alt="">');
+
+		ctx.rerender({ md: '![](http://example.com)' });
+		const img2 = screen.getByAltText('') as HTMLImageElement;
+		expect(img2.outerHTML).toBe('<img src="http://example.com" alt="">');
+
+		ctx.rerender({ md: '![test](http://example.com)' });
+		const img3 = screen.getByAltText('test') as HTMLImageElement;
+		expect(img3.outerHTML).toBe('<img src="http://example.com" alt="test">');
+
+		ctx.rerender({ md: '![test](http://example.com "This is test")' });
+		const img4 = screen.getByAltText('test') as HTMLImageElement;
+		expect(img4.outerHTML).toBe('<img src="http://example.com" alt="test" title="This is test">');
+	});
 });

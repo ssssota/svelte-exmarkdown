@@ -1,6 +1,7 @@
 import type { ComponentsMap } from '$lib/types';
 import Default from './Default.svelte';
 
+// ref. https://developer.mozilla.org/docs/Web/HTML/Element
 // prettier-ignore
 const defaultTags = [
 	// Content sectioning
@@ -15,6 +16,12 @@ const defaultTags = [
 	'a', 'abbr', 'b', 'bdi', 'bdo', 'br', 'cite', 'code', 'data', 'dfn',
 	'em', 'i', 'kbd', 'mark', 'q', 'rp', 'rt', 'ruby', 's', 'samp',
 	'small', 'span', 'strong', 'sub', 'sup', 'time', 'u', 'var', 'wbr',
+	// Image and multimedia
+	'area', 'audio', 'img', 'map', 'track', 'video',
+	// Embedded content
+	'embed', 'iframe', 'object', 'param', 'picture', 'portal', 'source',
+	// SVG and MathML
+	'svg', 'math',
 	// Demarcating edits
 	'del', 'ins',
 	// Table content
