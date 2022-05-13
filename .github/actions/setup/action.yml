@@ -1,0 +1,15 @@
+name: Setup and Install deps
+description: Setup Node.js/pnpm. Install dependencies.
+runs:
+  using: 'composite'
+  steps:
+    - uses: pnpm/action-setup@v2
+      with:
+        version: latest
+    - uses: actions/setup-node@v3
+      with:
+        node-version: lts/*
+        cache: pnpm
+    - name: Install deps
+      run: pnpm install
+      shell: bash

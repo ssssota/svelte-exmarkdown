@@ -9,16 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-          cache: pnpm
-      - run: pnpm i
+      - uses: ./.github/actions/setup
       - run: pnpm lint
       - run: pnpm t
       - run: pnpm check
       - run: pnpm build
       - run: pnpm package
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/setup
+      - run: pnpm coverage
+      - uses: codecov/codecov-action@v2
