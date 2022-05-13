@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HastNode } from '$lib/types';
 	import Children from '../lib/renderer/Children.svelte';
-	import Prismjs from 'prismjs';
+	import { highlight, languages } from 'prismjs';
 	import 'prism-svelte';
 	export let children: HastNode[];
 	export let properties: Record<string, unknown>;
@@ -12,11 +12,9 @@
 	$: child = children[0];
 </script>
 
-{#if lang == null || Prismjs.languages[lang] == null || child?.type !== 'text'}<code {...properties}
+{#if lang == null || languages[lang] == null || child?.type !== 'text'}<code {...properties}
 		><Children {children} /></code
-	>{:else}<code {...properties}
-		>{@html Prismjs.highlight(child.value, Prismjs.languages[lang], lang)}</code
-	>{/if}
+	>{:else}<code {...properties}>{@html highlight(child.value, languages[lang], lang)}</code>{/if}
 
 <style>
 	code {
