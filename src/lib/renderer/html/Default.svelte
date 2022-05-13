@@ -6,7 +6,7 @@
 	export let properties: Record<string, unknown>;
 </script>
 
-{#if children != null}
+{#if Array.isArray(children) && children.length !== 0}
 	<!-- prettier-ignore -->
 	<svelte:element this={tagName} {...properties}><Children {children} /></svelte:element>
 {:else}
