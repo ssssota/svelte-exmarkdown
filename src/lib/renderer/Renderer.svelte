@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getComponentsContext } from '$lib/contexts';
+	import { getComponentsContext } from '../contexts';
 	import type { HastNode } from '../types';
 	import Children from './Children.svelte';
 	export let astNode: HastNode;
