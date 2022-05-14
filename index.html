@@ -7,16 +7,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content=""><title>svelte-exmarkdown</title><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown." data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.googleapis.com" data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" data-svelte="svelte-dn03qt"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" data-svelte="svelte-dn03qt">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/__layout.svelte-1828f48b.css">
-	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/__layout.svelte-f9e74218.css">
-	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/docs/_slug_.svelte-9f9f7132.css">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/index.svelte-2210b4c5.css">
 	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/index-9c0ff923.css">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-d67f1c47.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-7b7f98ce.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-8c5a7fb1.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/paths-396f020f.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-db1a1908.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/__layout.svelte-11274371.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-aab496bc.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/index.svelte-aca62013.js">
 	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-ec7cdd0a.js">
 	</head>
 	<body>
@@ -25,26 +23,104 @@
 
 
 
-<div class="wrapper"><header class="svelte-1d13iph"><h1><a href="/svelte-exmarkdown" class="svelte-1d13iph">svelte-exmarkdown</a></h1>
-		<div class="spacer svelte-1d13iph"></div>
-		<nav class="right svelte-1d13iph"><div><a class="link svelte-1d13iph" href="/svelte-exmarkdown/docs">Docs</a></div>
-			<div><a class="link svelte-1d13iph" target="_blank" href="https://www.npmjs.com/package/svelte-exmarkdown">npm
+<div class="wrapper svelte-3jzqc2"><header class="svelte-3jzqc2"><h1>svelte-exmarkdown</h1>
+		<div class="spacer svelte-3jzqc2"></div>
+		<nav class="right svelte-3jzqc2"><div><label><input type="checkbox" checked>GFM</label></div>
+			<div><label><input type="checkbox">AST</label></div>
+			<div><a class="link" href="/svelte-exmarkdown/docs">Docs</a></div>
+			<div><a class="link" target="_blank" href="https://www.npmjs.com/package/svelte-exmarkdown">npm
 				</a></div>
-			<div><a class="link svelte-1d13iph" target="_blank" href="https://github.com/ssssota/svelte-exmarkdown">GitHub
+			<div><a class="link" target="_blank" href="https://github.com/ssssota/svelte-exmarkdown">GitHub
 				</a></div></nav></header>
-	<main class="svelte-1d13iph"><p><a href="/svelte-exmarkdown/docs">&lt; Back to index</a></p>
 
+	<main class="svelte-3jzqc2"><textarea class="input svelte-3jzqc2"># svelte-exmarkdown
 
-	<h1>Getting started</h1>
+[![CI](https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml/badge.svg)](https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/ssssota/svelte-exmarkdown/branch/main/graph/badge.svg?token=5I9YNJ57R3)](https://codecov.io/gh/ssssota/svelte-exmarkdown)
+[![License MIT](https://img.shields.io/npm/l/svelte-exmarkdown)](https://github.com/ssssota/svelte-exmarkdown/blob/main/LICENSE)
 
-	<h2>Install</h2>
-<pre><code class="language-sh svelte-e4hkjf">npm install svelte-exmarkdown
-# yarn add svelte-exmarkdown
-# pnpm add svelte-exmarkdown
-</code></pre>
+Svelte component to render markdown.
 
-	<h2>Basic usage</h2>
-<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+## Motivation
+
+[svelte-markdown](https://www.npmjs.com/package/svelte-markdown) is a good component package.
+However, it is not extensible. You cannot use custom syntax(e.g. KaTeX).
+
+[MDsveX](https://www.npmjs.com/package/mdsvex) is another good package.
+However, it is a preprocessor. Not suitable for dynamic rendering.
+
+We need **pluggable** and **dynamic** markdown renderer in svelte like [react-markdown](https://www.npmjs.com/package/react-markdown).
+
+## Usage
+
+You must **use svelte@3.47 or higher version**.
+This library uses `<svelte:element />`.
+
+```svelte
+<script>
+	import Markdown from 'svelte-exmarkdown';
+	let md = '# Hello world!';
+</script>
+
+<textarea bind:value={md} />
+<Markdown {md} />
+```
+
+with GFM
+
+```svelte
+<script>
+	import Markdown from 'svelte-exmarkdown';
+	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
+	let md = '# Hello world!';
+</script>
+
+<textarea bind:value={md} />
+<Markdown {md} plugins={[gfmPlugin]} />
+```
+
+## Playground & Documents
+
+https://ssssota.github.io/svelte-exmarkdown
+</textarea>
+
+		<section class="output svelte-3jzqc2">
+	<h1>svelte-exmarkdown</h1>
+
+	<p>
+	<a href="https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml">
+	<img src="https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+
+	<a href="https://codecov.io/gh/ssssota/svelte-exmarkdown">
+	<img src="https://codecov.io/gh/ssssota/svelte-exmarkdown/branch/main/graph/badge.svg?token=5I9YNJ57R3" alt="codecov"></a>
+
+	<a href="https://github.com/ssssota/svelte-exmarkdown/blob/main/LICENSE">
+	<img src="https://img.shields.io/npm/l/svelte-exmarkdown" alt="License MIT"></a></p>
+
+	<p>Svelte component to render markdown.</p>
+
+	<h2>Motivation</h2>
+
+	<p>
+	<a href="https://www.npmjs.com/package/svelte-markdown">svelte-markdown</a> is a good component package.
+However, it is not extensible. You cannot use custom syntax(e.g. KaTeX).</p>
+
+	<p>
+	<a href="https://www.npmjs.com/package/mdsvex">MDsveX</a> is another good package.
+However, it is a preprocessor. Not suitable for dynamic rendering.</p>
+
+	<p>We need 
+	<strong>pluggable</strong> and 
+	<strong>dynamic</strong> markdown renderer in svelte like 
+	<a href="https://www.npmjs.com/package/react-markdown">react-markdown</a>.</p>
+
+	<h2>Usage</h2>
+
+	<p>You must 
+	<strong>use svelte@3.47 or higher version</strong>.
+This library uses <code class="svelte-e4hkjf">&lt;svelte:element /&gt;</code>.</p>
+
+	<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
 	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
 	<span class="token keyword">let</span> md <span class="token operator">=</span> <span class="token string">'# Hello world!'</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
@@ -53,8 +129,9 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Markdown</span> <span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
 <!-- HTML_TAG_END --></code></pre>
 
-	<p>with GFM(GitHub Flavored Markdown)</p>
-<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+	<p>with GFM</p>
+
+	<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
 	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
 	<span class="token keyword">import</span> <span class="token punctuation">{</span> gfmPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown/gfm'</span><span class="token punctuation">;</span>
 	<span class="token keyword">let</span> md <span class="token operator">=</span> <span class="token string">'# Hello world!'</span><span class="token punctuation">;</span>
@@ -64,16 +141,17 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Markdown</span> <span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token attr-name">plugins=</span><span class="token language-javascript"><span class="token punctuation">{</span><span class="token punctuation">[</span>gfmPlugin<span class="token punctuation">]</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
 <!-- HTML_TAG_END --></code></pre>
 
-<nav class="svelte-1t6fsxw"><div class="svelte-1t6fsxw"></div>
-	<a href="/svelte-exmarkdown/docs/02-plugin" class="svelte-1t6fsxw">Plugin system</a>
-</nav></main>
+	<h2>Playground &amp; Documents</h2>
+
+	<p>
+	<a href="https://ssssota.github.io/svelte-exmarkdown">https://ssssota.github.io/svelte-exmarkdown</a></p></section></main>
 </div>
 
 
-		<script type="module" data-hydrate="188c4yy">
+		<script type="module" data-hydrate="gwkfvr">
 		import { start } from "/svelte-exmarkdown/_app/start-d67f1c47.js";
 		start({
-			target: document.querySelector('[data-hydrate="188c4yy"]').parentNode,
+			target: document.querySelector('[data-hydrate="gwkfvr"]').parentNode,
 			paths: {"base":"/svelte-exmarkdown","assets":"/svelte-exmarkdown"},
 			session: {},
 			route: true,
@@ -84,13 +162,12 @@
 				error: null,
 				nodes: [
 					import("/svelte-exmarkdown/_app/pages/__layout.svelte-db1a1908.js"),
-						import("/svelte-exmarkdown/_app/pages/docs/__layout.svelte-11274371.js"),
-						import("/svelte-exmarkdown/_app/pages/docs/_slug_.svelte-aab496bc.js")
+						import("/svelte-exmarkdown/_app/pages/index.svelte-aca62013.js")
 				],
-				params: {slug:"01-getting-started"},
-				routeId: "docs/[slug]"
+				params: {},
+				routeId: ""
 			}
 		});
-	</script><script type="application/json" sveltekit:data-type="props">{"md":"# Getting started\n\n## Install\n\n```sh\nnpm install svelte-exmarkdown\n# yarn add svelte-exmarkdown\n# pnpm add svelte-exmarkdown\n```\n\n## Basic usage\n\n```svelte\n\u003Cscript>\n\timport Markdown from 'svelte-exmarkdown';\n\tlet md = '# Hello world!';\n\u003C/script>\n\n\u003Ctextarea bind:value={md} />\n\u003CMarkdown {md} />\n```\n\nwith GFM(GitHub Flavored Markdown)\n\n```svelte\n\u003Cscript>\n\timport Markdown from 'svelte-exmarkdown';\n\timport { gfmPlugin } from 'svelte-exmarkdown/gfm';\n\tlet md = '# Hello world!';\n\u003C/script>\n\n\u003Ctextarea bind:value={md} />\n\u003CMarkdown {md} plugins={[gfmPlugin]} />\n```\n","next":["02-plugin","Plugin system"]}</script></div>
+	</script></div>
 	</body>
 </html>
