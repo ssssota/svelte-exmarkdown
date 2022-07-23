@@ -1,5 +1,5 @@
-import { highlight, languages as langs } from 'prismjs';
+import * as P from 'prismjs';
 import 'prism-svelte';
 
-export const languages = langs ?? {};
-export { highlight };
+export const languages = P.languages ?? {};
+export const highlight = P.highlight;
