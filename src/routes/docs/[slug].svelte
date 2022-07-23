@@ -2,8 +2,8 @@
 	import { base } from '$app/paths';
 	import Markdown, { type Plugin } from '$lib';
 	import { gfmPlugin } from '$lib/gfm';
-	import { highlightPlugin } from '../../prism';
-	import { mermaidPlugin } from '../../mermaid';
+	import { highlightPlugin } from '../_prism';
+	import { mermaidPlugin } from './_mermaid';
 	export let md: string;
 	export let prev: [string, string] | undefined;
 	export let next: [string, string] | undefined;
@@ -34,19 +34,16 @@
 	nav {
 		padding: 1em 0;
 		width: 100%;
-		display: flex;
+		display: grid;
 		gap: 1em;
+		grid-template-columns: 1fr 1fr;
 	}
 	nav > a {
-		flex-grow: 1;
 		height: 5em;
 		display: flex;
 		border: 1px #ccc solid;
 		border-radius: 0.5em;
 		padding: 1em;
 		align-items: center;
-	}
-	nav > div {
-		flex-grow: 1;
 	}
 </style>

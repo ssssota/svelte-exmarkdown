@@ -5,7 +5,7 @@
 	import { gfmPlugin } from '$lib/gfm';
 	import type { Parser, Plugin } from '$lib/types';
 	import { createParser } from '$lib/utils';
-	import { highlightPlugin } from '../prism';
+	import { highlightPlugin } from './_prism';
 	import Readme from '../../README.md?raw';
 	let gfm = true;
 	let ast = false;
