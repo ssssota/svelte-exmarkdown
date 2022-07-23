@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { docs, getTitleFromContent } from '../../utils';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	const entries = Object.entries(docs).sort(([a], [b]) => (a > b ? 1 : -1));
 	const index = entries.findIndex(([slug]) => params.slug === slug);
 	const prev =

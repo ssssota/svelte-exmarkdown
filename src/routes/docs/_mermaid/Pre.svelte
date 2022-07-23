@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { HastNode } from '$lib/types';
-	import Children from '../lib/renderer/Children.svelte';
+	import Children from '$lib/renderer/Children.svelte';
 	import Mermaid from './Mermaid.svelte';
 	export let children: HastNode[];
 	export let properties: Record<string, unknown>;
