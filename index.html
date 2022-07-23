@@ -6,16 +6,16 @@
 		<link rel="icon" href="/svelte-exmarkdown/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content=""><title>svelte-exmarkdown</title><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown." data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.googleapis.com" data-svelte="svelte-dn03qt"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" data-svelte="svelte-dn03qt"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" data-svelte="svelte-dn03qt">
-	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/__layout.svelte-1828f48b.css">
-	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/pages/index.svelte-2210b4c5.css">
-	<link rel="stylesheet" href="/svelte-exmarkdown/_app/assets/index-9c0ff923.css">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/start-771d4b92.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-7b7f98ce.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-8c5a7fb1.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/paths-396f020f.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/__layout.svelte-db1a1908.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/pages/index.svelte-0b918fd7.js">
-	<link rel="modulepreload" href="/svelte-exmarkdown/_app/chunks/index-fc85b2e9.js">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/immutable/assets/__layout-4d40d855.css">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/immutable/assets/index-132c90db.css">
+	<link rel="stylesheet" href="/svelte-exmarkdown/_app/immutable/assets/index-312500d6.css">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/start-14160340.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-32cb88cc.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-c4a0f989.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/paths-b9644fda.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/pages/__layout.svelte-11e558b1.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/pages/index.svelte-ac180c8b.js">
+	<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-69b30266.js">
 	</head>
 	<body>
 		<div>
@@ -118,28 +118,28 @@ However, it is a preprocessor. Not suitable for dynamic rendering.</p>
 
 	<p>You must 
 	<strong>use svelte@3.47 or higher version</strong>.
-This library uses <code class="svelte-e4hkjf">&lt;svelte:element /&gt;</code>.</p>
+This library uses <code class="svelte-e4hkjf">&lt;svelte:element /></code>.</p>
 
-	<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
-	<span class="token keyword">let</span> md <span class="token operator">=</span> <span class="token string">'# Hello world!'</span><span class="token punctuation">;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+	<pre><code class="language-svelte svelte-e4hkjf">&lt;script>
+	import Markdown from 'svelte-exmarkdown';
+	let md = '# Hello world!';
+&lt;/script>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name"><span class="token namespace">bind:</span>value=</span><span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Markdown</span> <span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-<!-- HTML_TAG_END --></code></pre>
+&lt;textarea bind:value={md} />
+&lt;Markdown {md} />
+</code></pre>
 
 	<p>with GFM</p>
 
-	<pre><code class="language-svelte svelte-e4hkjf"><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-	<span class="token keyword">import</span> Markdown <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown'</span><span class="token punctuation">;</span>
-	<span class="token keyword">import</span> <span class="token punctuation">{</span> gfmPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svelte-exmarkdown/gfm'</span><span class="token punctuation">;</span>
-	<span class="token keyword">let</span> md <span class="token operator">=</span> <span class="token string">'# Hello world!'</span><span class="token punctuation">;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+	<pre><code class="language-svelte svelte-e4hkjf">&lt;script>
+	import Markdown from 'svelte-exmarkdown';
+	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
+	let md = '# Hello world!';
+&lt;/script>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name"><span class="token namespace">bind:</span>value=</span><span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Markdown</span> <span class="token language-javascript"><span class="token punctuation">{</span>md<span class="token punctuation">}</span></span> <span class="token attr-name">plugins=</span><span class="token language-javascript"><span class="token punctuation">{</span><span class="token punctuation">[</span>gfmPlugin<span class="token punctuation">]</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-<!-- HTML_TAG_END --></code></pre>
+&lt;textarea bind:value={md} />
+&lt;Markdown {md} plugins={[gfmPlugin]} />
+</code></pre>
 
 	<h2>Playground &amp; Documents</h2>
 
@@ -148,10 +148,10 @@ This library uses <code class="svelte-e4hkjf">&lt;svelte:element /&gt;</code>.</
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="gwkfvr">
-		import { start } from "/svelte-exmarkdown/_app/start-771d4b92.js";
+		<script type="module" data-sveltekit-hydrate="g578hv">
+		import { start } from "/svelte-exmarkdown/_app/immutable/start-14160340.js";
 		start({
-			target: document.querySelector('[data-sveltekit-hydrate="gwkfvr"]').parentNode,
+			target: document.querySelector('[data-sveltekit-hydrate="g578hv"]').parentNode,
 			paths: {"base":"/svelte-exmarkdown","assets":"/svelte-exmarkdown"},
 			session: {},
 			route: true,
@@ -160,10 +160,7 @@ This library uses <code class="svelte-e4hkjf">&lt;svelte:element /&gt;</code>.</
 			hydrate: {
 				status: 200,
 				error: null,
-				nodes: [
-					import("/svelte-exmarkdown/_app/pages/__layout.svelte-db1a1908.js"),
-						import("/svelte-exmarkdown/_app/pages/index.svelte-0b918fd7.js")
-				],
+				nodes: [0, 5],
 				params: {},
 				routeId: ""
 			}
