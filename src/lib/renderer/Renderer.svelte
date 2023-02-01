@@ -13,7 +13,11 @@
 {#if astNode.type === 'root'}
 	<Children {...astNode} />
 {:else if astNode.type === 'element'}
-	<svelte:component this={$components[astNode.tagName]} {...astNode} {__index} />
+	<svelte:component
+		this={$components[astNode.tagName]}
+		{...astNode}
+		{__index}
+	/>
 {:else if astNode.type === 'text'}
 	<svelte:component this={$components['text']} {...astNode} {__index} />
 {/if}
