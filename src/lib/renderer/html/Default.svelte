@@ -4,6 +4,9 @@
 	export let tagName: string;
 	export let children: HastNode[] | undefined;
 	export let properties: Record<string, unknown>;
+	export let type: unknown = undefined;
+	export let position: unknown = undefined;
+	export let __index: unknown = undefined;
 </script>
 
 {#if Array.isArray(children) && children.length !== 0}
