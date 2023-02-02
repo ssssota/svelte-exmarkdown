@@ -3,7 +3,8 @@ import remarkRehype from 'remark-rehype';
 import { unified, type Plugin as UnifiedPlugin } from 'unified';
 import type { Plugin, Parser, UnistNode, HastNode } from './types';
 
-export const nonNullable = <T>(value: T | null | undefined): value is T => value != null;
+export const nonNullable = <T>(value: T | null | undefined): value is T =>
+	value != null;
 
 const transform = (node: HastNode) => {
 	if (
@@ -18,7 +19,12 @@ const transform = (node: HastNode) => {
 
 const visit = (visitor: (node: HastNode) => unknown, node: HastNode) => {
 	visitor(node);
-	if (node.type === 'comemnt' || node.type === 'doctype' || node.type === 'text') return;
+	if (
+		node.type === 'comemnt' ||
+		node.type === 'doctype' ||
+		node.type === 'text'
+	)
+		return;
 	node.children?.forEach((child) => visit(visitor, child));
 };
 

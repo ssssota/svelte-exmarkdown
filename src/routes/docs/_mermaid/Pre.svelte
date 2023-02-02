@@ -8,7 +8,9 @@
 	$: child = children[0];
 	let code: string;
 	$: code =
-		child.type === 'element' && child.children[0]?.type === 'text' ? child.children[0].value : '';
+		child.type === 'element' && child.children[0]?.type === 'text'
+			? child.children[0].value
+			: '';
 </script>
 
 {#if child.type === 'element' && typeof child.properties?.class === 'string' && child.properties?.class?.includes('language-mermaid')}

@@ -16,7 +16,8 @@ _Pre.svelte_
 	import Children from 'svelte-exmarkdown/renderer/Children.svelte';
 	export let children: Node[];
 	export let properties: Record<string, unknown>;
-	const copy = () => window.navigator.clipboard.writeText(children[0]['children'][0].value);
+	const copy = () =>
+		window.navigator.clipboard.writeText(children[0]['children'][0].value);
 </script>
 
 <div>
