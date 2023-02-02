@@ -8,12 +8,11 @@ specifiers:
   '@sveltejs/package': ^1.0.2
   '@sveltejs/vite-plugin-svelte': ^2.0.2
   '@testing-library/svelte': ^3.2.2
-  '@types/mermaid': ^9.2.0
   '@types/prismjs': ^1.26.0
   '@typescript-eslint/eslint-plugin': ^5.50.0
   '@typescript-eslint/parser': ^5.50.0
+  '@vitest/coverage-c8': ^0.28.3
   '@vitest/ui': ^0.28.3
-  c8: ^7.12.0
   eslint: ^8.33.0
   eslint-config-prettier: ^8.6.0
   eslint-plugin-svelte3: ^4.0.0
@@ -53,12 +52,11 @@ devDependencies:
   '@sveltejs/package': 1.0.2_4x7phaipmicbaooxtnresslofa
   '@sveltejs/vite-plugin-svelte': 2.0.2_svelte@3.55.1+vite@4.0.4
   '@testing-library/svelte': 3.2.2_svelte@3.55.1
-  '@types/mermaid': 9.2.0
   '@types/prismjs': 1.26.0
   '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
   '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
+  '@vitest/coverage-c8': 0.28.3_a7aimjszcawcicrmfep77vgtlm
   '@vitest/ui': 0.28.3
-  c8: 7.12.0
   eslint: 8.33.0
   eslint-config-prettier: 8.6.0_eslint@8.33.0
   eslint-plugin-svelte3: 4.0.0_4omm2ewoudhgnmf7aocafatnc4
@@ -973,13 +971,6 @@ packages:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: false
 
-  /@types/mermaid/9.2.0:
-    resolution: {integrity: sha512-AlvLWYer6u4BkO4QzMkHo0t9RkvVIgqggVZmO+5snUiuX2caTKqtdqygX6GeE1VQa/TnXw9WoH0spcmHtG0inQ==}
-    deprecated: This is a stub types definition. mermaid provides its own type definitions, so you do not need this installed.
-    dependencies:
-      mermaid: 9.3.0
-    dev: true
-
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
@@ -1154,6 +1145,27 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.50.0
       eslint-visitor-keys: 3.3.0
+    dev: true
+
+  /@vitest/coverage-c8/0.28.3_a7aimjszcawcicrmfep77vgtlm:
+    resolution: {integrity: sha512-3Toi4flNyxwSSYohhV3/euFSyrHjaD9vJVwFVcy84lcRHMEkv0W7pxlqZZeCvPdktN+WETbNazx3WWBs0jqhVQ==}
+    dependencies:
+      c8: 7.12.0
+      picocolors: 1.0.0
+      std-env: 3.3.1
+      vitest: 0.28.3_a7aimjszcawcicrmfep77vgtlm
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
     dev: true
 
   /@vitest/expect/0.28.3:
