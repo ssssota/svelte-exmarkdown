@@ -1,7 +1,7 @@
-import type { RequestHandler } from '@sveltejs/kit';
-import { docs, getTitleFromContent } from '../../utils';
+import { docs, getTitleFromContent } from '../../../utils';
+import type { PageServerLoad } from './$types';
 
-export const GET: RequestHandler = async ({ params }) => {
+export const load: PageServerLoad = async ({ params }) => {
 	const entries = Object.entries(docs).sort(([a], [b]) => (a > b ? 1 : -1));
 	const index = entries.findIndex(([slug]) => params.slug === slug);
 	const prev =
@@ -13,10 +13,8 @@ export const GET: RequestHandler = async ({ params }) => {
 			? undefined
 			: [entries[index + 1][0], getTitleFromContent(entries[index + 1][1])];
 	return {
-		body: {
-			md: entries[index][1],
-			prev,
-			next
-		}
+		md: entries[index][1],
+		prev,
+		next
 	};
 };

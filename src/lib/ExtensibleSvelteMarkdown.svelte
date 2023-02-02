@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
-	import { componentsContextKey, createComponentsContextValue } from './contexts';
+	import {
+		componentsContextKey,
+		createComponentsContextValue
+	} from './contexts';
 	import Renderer, { defaultComponents } from './renderer';
 	import type { Parser, Plugin, HastNode } from './types';
 	import { createParser, nonNullable } from './utils';

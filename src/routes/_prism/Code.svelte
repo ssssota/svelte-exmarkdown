@@ -11,9 +11,11 @@
 	$: child = children[0];
 </script>
 
-{#if lang == null || languages[lang] == null || child?.type !== 'text'}<code {...properties}
-		><Children {children} /></code
-	>{:else}<code {...properties}>{@html highlight(child.value, languages[lang], lang)}</code>{/if}
+{#if lang == null || languages[lang] == null || child?.type !== 'text'}<code
+		{...properties}><Children {children} /></code
+	>{:else}<code {...properties}
+		>{@html highlight(child.value, languages[lang], lang)}</code
+	>{/if}
 
 <style>
 	code {

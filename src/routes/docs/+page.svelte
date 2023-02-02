@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import type { PageData } from './$types';
 
-	export let docs: Record<string, string>;
+	export let data: PageData;
 </script>
 
 <ul>
-	{#each Object.entries(docs) as [slug, title] (slug)}
+	{#each Object.entries(data.docs) as [slug, title] (slug)}
 		<li>
 			<a href="{base}/docs/{slug}">{title}</a>
 		</li>

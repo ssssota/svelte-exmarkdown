@@ -2,11 +2,10 @@
 	import { base } from '$app/paths';
 	import Markdown, { type Plugin } from '$lib';
 	import { gfmPlugin } from '$lib/gfm';
-	import { highlightPlugin } from '../_prism';
-	import { mermaidPlugin } from './_mermaid';
-	export let md: string;
-	export let prev: [string, string] | undefined;
-	export let next: [string, string] | undefined;
+	import { highlightPlugin } from '../../_prism';
+	import { mermaidPlugin } from '../_mermaid';
+	import type { PageData } from './$types';
+	export let data: PageData;
 
 	const plugins: Plugin[] = [gfmPlugin, mermaidPlugin, highlightPlugin];
 </script>
@@ -15,16 +14,16 @@
 	<a href="{base}/docs">&lt; Back to index</a>
 </p>
 
-<Markdown {md} {plugins} />
+<Markdown md={data.md} {plugins} />
 
 <nav>
-	{#if prev}
-		<a href="{base}/docs/{prev[0]}">{prev[1]}</a>
+	{#if data.prev}
+		<a href="{base}/docs/{data.prev[0]}">{data.prev[1]}</a>
 	{:else}
 		<div />
 	{/if}
-	{#if next}
-		<a href="{base}/docs/{next[0]}">{next[1]}</a>
+	{#if data.next}
+		<a href="{base}/docs/{data.next[0]}">{data.next[1]}</a>
 	{:else}
 		<div />
 	{/if}
