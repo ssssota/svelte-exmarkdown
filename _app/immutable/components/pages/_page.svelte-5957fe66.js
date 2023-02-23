@@ -1,4 +1,4 @@
-import{S as B,i as F,s as G,k as _,w as C,a as S,l as v,m as w,x as J,c as T,h as p,n as y,b as M,y as R,E as g,J as H,K as N,t as I,d as O,f as P,z as j,q as A,r as L,L as U,g as V,u as X,B as D}from"../../chunks/index-74e050de.js";import{g as Y,h as q,c as K,E as z}from"../../chunks/index-15dfa9c9.js";import{H as W}from"../../chunks/Header-abfdc992.js";const Q=`# svelte-exmarkdown
+import{S as B,i as F,s as G,k as _,w as C,a as S,l as v,m as w,x as J,c as T,h as p,n as y,b as M,y as R,E as g,J as H,K as N,t as I,d as O,f as P,z as j,q as A,r as L,L as U,g as V,u as X,B as D}from"../../chunks/index-74e050de.js";import{g as Y,h as q,c as K,E as z}from"../../chunks/index-214607c1.js";import{H as W}from"../../chunks/Header-abfdc992.js";const Q=`# svelte-exmarkdown
 
 [![CI](https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml/badge.svg)](https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/ssssota/svelte-exmarkdown/branch/main/graph/badge.svg?token=5I9YNJ57R3)](https://codecov.io/gh/ssssota/svelte-exmarkdown)
