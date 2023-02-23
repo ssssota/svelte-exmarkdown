@@ -9,7 +9,7 @@
 	export let position: unknown = undefined;
 	export let __index: unknown = undefined;
 	// HACK: ignore `unused-export-let`
-	(() => type && position && __index)();
+	type && position && __index;
 </script>
 
 {#if Array.isArray(children) && children.length !== 0}

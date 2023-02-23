@@ -8,7 +8,7 @@
 	export let type: unknown = undefined;
 	export let position: unknown = undefined;
 	// HACK: ignore `unused-export-let`
-	(() => type && position)();
+	type && position;
 
 	const components = getComponentsContext();
 </script>
