@@ -4,8 +4,11 @@
 	import Children from './Children.svelte';
 	export let astNode: HastNode;
 	export let __index = 0;
+
 	export let type: unknown = undefined;
 	export let position: unknown = undefined;
+	// HACK: ignore `unused-export-let`
+	(() => type && position)();
 
 	const components = getComponentsContext();
 </script>
