@@ -11,7 +11,7 @@
 		<link href="/svelte-exmarkdown/_app/immutable/assets/Header-1bce78ea.css" rel="stylesheet">
 		<link href="/svelte-exmarkdown/_app/immutable/assets/_page-6243df82.css" rel="stylesheet">
 		<link href="/svelte-exmarkdown/_app/immutable/assets/index-312500d6.css" rel="stylesheet">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/start-dbf6a129.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/start-70d70761.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-74e050de.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/singletons-13d60ef2.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-455e6715.js">
@@ -21,8 +21,8 @@
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/_layout-da46b06b.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/docs/_layout.svelte-2c8145fe.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/Header-abfdc992.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/docs/_slug_/_page.svelte-723fe66f.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-214607c1.js"><title>svelte-exmarkdown</title><!-- HEAD_svelte-hhrjmv_START --><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"><!-- HEAD_svelte-hhrjmv_END -->
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/docs/_slug_/_page.svelte-a13f97cc.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-c535d67c.js"><title>svelte-exmarkdown</title><!-- HEAD_svelte-hhrjmv_START --><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"><!-- HEAD_svelte-hhrjmv_END -->
 	</head>
 	<body>
 		<div>
@@ -78,13 +78,13 @@
 
 
 		<script type="module" data-sveltekit-hydrate="h8bw0o">
-			import { start } from "/svelte-exmarkdown/_app/immutable/start-dbf6a129.js";
+			import { start } from "/svelte-exmarkdown/_app/immutable/start-70d70761.js";
 
 			start({
 				env: {},
 				paths: {"assets":"/svelte-exmarkdown","base":"/svelte-exmarkdown"},
 				target: document.querySelector('[data-sveltekit-hydrate="h8bw0o"]').parentNode,
-				version: "1677124283030",
+				version: "1678357707523",
 				hydrate: {
 					node_ids: [0, 2, 5],
 					data: [null,null,{type:"data",data:{md:"# Getting started\n\n## Install\n\n```sh\nnpm install svelte-exmarkdown\n# yarn add svelte-exmarkdown\n# pnpm add svelte-exmarkdown\n```\n\n## Basic usage\n\n```svelte\n\u003Cscript\u003E\n\timport Markdown from 'svelte-exmarkdown';\n\tlet md = '# Hello world!';\n\u003C\u002Fscript\u003E\n\n\u003Ctextarea bind:value={md} \u002F\u003E\n\u003CMarkdown {md} \u002F\u003E\n```\n\nwith GFM(GitHub Flavored Markdown)\n\n```svelte\n\u003Cscript\u003E\n\timport Markdown from 'svelte-exmarkdown';\n\timport { gfmPlugin } from 'svelte-exmarkdown\u002Fgfm';\n\tlet md = '# Hello world!';\n\u003C\u002Fscript\u003E\n\n\u003Ctextarea bind:value={md} \u002F\u003E\n\u003CMarkdown {md} plugins={[gfmPlugin]} \u002F\u003E\n```\n",prev:void 0,next:["02-plugin","Plugin system"]},uses:{params:["slug"]}}],
