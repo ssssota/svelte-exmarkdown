@@ -5,6 +5,7 @@ import Text from './Text.svelte';
 
 export const defaultComponents: ComponentsMap = {
 	...htmlComponents,
-	text: Text
+	text: Text,
+	raw: Text
 };
 export default Renderer;
