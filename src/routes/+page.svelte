@@ -3,20 +3,29 @@
 	import { gfmPlugin } from '$lib/gfm';
 	import type { Parser, Plugin } from '$lib/types';
 	import { createParser } from '$lib/utils';
+	import rehypeRaw from 'rehype-raw';
 	import Readme from '../../README.md?raw';
 	import Header from './Header.svelte';
 	import { highlightPlugin } from './_prism';
+	let html = false;
 	let gfm = true;
 	let ast = false;
 	let md = Readme;
 	let plugins: Plugin[];
-	$: plugins = [...(gfm ? [gfmPlugin] : []), highlightPlugin];
+	$: plugins = [
+		...(gfm ? [gfmPlugin] : []),
+		...(html ? [{ rehypePlugin: rehypeRaw }] : []),
+		highlightPlugin
+	];
 	let parse: Parser;
 	$: parse = createParser(plugins);
 </script>
 
 <div class="wrapper">
 	<Header>
+		<div>
+			<label><input type="checkbox" bind:checked={html} />HTML</label>
+		</div>
 		<div>
 			<label><input type="checkbox" bind:checked={gfm} />GFM</label>
 		</div>
