@@ -21,6 +21,6 @@
 		{...astNode}
 		{__index}
 	/>
-{:else if astNode.type === 'text'}
-	<svelte:component this={$components['text']} {...astNode} {__index} />
+{:else if $components[astNode.type] !== undefined}
+	<svelte:component this={$components[astNode.type]} {...astNode} {__index} />
 {/if}

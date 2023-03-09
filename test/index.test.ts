@@ -1,4 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/svelte';
+import rehypeRaw from 'rehype-raw';
 import { afterEach, describe, expect, it } from 'vitest';
 import Markdown from '../src/lib';
 
@@ -284,6 +285,25 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByAltText('test') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			'"<img src=\\"http://example.com\\" alt=\\"test\\" title=\\"This is test\\">"'
+		);
+	});
+});
+
+describe('HTML', () => {
+	afterEach(() => cleanup());
+
+	it('should not render br tag', () => {
+		const { container } = render(Markdown, { md: 'a<br>b' });
+		expect(container.innerHTML.includes('<br>')).toBe(false);
+	});
+	it('should not br tag', () => {
+		const { container } = render(Markdown, {
+			md: 'a<br>b',
+			plugins: [{ rehypePlugin: rehypeRaw }]
+		});
+		expect(container.innerHTML.includes('<br>')).toBe(true);
+		expect(container.innerHTML).toMatchInlineSnapshot(
+			'"<div><p>a<!--<Text>--><!--<Renderer>--><br><!--<Default>--><!--<Renderer>-->b<!--<Text>--><!--<Renderer>--><!--<Children>--></p><!--<Default>--><!--<Renderer>--><!--<Children>--><!--<Renderer>--><!--<ExtensibleSvelteMarkdown>--></div>"'
 		);
 	});
 });

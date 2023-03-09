@@ -1,7 +1,7 @@
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified, type Plugin as UnifiedPlugin } from 'unified';
-import type { Plugin, Parser, UnistNode, HastNode } from './types';
+import type { HastNode, Parser, Plugin, UnistNode } from './types';
 
 export const nonNullable = <T>(value: T | null | undefined): value is T =>
 	value != null;
@@ -44,7 +44,7 @@ export const createParser = (plugins: Plugin[]): Parser => {
 	const processor = unified()
 		.use(remarkParse)
 		.use(plugins.map((plugin) => plugin.remarkPlugin).filter(nonNullable))
-		.use(remarkRehype)
+		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(plugins.map((plugin) => plugin.rehypePlugin).filter(nonNullable))
 		.use(rehypeReactClassNameToSvelteClass);
 	return (md: string) => processor.runSync(processor.parse(md), md);
