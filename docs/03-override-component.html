@@ -106,7 +106,7 @@
 				env: {},
 				paths: {"assets":"/svelte-exmarkdown","base":"/svelte-exmarkdown"},
 				target: document.querySelector('[data-sveltekit-hydrate="pqzgb3"]').parentNode,
-				version: "1686381618487",
+				version: "1686381863444",
 				hydrate: {
 					node_ids: [0, 2, 5],
 					data: [null,null,{type:"data",data:{md:"# Override component\n\nIf you want to change styles, you can override components.\n\n## Copy button for code block\n\nLet's make custom plugin!\n\nYou can override per tag.\n\n_Pre.svelte_\n\n```svelte\n\u003Cscript lang=\"ts\"\u003E\n\timport type { Node } from 'svelte-exmarkdown\u002Ftypes';\n\timport Children from 'svelte-exmarkdown\u002Frenderer\u002FChildren.svelte';\n\texport let children: Node[];\n\texport let properties: Record\u003Cstring, unknown\u003E;\n\tconst copy = () =\u003E\n\t\twindow.navigator.clipboard.writeText(children[0]['children'][0].value);\n\u003C\u002Fscript\u003E\n\n\u003Cdiv\u003E\n\t\u003Cbutton on:click={copy}\u003Ecopy!\u003C\u002Fbutton\u003E\n\t\u003Cpre {...properties}\u003E\u003CChildren {children} \u002F\u003E\u003C\u002Fpre\u003E\n\u003C\u002Fdiv\u003E\n\n\u003Cstyle\u003E\n\tdiv {\n\t\tposition: relative;\n\t}\n\tbutton {\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tright: 0;\n\t}\n\u003C\u002Fstyle\u003E\n```\n\n_App.svelte_\n\n```svelte\n\u003Cscript\u003E\n\timport Markdown from 'svelte-exmarkdown';\n\timport Pre from '.\u002FPre.svelte';\n\texport let md;\n\t\u002F** @type {import('svelte-exmarkdown').Plugin[]} *\u002F\n\tconst plugins = [{ renderer: { pre: Pre } }];\n\u003C\u002Fscript\u003E\n\n\u003CMarkdown {md} {plugins} \u002F\u003E\n```\n",prev:["02-plugin","Plugin system"],next:void 0},uses:{params:["slug"]}}],
