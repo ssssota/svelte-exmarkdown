@@ -37,7 +37,7 @@
 		"@types/prismjs": "^1.26.0",
 		"@typescript-eslint/eslint-plugin": "^5.50.0",
 		"@typescript-eslint/parser": "^5.50.0",
-		"@vitest/coverage-c8": "^0.32.0",
+		"@vitest/coverage-v8": "^0.32.0",
 		"@vitest/ui": "^0.32.0",
 		"eslint": "^8.33.0",
 		"eslint-config-prettier": "^8.6.0",
