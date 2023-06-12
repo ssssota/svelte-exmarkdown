@@ -106,7 +106,7 @@ export type Plugin = {
 				env: {},
 				paths: {"assets":"/svelte-exmarkdown","base":"/svelte-exmarkdown"},
 				target: document.querySelector('[data-sveltekit-hydrate="wzxhkx"]').parentNode,
-				version: "1686528467652",
+				version: "1686528492247",
 				hydrate: {
 					node_ids: [0, 2, 5],
 					data: [null,null,{type:"data",data:{md:"# Plugin system\n\nThis library uses [unified](https:\u002F\u002Fgithub.com\u002Funifiedjs\u002Funified).\nTherefore, you can use [remark](https:\u002F\u002Fgithub.com\u002Fremarkjs\u002Fremark) or [rehype](https:\u002F\u002Fgithub.com\u002Frehypejs\u002Frehype) plugins.\n\n## Rendering flow\n\n```mermaid\ngraph TD\n  Markdown -- string --\u003E remark-parse\n  subgraph unified\n    remark-parse -- mdast --\u003E remarkPlugins\n    remarkPlugins -- mdast --\u003E remark-rehype\n    remark-rehype -- hast --\u003E rehypePlugins\n  end\n  rehypePlugins -- hast-component-mapping --\u003E SvelteComponent\n```\n\n## API\n\n```ts\nexport type ComponentsMap = Record\u003Cstring, typeof SvelteComponent\u003E;\nexport type Plugin = {\n\tremarkPlugin?: Pluggable;\n\trehypePlugin?: Pluggable;\n\trenderer?: ComponentsMap;\n};\n```\n\n## GFM(GitHub Flavored Markdown) Plugin\n\n`gfmPlugin` is the only plugin that comes with the library.\n\nIt includes [remark-gfm](https:\u002F\u002Fgithub.com\u002Fremarkjs\u002Fremark-gfm) and some component map(e.g. `table`, `tbody`, etc..).\n\n_definition_\n\n```ts\nexport const gfmPlugin: Plugin = {\n\tremarkPlugin: remarkGfm,\n\trenderer: {\n\t\tdel: Del,\n\t\ttable: Table,\n\t\ttbody: Tbody,\n\t\tthead: Thead,\n\t\ttr: Tr,\n\t\tth: Th,\n\t\ttd: Td\n\t}\n};\n```\n",prev:["01-getting-started","Getting started"],next:["03-override-component","Override component"]},uses:{params:["slug"]}}],
