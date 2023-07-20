@@ -6,172 +6,24 @@
 		<link rel="icon" href="/svelte-exmarkdown/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content="">
-		<link href="/svelte-exmarkdown/_app/immutable/assets/_layout-4d40d855.css" rel="stylesheet">
-		<link href="/svelte-exmarkdown/_app/immutable/assets/_page-e6e9b4b2.css" rel="stylesheet">
-		<link href="/svelte-exmarkdown/_app/immutable/assets/index-312500d6.css" rel="stylesheet">
-		<link href="/svelte-exmarkdown/_app/immutable/assets/Header-1bce78ea.css" rel="stylesheet">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/start-a02d9db5.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-54267bab.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/singletons-7679ea28.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-4ca5149e.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/shared-23917130.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/preload-helper-41c905a7.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/_layout.svelte-cb704cb4.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/modules/pages/_layout.ts-9cbb603b.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/_page.svelte-5b63644a.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-446c282d.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/_commonjsHelpers-725317a4.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/Header-1c514ea3.js"><title>svelte-exmarkdown</title><!-- HEAD_svelte-hhrjmv_START --><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"><!-- HEAD_svelte-hhrjmv_END -->
 	</head>
 	<body>
 		<div>
-
-
-
-
-<div class="wrapper svelte-1omid97"><header class="svelte-g1c9it"><h1><a href="/svelte-exmarkdown" class="svelte-g1c9it">svelte-exmarkdown</a></h1>
-	<div class="spacer svelte-g1c9it"></div>
-	<nav class="right svelte-g1c9it"><div><label><input type="checkbox">HTML</label></div>
-		<div><label><input type="checkbox" checked>GFM</label></div>
-		<div><label><input type="checkbox">AST</label></div>
-		<div><a class="link svelte-g1c9it" href="/svelte-exmarkdown/docs">Docs</a></div>
-		<div><a class="link svelte-g1c9it" target="_blank" rel="noreferrer" href="https://www.npmjs.com/package/svelte-exmarkdown">npm
-			</a></div>
-		<div><a class="link svelte-g1c9it" target="_blank" rel="noreferrer" href="https://github.com/ssssota/svelte-exmarkdown">GitHub
-			</a></div></nav>
-</header>
-	<main class="svelte-1omid97"><textarea class="input svelte-1omid97"># svelte-exmarkdown
-
-[![CI](https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml/badge.svg)](https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/ssssota/svelte-exmarkdown/branch/main/graph/badge.svg?token=5I9YNJ57R3)](https://codecov.io/gh/ssssota/svelte-exmarkdown)
-[![License MIT](https://img.shields.io/npm/l/svelte-exmarkdown)](https://github.com/ssssota/svelte-exmarkdown/blob/main/LICENSE)
-
-Svelte component to render markdown. Dynamic and Extensible.
-
-## Motivation
-
-[svelte-markdown](https://www.npmjs.com/package/svelte-markdown) is a good component package.
-However, it is not extensible. You cannot use custom syntax(e.g. KaTeX).
-
-[MDsveX](https://www.npmjs.com/package/mdsvex) is another good package.
-However, it is a preprocessor. Not suitable for dynamic rendering.
-
-We need **pluggable** and **dynamic** markdown renderer in svelte like [react-markdown](https://www.npmjs.com/package/react-markdown).
-
-## Usage
-
-You must **use svelte@3.47 or higher version**.
-This library uses `<svelte:element />`.
-
-```svelte
-<script>
-	import Markdown from 'svelte-exmarkdown';
-	let md = '# Hello world!';
-</script>
-
-<textarea bind:value={md} />
-<Markdown {md} />
-```
-
-with GFM
-
-```svelte
-<script>
-	import Markdown from 'svelte-exmarkdown';
-	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
-	let md = '# Hello world!';
-</script>
-
-<textarea bind:value={md} />
-<Markdown {md} plugins={[gfmPlugin]} />
-```
-
-## Playground & Documents
-
-https://ssssota.github.io/svelte-exmarkdown
-</textarea>
-
-		<section class="output svelte-1omid97">
-	<h1>svelte-exmarkdown</h1>
-
-	<p>
-	<a href="https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml">
-	<img src="https://github.com/ssssota/svelte-exmarkdown/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-
-	<a href="https://codecov.io/gh/ssssota/svelte-exmarkdown">
-	<img src="https://codecov.io/gh/ssssota/svelte-exmarkdown/branch/main/graph/badge.svg?token=5I9YNJ57R3" alt="codecov"></a>
-
-	<a href="https://github.com/ssssota/svelte-exmarkdown/blob/main/LICENSE">
-	<img src="https://img.shields.io/npm/l/svelte-exmarkdown" alt="License MIT"></a></p>
-
-	<p>Svelte component to render markdown. Dynamic and Extensible.</p>
-
-	<h2>Motivation</h2>
-
-	<p>
-	<a href="https://www.npmjs.com/package/svelte-markdown">svelte-markdown</a> is a good component package.
-However, it is not extensible. You cannot use custom syntax(e.g. KaTeX).</p>
-
-	<p>
-	<a href="https://www.npmjs.com/package/mdsvex">MDsveX</a> is another good package.
-However, it is a preprocessor. Not suitable for dynamic rendering.</p>
-
-	<p>We need 
-	<strong>pluggable</strong> and 
-	<strong>dynamic</strong> markdown renderer in svelte like 
-	<a href="https://www.npmjs.com/package/react-markdown">react-markdown</a>.</p>
-
-	<h2>Usage</h2>
-
-	<p>You must 
-	<strong>use svelte@3.47 or higher version</strong>.
-This library uses <code class="svelte-e4hkjf">&lt;svelte:element /></code>.</p>
-
-	<pre><code class="language-svelte svelte-e4hkjf">&lt;script>
-	import Markdown from 'svelte-exmarkdown';
-	let md = '# Hello world!';
-&lt;/script>
-
-&lt;textarea bind:value={md} />
-&lt;Markdown {md} />
-</code></pre>
-
-	<p>with GFM</p>
-
-	<pre><code class="language-svelte svelte-e4hkjf">&lt;script>
-	import Markdown from 'svelte-exmarkdown';
-	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
-	let md = '# Hello world!';
-&lt;/script>
-
-&lt;textarea bind:value={md} />
-&lt;Markdown {md} plugins={[gfmPlugin]} />
-</code></pre>
-
-	<h2>Playground &amp; Documents</h2>
-
-	<p>
-	<a href="https://ssssota.github.io/svelte-exmarkdown">https://ssssota.github.io/svelte-exmarkdown</a></p></section></main>
-</div>
-
-
-		<script type="module" data-sveltekit-hydrate="19xldfd">
+		<script type="module" data-sveltekit-hydrate="45h">
 			import { start } from "/svelte-exmarkdown/_app/immutable/start-a02d9db5.js";
 
 			start({
 				env: {},
 				paths: {"assets":"/svelte-exmarkdown","base":"/svelte-exmarkdown"},
-				target: document.querySelector('[data-sveltekit-hydrate="19xldfd"]').parentNode,
-				version: "1689854459571",
-				hydrate: {
-					node_ids: [0, 3],
-					data: [null,null],
-					form: null,
-					error: null
-				}
+				target: document.querySelector('[data-sveltekit-hydrate="45h"]').parentNode,
+				version: "1689856585741"
 			});
-		</script>
-	</div>
+		</script></div>
 	</body>
 </html>
