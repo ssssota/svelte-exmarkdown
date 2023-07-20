@@ -13,8 +13,8 @@
 		"test": "vitest",
 		"test-watch": "vitest watch",
 		"coverage": "vitest run --coverage",
-		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"fmt": "prettier --write --plugin-search-dir=. .",
+		"lint": "prettier --check --plugin prettier-plugin-svelte . && eslint --ignore-path .gitignore .",
+		"fmt": "prettier --write --plugin prettier-plugin-svelte .",
 		"semantic-release": "semantic-release"
 	},
 	"peerDependencies": {
