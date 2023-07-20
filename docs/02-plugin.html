@@ -11,18 +11,26 @@
 		<link href="/svelte-exmarkdown/_app/immutable/assets/Header-1bce78ea.css" rel="stylesheet">
 		<link href="/svelte-exmarkdown/_app/immutable/assets/_page-6243df82.css" rel="stylesheet">
 		<link href="/svelte-exmarkdown/_app/immutable/assets/index-312500d6.css" rel="stylesheet">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/start-9badaf36.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-4c866512.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/singletons-e2c658a5.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-1c53c4e5.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/start-a02d9db5.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-54267bab.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/singletons-7679ea28.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-4ca5149e.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/shared-23917130.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/_layout.svelte-fe31690d.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/preload-helper-41c905a7.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/_layout.svelte-cb704cb4.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/modules/pages/_layout.ts-9cbb603b.js">
 		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/docs/_layout.svelte-93ae6078.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/Header-33fecaf3.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/docs/_slug_/_page.svelte-6e811dad.js">
-		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-2b697a16.js"><title>svelte-exmarkdown</title><!-- HEAD_svelte-hhrjmv_START --><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"><!-- HEAD_svelte-hhrjmv_END -->
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/docs/_layout.svelte-d5d168ea.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/Header-1c514ea3.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/components/pages/docs/_slug_/_page.svelte-c9358472.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/index-446c282d.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/_commonjsHelpers-725317a4.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/transform-ed2986dc.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/utils-3cbdbddf-710ae659.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/setupGraphViewbox-e1099da8-7d9fc626.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/commonDb-7528607a-b9182d78.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/mermaidAPI-a1a81019-7545cd9a.js">
+		<link rel="modulepreload" href="/svelte-exmarkdown/_app/immutable/chunks/errorRenderer-11917bdc-9254c795.js"><title>svelte-exmarkdown</title><!-- HEAD_svelte-hhrjmv_START --><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"><!-- HEAD_svelte-hhrjmv_END -->
 	</head>
 	<body>
 		<div>
@@ -51,15 +59,9 @@ Therefore, you can use
 	<a href="https://github.com/rehypejs/rehype">rehype</a> plugins.</p>
 
 	<h2>Rendering flow</h2>
-<div><!-- HTML_TAG_START --><pre><code>graph TD
-  Markdown -- string --> remark-parse
-  subgraph unified
-    remark-parse -- mdast --> remarkPlugins
-    remarkPlugins -- mdast --> remark-rehype
-    remark-rehype -- hast --> rehypePlugins
-  end
-  rehypePlugins -- hast-component-mapping --> SvelteComponent
-</code></pre><!-- HTML_TAG_END --></div>
+<div>
+		...
+	</div>
 
 	<h2>API</h2>
 <pre><code class="language-ts svelte-e4hkjf">export type ComponentsMap = Record&lt;string, typeof SvelteComponent>;
@@ -99,14 +101,14 @@ export type Plugin = {
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="wzxhkx">
-			import { start } from "/svelte-exmarkdown/_app/immutable/start-9badaf36.js";
+		<script type="module" data-sveltekit-hydrate="1shus4z">
+			import { start } from "/svelte-exmarkdown/_app/immutable/start-a02d9db5.js";
 
 			start({
 				env: {},
 				paths: {"assets":"/svelte-exmarkdown","base":"/svelte-exmarkdown"},
-				target: document.querySelector('[data-sveltekit-hydrate="wzxhkx"]').parentNode,
-				version: "1689853065798",
+				target: document.querySelector('[data-sveltekit-hydrate="1shus4z"]').parentNode,
+				version: "1689854313265",
 				hydrate: {
 					node_ids: [0, 2, 5],
 					data: [null,null,{type:"data",data:{md:"# Plugin system\n\nThis library uses [unified](https:\u002F\u002Fgithub.com\u002Funifiedjs\u002Funified).\nTherefore, you can use [remark](https:\u002F\u002Fgithub.com\u002Fremarkjs\u002Fremark) or [rehype](https:\u002F\u002Fgithub.com\u002Frehypejs\u002Frehype) plugins.\n\n## Rendering flow\n\n```mermaid\ngraph TD\n  Markdown -- string --\u003E remark-parse\n  subgraph unified\n    remark-parse -- mdast --\u003E remarkPlugins\n    remarkPlugins -- mdast --\u003E remark-rehype\n    remark-rehype -- hast --\u003E rehypePlugins\n  end\n  rehypePlugins -- hast-component-mapping --\u003E SvelteComponent\n```\n\n## API\n\n```ts\nexport type ComponentsMap = Record\u003Cstring, typeof SvelteComponent\u003E;\nexport type Plugin = {\n\tremarkPlugin?: Pluggable;\n\trehypePlugin?: Pluggable;\n\trenderer?: ComponentsMap;\n};\n```\n\n## GFM(GitHub Flavored Markdown) Plugin\n\n`gfmPlugin` is the only plugin that comes with the library.\n\nIt includes [remark-gfm](https:\u002F\u002Fgithub.com\u002Fremarkjs\u002Fremark-gfm) and some component map(e.g. `table`, `tbody`, etc..).\n\n_definition_\n\n```ts\nexport const gfmPlugin: Plugin = {\n\tremarkPlugin: remarkGfm,\n\trenderer: {\n\t\tdel: Del,\n\t\ttable: Table,\n\t\ttbody: Tbody,\n\t\tthead: Thead,\n\t\ttr: Tr,\n\t\tth: Th,\n\t\ttd: Td\n\t}\n};\n```\n",prev:["01-getting-started","Getting started"],next:["03-override-component","Override component"]},uses:{params:["slug"]}}],
