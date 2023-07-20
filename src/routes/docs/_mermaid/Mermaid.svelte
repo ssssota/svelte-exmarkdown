@@ -1,25 +1,29 @@
 <script lang="ts">
-	import Mermaid from 'mermaid/dist/mermaid.esm.min.mjs';
+	import Mermaid from 'mermaid';
 	import { onMount } from 'svelte';
 	import { hash } from './utils';
 	export let code = '';
-	const render = (code: string): string => {
+	const render = (code: string): Promise<string> => {
 		try {
 			const id = 'mermaid-' + hash(code);
-			return Mermaid.render(id, code);
+			return Mermaid.render(id, code).then((res) => res.svg);
 		} catch (e) {
 			console.warn(e);
-			return `<pre><code>${code}</code></pre>`;
+			return Promise.resolve(`<pre><code>${code}</code></pre>`);
 		}
 	};
 
-	let svg: string;
-	$: svg = render(code);
+	let svgPromise: Promise<string>;
+	$: svgPromise = render(code);
 	onMount(() => {
-		svg = render(code);
+		svgPromise = render(code);
 	});
 </script>
 
 <div>
-	{@html svg}
+	{#await svgPromise}
+		...
+	{:then svg}
+		{@html svg}
+	{/await}
 </div>
