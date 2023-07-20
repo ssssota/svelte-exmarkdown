@@ -24,6 +24,7 @@
 	{#await svgPromise}
 		...
 	{:then svg}
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		{@html svg}
 	{/await}
 </div>
