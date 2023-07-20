@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HastNode } from '$lib/types';
 	import Children from '$lib/renderer/Children.svelte';
+	import type { HastNode } from '$lib/types';
 	import { highlight, languages } from './prism';
 	export let children: HastNode[];
 	export let properties: Record<string, unknown>;
@@ -13,7 +13,7 @@
 
 {#if lang == null || languages[lang] == null || child?.type !== 'text'}<code
 		{...properties}><Children {children} /></code
-	>{:else}<code {...properties}
+	>{:else}<!-- eslint-disable svelte/no-at-html-tags --><code {...properties}
 		>{@html highlight(child.value, languages[lang], lang)}</code
 	>{/if}
 
