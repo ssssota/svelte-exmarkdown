@@ -11,17 +11,17 @@
 		<link href="../_app/immutable/assets/Header.1bce78ea.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/5.6243df82.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/index.312500d6.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.7b58d4ee.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.9e299a6c.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.fce3405c.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.8d5a4c55.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.0f510452.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.6e2f717e.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.3473a090.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.db35e288.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.f795997d.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.6ff9ef9a.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.a57f7fe5.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.7bdb2880.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.eb1fd7a4.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/Header.5d618dea.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/5.ba71cda4.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.e605991d.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Header.c1d27aea.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/5.62aa9704.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.16cb5ba5.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/_commonjsHelpers.725317a4.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/transform.ed83f577.js">
@@ -103,7 +103,7 @@ export type Plugin = {
 			
 			<script>
 				{
-					__sveltekit_121jz82 = {
+					__sveltekit_111xcc3 = {
 						assets: "/svelte-exmarkdown",
 						base: new URL("..", location).pathname.slice(0, -1),
 						env: {}
@@ -114,8 +114,8 @@ export type Plugin = {
 					const data = [null,null,{"type":"data","data":{md:"# Plugin system\n\nThis library uses [unified](https://github.com/unifiedjs/unified).\nTherefore, you can use [remark](https://github.com/remarkjs/remark) or [rehype](https://github.com/rehypejs/rehype) plugins.\n\n## Rendering flow\n\n```mermaid\ngraph TD\n  Markdown -- string --> remark-parse\n  subgraph unified\n    remark-parse -- mdast --> remarkPlugins\n    remarkPlugins -- mdast --> remark-rehype\n    remark-rehype -- hast --> rehypePlugins\n  end\n  rehypePlugins -- hast-component-mapping --> SvelteComponent\n```\n\n## API\n\n```ts\nexport type ComponentsMap = Record\u003Cstring, typeof SvelteComponent>;\nexport type Plugin = {\n\tremarkPlugin?: Pluggable;\n\trehypePlugin?: Pluggable;\n\trenderer?: ComponentsMap;\n};\n```\n\n## GFM(GitHub Flavored Markdown) Plugin\n\n`gfmPlugin` is the only plugin that comes with the library.\n\nIt includes [remark-gfm](https://github.com/remarkjs/remark-gfm) and some component map(e.g. `table`, `tbody`, etc..).\n\n_definition_\n\n```ts\nexport const gfmPlugin: Plugin = {\n\tremarkPlugin: remarkGfm,\n\trenderer: {\n\t\tdel: Del,\n\t\ttable: Table,\n\t\ttbody: Tbody,\n\t\tthead: Thead,\n\t\ttr: Tr,\n\t\tth: Th,\n\t\ttd: Td\n\t}\n};\n```\n",prev:["01-getting-started","Getting started"],next:["03-override-component","Override component"]},"uses":{"params":["slug"]}}];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.7b58d4ee.js"),
-						import("../_app/immutable/entry/app.db35e288.js")
+						import("../_app/immutable/entry/start.9e299a6c.js"),
+						import("../_app/immutable/entry/app.6ff9ef9a.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2, 5],
