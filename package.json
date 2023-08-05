@@ -40,7 +40,7 @@
 		"@vitest/coverage-v8": "^0.34.0",
 		"@vitest/ui": "^0.34.0",
 		"eslint": "^8.33.0",
-		"eslint-config-prettier": "^8.6.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.32.3",
 		"husky": "^8.0.0",
 		"jsdom": "^22.0.0",
