@@ -11,17 +11,17 @@
 		<link href="../_app/immutable/assets/Header.1bce78ea.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/5.6243df82.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/index.312500d6.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.9e299a6c.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.a0950446.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.fce3405c.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.0f510452.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.52a7acc7.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.6e2f717e.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.f795997d.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.6ff9ef9a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.dae0f7dd.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.ad3f032b.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.a57f7fe5.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.7bdb2880.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.e605991d.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/Header.c1d27aea.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/5.62aa9704.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.5b1c7e68.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Header.81199367.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/5.1efbbdc1.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.16cb5ba5.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/_commonjsHelpers.725317a4.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/transform.ed83f577.js">
@@ -109,7 +109,7 @@
 			
 			<script>
 				{
-					__sveltekit_111xcc3 = {
+					__sveltekit_1ug9fa2 = {
 						assets: "/svelte-exmarkdown",
 						base: new URL("..", location).pathname.slice(0, -1),
 						env: {}
@@ -120,8 +120,8 @@
 					const data = [null,null,{"type":"data","data":{md:"# Override component\n\nIf you want to change styles, you can override components.\n\n## Copy button for code block\n\nLet's make custom plugin!\n\nYou can override per tag.\n\n_Pre.svelte_\n\n```svelte\n\u003Cscript lang=\"ts\">\n\timport type { Node } from 'svelte-exmarkdown/types';\n\timport Children from 'svelte-exmarkdown/renderer/Children.svelte';\n\texport let children: Node[];\n\texport let properties: Record\u003Cstring, unknown>;\n\tconst copy = () =>\n\t\twindow.navigator.clipboard.writeText(children[0]['children'][0].value);\n\u003C/script>\n\n\u003Cdiv>\n\t\u003Cbutton on:click={copy}>copy!\u003C/button>\n\t\u003Cpre {...properties}>\u003CChildren {children} />\u003C/pre>\n\u003C/div>\n\n\u003Cstyle>\n\tdiv {\n\t\tposition: relative;\n\t}\n\tbutton {\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tright: 0;\n\t}\n\u003C/style>\n```\n\n_App.svelte_\n\n```svelte\n\u003Cscript>\n\timport Markdown from 'svelte-exmarkdown';\n\timport Pre from './Pre.svelte';\n\texport let md;\n\t/** @type {import('svelte-exmarkdown').Plugin[]} */\n\tconst plugins = [{ renderer: { pre: Pre } }];\n\u003C/script>\n\n\u003CMarkdown {md} {plugins} />\n```\n",prev:["02-plugin","Plugin system"],next:void 0},"uses":{"params":["slug"]}}];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.9e299a6c.js"),
-						import("../_app/immutable/entry/app.6ff9ef9a.js")
+						import("../_app/immutable/entry/start.a0950446.js"),
+						import("../_app/immutable/entry/app.ad3f032b.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2, 5],
