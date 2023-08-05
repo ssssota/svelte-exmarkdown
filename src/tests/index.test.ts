@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/svelte';
 import rehypeRaw from 'rehype-raw';
 import { afterEach, describe, expect, it } from 'vitest';
-import Markdown from '../src/lib';
+import Markdown from '../lib';
 
 describe('Markdown(CommonMark)', () => {
 	afterEach(() => cleanup());
