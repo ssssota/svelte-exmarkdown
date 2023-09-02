@@ -1,1 +1,1 @@
-{"type":"data","nodes":[null,null,{"type":"data","data":[{"docs":1},{"01-getting-started":2,"02-plugin":3,"03-override-component":4},"Getting started","Plugin system","Override component"],"uses":{}}]}
+{"type":"redirect","location":"/svelte-exmarkdown/docs/01-getting-started"}

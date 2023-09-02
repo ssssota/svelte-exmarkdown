@@ -31,33 +31,46 @@
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.1227bc7c.js"><title>svelte-exmarkdown</title><!-- HEAD_svelte-hhrjmv_START --><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"><!-- HEAD_svelte-hhrjmv_END -->
 	</head>
 	<body>
-		<div>   <div class="wrapper"><header class="svelte-g1c9it"><h1 data-svelte-h="svelte-1cw5b4b"><a href="/svelte-exmarkdown" class="svelte-g1c9it">svelte-exmarkdown</a></h1> <div class="spacer svelte-g1c9it"></div> <nav class="right svelte-g1c9it"> <div data-svelte-h="svelte-8jw9uv"><a class="link svelte-g1c9it" href="/svelte-exmarkdown/docs">Docs</a></div> <div data-svelte-h="svelte-189f4ui"><a class="link svelte-g1c9it" target="_blank" rel="noreferrer" href="https://www.npmjs.com/package/svelte-exmarkdown">npm</a></div> <div data-svelte-h="svelte-15nl19w"><a class="link svelte-g1c9it" target="_blank" rel="noreferrer" href="https://github.com/ssssota/svelte-exmarkdown">GitHub</a></div></nav> </header> <main class="svelte-12ei7v3"><nav><details><summary data-svelte-h="svelte-1745bx1">Table of contents</summary> <ol><li><a href="/svelte-exmarkdown/docs/01-getting-started">Getting started</a> </li><li><a href="/svelte-exmarkdown/docs/02-plugin-overview">Plugin overview</a> </li><li><a href="/svelte-exmarkdown/docs/03-raw-html">Plugin showcase (Raw HTML)</a> </li><li><a href="/svelte-exmarkdown/docs/04-skip-render">Skip rendering the element</a> </li><li><a href="/svelte-exmarkdown/docs/05-transparent">Transparent component</a> </li><li><a href="/svelte-exmarkdown/docs/06-components-map">Components map</a> </li><li><a href="/svelte-exmarkdown/docs/07-code-highlight">Plugin showcase (Code highlight)</a> </li><li><a href="/svelte-exmarkdown/docs/08-math-formula">Plugin showcase (Math formula)</a> </li><li><a href="/svelte-exmarkdown/docs/09-ast">Access to the AST</a> </li></ol></details></nav> <h1>Getting started</h1>
-<h2>Install</h2>
-<pre><code class="hljs language-sh">npm install svelte-exmarkdown
-<span class="hljs-comment"># yarn add svelte-exmarkdown</span>
-<span class="hljs-comment"># pnpm add svelte-exmarkdown</span>
+		<div>   <div class="wrapper"><header class="svelte-g1c9it"><h1 data-svelte-h="svelte-1cw5b4b"><a href="/svelte-exmarkdown" class="svelte-g1c9it">svelte-exmarkdown</a></h1> <div class="spacer svelte-g1c9it"></div> <nav class="right svelte-g1c9it"> <div data-svelte-h="svelte-8jw9uv"><a class="link svelte-g1c9it" href="/svelte-exmarkdown/docs">Docs</a></div> <div data-svelte-h="svelte-189f4ui"><a class="link svelte-g1c9it" target="_blank" rel="noreferrer" href="https://www.npmjs.com/package/svelte-exmarkdown">npm</a></div> <div data-svelte-h="svelte-15nl19w"><a class="link svelte-g1c9it" target="_blank" rel="noreferrer" href="https://github.com/ssssota/svelte-exmarkdown">GitHub</a></div></nav> </header> <main class="svelte-12ei7v3"><nav><details><summary data-svelte-h="svelte-1745bx1">Table of contents</summary> <ol><li><a href="/svelte-exmarkdown/docs/01-getting-started">Getting started</a> </li><li><a href="/svelte-exmarkdown/docs/02-plugin-overview">Plugin overview</a> </li><li><a href="/svelte-exmarkdown/docs/03-raw-html">Plugin showcase (Raw HTML)</a> </li><li><a href="/svelte-exmarkdown/docs/04-skip-render">Skip rendering the element</a> </li><li><a href="/svelte-exmarkdown/docs/05-transparent">Transparent component</a> </li><li><a href="/svelte-exmarkdown/docs/06-components-map">Components map</a> </li><li><a href="/svelte-exmarkdown/docs/07-code-highlight">Plugin showcase (Code highlight)</a> </li><li><a href="/svelte-exmarkdown/docs/08-math-formula">Plugin showcase (Math formula)</a> </li><li><a href="/svelte-exmarkdown/docs/09-ast">Access to the AST</a> </li></ol></details></nav> <h1>Plugin overview</h1>
+<p>This library uses <a href="https://github.com/unifiedjs/unified">unified</a>.
+Therefore, you can use <a href="https://github.com/remarkjs/remark">remark</a> or <a href="https://github.com/rehypejs/rehype">rehype</a> plugins.</p>
+<p>And you can custom hast(Hypertext AST) to svelte component mapping.</p>
+<h2>Rendering flow</h2>
+<pre><div class="hljs language-mermaid">flowchart TD
+  Markdown -- string --> remark-parse
+  subgraph unified
+    remark-parse -- mdast --> remarkPlugins
+    remarkPlugins -- mdast --> remark-rehype
+    remark-rehype -- hast --> rehypePlugins
+  end
+  rehypePlugins -- hast-component-mapping --> SvelteComponent
+</div></pre>
+<h2>Plugin API</h2>
+<p>You can make a plugin with the following API.</p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">ComponentType</span>, <span class="hljs-title class_">SvelteComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'svelte'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Pluggable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'unified'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">ComponentsMap</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">ComponentType</span>&lt;<span class="hljs-title class_">SvelteComponent</span>>>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">Plugin</span> = {
+	remarkPlugin?: <span class="hljs-title class_">Pluggable</span>;
+	rehypePlugin?: <span class="hljs-title class_">Pluggable</span>;
+	renderer?: <span class="hljs-title class_">ComponentsMap</span>;
+};
 </code></pre>
-<h2>Basic usage</h2>
-<pre><code class="hljs language-svelte"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>></span></span><span class="javascript">
+<p>And you can set multiple plugins into <code>plugins</code> props.</p>
+<pre><code class="hljs language-svelte"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ts"</span>></span></span><span class="typescript">
 	<span class="hljs-keyword">import</span> <span class="hljs-title class_">Markdown</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'svelte-exmarkdown'</span>;
-	<span class="hljs-keyword">let</span> md = <span class="hljs-string">'# Hello world!'</span>;
+	<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Plugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'svelte-exmarkdown'</span>;
+	<span class="hljs-keyword">const</span> <span class="hljs-attr">plugins</span>: <span class="hljs-title class_">Plugin</span>[] = [];
 </span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>></span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">bind:value</span>=</span></span><span class="javascript">{md}</span><span class="xml"><span class="hljs-tag"> /></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">Markdown</span> </span></span><span class="javascript">{md}</span><span class="xml"><span class="hljs-tag"> /></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Markdown</span> <span class="hljs-attr">md</span>=<span class="hljs-string">"# Hello world"</span> </span></span><span class="javascript">{plugins}</span><span class="xml"><span class="hljs-tag"> /></span>
 </span></code></pre>
-<p>with GFM(GitHub Flavored Markdown)</p>
-<p>If you want to use tables, checkboxes, etc., you can use the GFM plugin.</p>
-<pre><code class="hljs language-svelte"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>></span></span><span class="javascript">
-	<span class="hljs-keyword">import</span> <span class="hljs-title class_">Markdown</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'svelte-exmarkdown'</span>;
-	<span class="hljs-keyword">import</span> { gfmPlugin } <span class="hljs-keyword">from</span> <span class="hljs-string">'svelte-exmarkdown/gfm'</span>;
-	<span class="hljs-keyword">let</span> md = <span class="hljs-string">'# Hello world!'</span>;
-	<span class="hljs-keyword">const</span> plugins = [<span class="hljs-title function_">gfmPlugin</span>()];
-</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>></span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">bind:value</span>=</span></span><span class="javascript">{md}</span><span class="xml"><span class="hljs-tag"> /></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">Markdown</span> </span></span><span class="javascript">{md}</span><span class="xml"><span class="hljs-tag"> </span></span><span class="javascript">{plugins}</span><span class="xml"><span class="hljs-tag"> /></span>
-</span></code></pre> <nav class="svelte-1fbyvs7"><div></div> <a href="/svelte-exmarkdown/docs/02-plugin-overview" class="svelte-1fbyvs7">Plugin overview</a> </nav></main> </div> 
+<h3>Example</h3>
+<p>The GFM plugin is in the library. It is implemented as follows.</p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> remarkGfm <span class="hljs-keyword">from</span> <span class="hljs-string">'remark-gfm'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Plugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'../types'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">gfmPlugin</span>: <span class="hljs-title class_">Plugin</span> = { <span class="hljs-attr">remarkPlugin</span>: [remarkGfm] };
+</code></pre> <nav class="svelte-1fbyvs7"><a href="/svelte-exmarkdown/docs/01-getting-started" class="svelte-1fbyvs7">Getting started</a> <a href="/svelte-exmarkdown/docs/03-raw-html" class="svelte-1fbyvs7">Plugin showcase (Raw HTML)</a> </nav></main> </div> 
 			
 			<script>
 				{
