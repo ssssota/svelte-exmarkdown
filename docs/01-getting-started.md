@@ -22,13 +22,16 @@ npm install svelte-exmarkdown
 
 with GFM(GitHub Flavored Markdown)
 
+If you want to use tables, checkboxes, etc., you can use the GFM plugin.
+
 ```svelte
 <script>
 	import Markdown from 'svelte-exmarkdown';
 	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
 	let md = '# Hello world!';
+	const plugins = [gfmPlugin()];
 </script>
 
 <textarea bind:value={md} />
-<Markdown {md} plugins={[gfmPlugin]} />
+<Markdown {md} {plugins} />
 ```

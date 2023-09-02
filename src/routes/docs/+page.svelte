@@ -1,14 +1,7 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
-	import type { PageData } from './$types';
+	import { page } from '$app/stores';
 
-	export let data: PageData;
+	goto(`${base}/docs/${$page.data?.docs?.[0]?.slug}`);
 </script>
-
-<ul>
-	{#each Object.entries(data.docs) as [slug, title] (slug)}
-		<li>
-			<a href="{base}/docs/{slug}">{title}</a>
-		</li>
-	{/each}
-</ul>

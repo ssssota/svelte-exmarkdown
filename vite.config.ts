@@ -7,6 +7,7 @@ export default {
 		environment: 'jsdom',
 		coverage: {
 			reporter: ['clover', 'cobertura', 'lcov', 'text']
-		}
+		},
+		dir: 'src'
 	}
 } satisfies UserConfig;

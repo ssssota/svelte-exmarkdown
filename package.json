@@ -1,64 +1,76 @@
 {
 	"name": "svelte-exmarkdown",
 	"description": "Svelte component to render markdown. Dynamic and Extensible.",
-	"version": "0.0.1",
+	"version": "2.1.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-package",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync && husky install",
+		"clean": "rimraf build coverage dist",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test": "vitest",
-		"test-watch": "vitest watch",
+		"test": "pnpm run \"/^test:.*/\"",
+		"test:playwright": "playwright test",
+		"test:vitest": "vitest run",
+		"vitest": "vitest",
 		"coverage": "vitest run --coverage",
 		"lint": "prettier --check --plugin prettier-plugin-svelte . && eslint --ignore-path .gitignore .",
 		"fmt": "prettier --write --plugin prettier-plugin-svelte .",
-		"semantic-release": "semantic-release"
+		"download-testcases": "node -e 'fetch(\"https://spec.commonmark.org/0.30/spec.json\").then(r=>r.text()).then(t=>console.log(`// prettier-ignore\nexport default ${t}`))' > tests/commonmark.ts",
+		"changeset": "changeset",
+		"release": "pnpm clean && pnpm package && pnpm publish --access public --no-git-checks"
 	},
 	"peerDependencies": {
 		"svelte": "^3.47.0 || ^4.0.0"
 	},
 	"dependencies": {
 		"remark-gfm": "^3.0.1",
-		"remark-parse": "^10.0.1",
+		"remark-parse": "^10.0.2",
 		"remark-rehype": "^10.1.0",
 		"unified": "^10.1.2"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.4.2",
-		"@commitlint/config-conventional": "^17.4.2",
-		"@sveltejs/adapter-static": "^2.0.0",
-		"@sveltejs/kit": "^1.22.3",
-		"@sveltejs/package": "^2.2.0",
-		"@sveltejs/vite-plugin-svelte": "^2.0.2",
-		"@testing-library/svelte": "^4.0.0",
-		"@types/prismjs": "^1.26.0",
-		"@typescript-eslint/eslint-plugin": "^6.0.0",
-		"@typescript-eslint/parser": "^6.0.0",
-		"@vitest/coverage-v8": "^0.34.0",
-		"@vitest/ui": "^0.34.0",
-		"eslint": "^8.33.0",
+		"@changesets/cli": "^2.26.2",
+		"@commitlint/cli": "^17.7.1",
+		"@commitlint/config-conventional": "^17.7.0",
+		"@playwright/test": "^1.28.1",
+		"@sveltejs/adapter-static": "^2.0.3",
+		"@sveltejs/kit": "^1.23.0",
+		"@sveltejs/package": "^2.2.1",
+		"@sveltejs/vite-plugin-svelte": "^2.4.5",
+		"@testing-library/svelte": "^4.0.3",
+		"@typescript-eslint/eslint-plugin": "^6.4.1",
+		"@typescript-eslint/parser": "^6.4.1",
+		"@vitest/coverage-v8": "^0.34.3",
+		"@vitest/ui": "^0.34.3",
+		"eslint": "^8.47.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.32.3",
-		"husky": "^8.0.0",
-		"jsdom": "^22.0.0",
-		"mermaid": "^10.0.0",
-		"prettier": "^3.0.0",
-		"prettier-plugin-svelte": "^3.0.0",
-		"prism-svelte": "^0.5.0",
-		"prismjs": "^1.29.0",
+		"eslint-plugin-svelte": "^2.33.0",
+		"highlight.js": "^11.8.0",
+		"highlightjs-svelte": "^1.0.6",
+		"husky": "^8.0.3",
+		"jsdom": "^22.1.0",
+		"katex": "^0.16.8",
+		"mermaid": "^10.4.0",
+		"prettier": "^3.0.2",
+		"prettier-plugin-svelte": "^3.0.3",
+		"rehype-highlight": "^6.0.0",
+		"rehype-katex": "^6.0.3",
 		"rehype-raw": "^6.1.1",
-		"semantic-release": "^21.0.0",
-		"svelte": "^3.55.0",
-		"svelte-check": "^3.0.1",
-		"svelte2tsx": "^0.6.19",
-		"tslib": "^2.5.0",
-		"typescript": "^5.0.0",
-		"vite": "^4.0.4",
+		"remark-math": "^5.1.1",
+		"remark-mdc": "^2.0.0",
+		"rimraf": "^5.0.1",
+		"semantic-release": "^21.1.1",
+		"svelte": "^4.2.0",
+		"svelte-check": "^3.5.0",
+		"svelte2tsx": "^0.6.20",
+		"tslib": "^2.6.2",
+		"typescript": "^5.2.2",
+		"vite": "^4.4.9",
 		"vite-tsconfig-paths": "^4.2.0",
-		"vitest": "^0.34.0",
+		"vitest": "^0.34.3",
 		"water.css": "^2.1.1"
 	},
 	"type": "module",
@@ -77,17 +89,23 @@
 		"plugin"
 	],
 	"license": "MIT",
-	"packageManager": "pnpm@8.6.12",
+	"packageManager": "pnpm@8.7.1",
+	"files": [
+		"dist"
+	],
+	"svelte": "./dist/index.js",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		"./package.json": "./package.json",
 		"./contexts": {
 			"types": "./dist/contexts.d.ts",
 			"default": "./dist/contexts.js"
 		},
-		"./ExtensibleSvelteMarkdown.svelte": {
-			"types": "./dist/ExtensibleSvelteMarkdown.svelte.d.ts",
-			"svelte": "./dist/ExtensibleSvelteMarkdown.svelte",
-			"default": "./dist/ExtensibleSvelteMarkdown.svelte"
+		"./Markdown.svelte": {
+			"types": "./dist/Markdown.svelte.d.ts",
+			"svelte": "./dist/Markdown.svelte",
+			"default": "./dist/Markdown.svelte"
 		},
 		"./gfm": {
 			"types": "./dist/gfm/index.d.ts",
@@ -99,35 +117,10 @@
 			"svelte": "./dist/index.js",
 			"default": "./dist/index.js"
 		},
-		"./renderer/Children.svelte": {
-			"types": "./dist/renderer/Children.svelte.d.ts",
-			"svelte": "./dist/renderer/Children.svelte",
-			"default": "./dist/renderer/Children.svelte"
-		},
-		"./renderer/html/Default.svelte": {
-			"types": "./dist/renderer/html/Default.svelte.d.ts",
-			"svelte": "./dist/renderer/html/Default.svelte",
-			"default": "./dist/renderer/html/Default.svelte"
-		},
-		"./renderer/html": {
-			"types": "./dist/renderer/html/index.d.ts",
-			"svelte": "./dist/renderer/html/index.js",
-			"default": "./dist/renderer/html/index.js"
-		},
-		"./renderer": {
-			"types": "./dist/renderer/index.d.ts",
-			"svelte": "./dist/renderer/index.js",
-			"default": "./dist/renderer/index.js"
-		},
-		"./renderer/Renderer.svelte": {
-			"types": "./dist/renderer/Renderer.svelte.d.ts",
-			"svelte": "./dist/renderer/Renderer.svelte",
-			"default": "./dist/renderer/Renderer.svelte"
-		},
-		"./renderer/Text.svelte": {
-			"types": "./dist/renderer/Text.svelte.d.ts",
-			"svelte": "./dist/renderer/Text.svelte",
-			"default": "./dist/renderer/Text.svelte"
+		"./Renderer.svelte": {
+			"types": "./dist/Renderer.svelte.d.ts",
+			"svelte": "./dist/Renderer.svelte",
+			"default": "./dist/Renderer.svelte"
 		},
 		"./types": {
 			"types": "./dist/types.d.ts",
@@ -138,17 +131,13 @@
 			"default": "./dist/utils.js"
 		}
 	},
-	"files": [
-		"dist"
-	],
-	"svelte": "./dist/index.js",
 	"typesVersions": {
 		">4.0": {
 			"contexts": [
 				"./dist/contexts.d.ts"
 			],
-			"ExtensibleSvelteMarkdown.svelte": [
-				"./dist/ExtensibleSvelteMarkdown.svelte.d.ts"
+			"Markdown.svelte": [
+				"./dist/Markdown.svelte.d.ts"
 			],
 			"gfm": [
 				"./dist/gfm/index.d.ts"
@@ -156,23 +145,8 @@
 			"index.d.ts": [
 				"./dist/index.d.ts"
 			],
-			"renderer/Children.svelte": [
-				"./dist/renderer/Children.svelte.d.ts"
-			],
-			"renderer/html/Default.svelte": [
-				"./dist/renderer/html/Default.svelte.d.ts"
-			],
-			"renderer/html": [
-				"./dist/renderer/html/index.d.ts"
-			],
-			"renderer": [
-				"./dist/renderer/index.d.ts"
-			],
-			"renderer/Renderer.svelte": [
-				"./dist/renderer/Renderer.svelte.d.ts"
-			],
-			"renderer/Text.svelte": [
-				"./dist/renderer/Text.svelte.d.ts"
+			"Renderer.svelte": [
+				"./dist/Renderer.svelte.d.ts"
 			],
 			"types": [
 				"./dist/types.d.ts"

@@ -1,7 +1,7 @@
 import type { Plugin } from '$lib';
-import Pre from './Pre.svelte';
+import Code from './Code.svelte';
 export const mermaidPlugin: Plugin = {
 	renderer: {
-		pre: Pre
+		code: Code
 	}
 };
