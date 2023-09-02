@@ -4,18 +4,23 @@
 	import type { Parser, Plugin } from '$lib/types';
 	import { createParser } from '$lib/utils';
 	import rehypeRaw from 'rehype-raw';
+	import remarkMDC from 'remark-mdc';
 	import Readme from '../../README.md?raw';
 	import Header from './Header.svelte';
-	import { highlightPlugin } from './_prism';
+	import { highlightPlugin } from './docs/_highlight';
+	import { mermaidPlugin } from './docs/_mermaid';
+
 	let html = false;
 	let gfm = true;
 	let ast = false;
 	let md = Readme;
 	let plugins: Plugin[];
 	$: plugins = [
-		...(gfm ? [gfmPlugin] : []),
+		...(gfm ? [gfmPlugin()] : []),
 		...(html ? [{ rehypePlugin: rehypeRaw }] : []),
-		highlightPlugin
+		{ remarkPlugin: remarkMDC } as Plugin,
+		highlightPlugin,
+		mermaidPlugin
 	];
 	let parse: Parser;
 	$: parse = createParser(plugins);

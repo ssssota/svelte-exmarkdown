@@ -2,6 +2,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
+	tab-size: 4;
 }
 
 * {
@@ -14,9 +15,7 @@ body {
 		'Hiragino Sans', Meiryo, sans-serif;
 }
 
-main pre[class*='language-'] {
-	background: transparent;
-	padding: 0;
-	margin: initial;
-	overflow: initial;
+main pre > code[class*='language-'] {
+	font-size: 1.05em;
+	background-color: var(--background-alt, #f7f7f7);
 }

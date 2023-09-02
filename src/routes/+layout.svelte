@@ -1,5 +1,4 @@
 <script lang="ts">
-	import 'prismjs/themes/prism.min.css';
 	import 'water.css/out/light.min.css';
 	import '../app.css';
 </script>

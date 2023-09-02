@@ -18,9 +18,6 @@ We need **pluggable** and **dynamic** markdown renderer in svelte like [react-ma
 
 ## Usage
 
-You must **use svelte@3.47 or higher version**.
-This library uses `<svelte:element />`.
-
 ```svelte
 <script>
 	import Markdown from 'svelte-exmarkdown';
@@ -38,10 +35,11 @@ with GFM
 	import Markdown from 'svelte-exmarkdown';
 	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
 	let md = '# Hello world!';
+	const plugins = [gfmPlugin()];
 </script>
 
 <textarea bind:value={md} />
-<Markdown {md} plugins={[gfmPlugin]} />
+<Markdown {md} {plugins} />
 ```
 
 ## Playground & Documents
