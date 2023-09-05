@@ -57,7 +57,7 @@
 		"mermaid": "^10.4.0",
 		"prettier": "^3.0.2",
 		"prettier-plugin-svelte": "^3.0.3",
-		"rehype-highlight": "^6.0.0",
+		"rehype-highlight": "^7.0.0",
 		"rehype-katex": "^6.0.3",
 		"rehype-raw": "^6.1.1",
 		"remark-math": "^5.1.1",
