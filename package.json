@@ -20,7 +20,7 @@
 		"fmt": "prettier --write --plugin prettier-plugin-svelte .",
 		"download-testcases": "node -e 'fetch(\"https://spec.commonmark.org/0.30/spec.json\").then(r=>r.text()).then(t=>console.log(`// prettier-ignore\nexport default ${t}`))' > tests/commonmark.ts",
 		"changeset": "changeset",
-		"release": "pnpm clean && pnpm package && pnpm publish --access public --no-git-checks"
+		"release": "pnpm clean && pnpm package && pnpm changeset publish"
 	},
 	"peerDependencies": {
 		"svelte": "^3.47.0 || ^4.0.0"
