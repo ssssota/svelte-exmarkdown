@@ -58,7 +58,7 @@
 		"prettier": "^3.0.2",
 		"prettier-plugin-svelte": "^3.0.3",
 		"rehype-highlight": "^6.0.0",
-		"rehype-katex": "^6.0.3",
+		"rehype-katex": "^7.0.0",
 		"rehype-raw": "^6.1.1",
 		"remark-math": "^5.1.1",
 		"remark-mdc": "^2.0.0",
