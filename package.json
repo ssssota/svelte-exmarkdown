@@ -20,14 +20,14 @@
 		"fmt": "prettier --write --plugin prettier-plugin-svelte .",
 		"download-testcases": "node -e 'fetch(\"https://spec.commonmark.org/0.30/spec.json\").then(r=>r.text()).then(t=>console.log(`// prettier-ignore\nexport default ${t}`))' > tests/commonmark.ts",
 		"changeset": "changeset",
-		"release": "pnpm clean && pnpm package && pnpm publish --access public --no-git-checks"
+		"release": "pnpm clean && pnpm package && pnpm changeset publish"
 	},
 	"peerDependencies": {
 		"svelte": "^3.47.0 || ^4.0.0"
 	},
 	"dependencies": {
 		"remark-gfm": "^3.0.1",
-		"remark-parse": "^10.0.2",
+		"remark-parse": "^11.0.0",
 		"remark-rehype": "^10.1.0",
 		"unified": "^11.0.0"
 	},
@@ -90,7 +90,7 @@
 		"plugin"
 	],
 	"license": "MIT",
-	"packageManager": "pnpm@8.7.3",
+	"packageManager": "pnpm@8.7.5",
 	"files": [
 		"dist"
 	],
