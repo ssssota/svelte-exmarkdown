@@ -26,7 +26,7 @@
 		"svelte": "^3.47.0 || ^4.0.0"
 	},
 	"dependencies": {
-		"remark-gfm": "^3.0.1",
+		"remark-gfm": "^4.0.0",
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^10.1.0",
 		"unified": "^11.0.0"
