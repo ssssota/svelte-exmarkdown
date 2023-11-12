@@ -90,7 +90,7 @@
 		"plugin"
 	],
 	"license": "MIT",
-	"packageManager": "pnpm@8.10.2",
+	"packageManager": "pnpm@8.10.3",
 	"files": [
 		"dist"
 	],
