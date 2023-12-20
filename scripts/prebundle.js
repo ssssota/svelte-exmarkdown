@@ -1,3 +1,4 @@
+// @ts-check
 import { build } from 'esbuild';
 
 const prebundleTargets = ['dist/utils.js', 'dist/gfm/index.js'];
@@ -10,7 +11,8 @@ Promise.all(
 			bundle: true,
 			outfile: target,
 			allowOverwrite: true,
-			format: 'esm'
+			format: 'esm',
+			platform: 'neutral'
 		});
 	})
 );
