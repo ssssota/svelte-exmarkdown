@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 3.0.2
+
+### Patch Changes
+
+- [#132](https://github.com/ssssota/svelte-exmarkdown/pull/132) [`19f7aaa`](https://github.com/ssssota/svelte-exmarkdown/commit/19f7aaa68655ac89039a208629ae561538726494) Thanks [@ssssota](https://github.com/ssssota)! - build: prebundle external package
+
 ## 3.0.1
 
 ### Patch Changes
