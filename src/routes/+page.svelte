@@ -4,7 +4,6 @@
 	import type { Parser, Plugin } from '$lib/types';
 	import { createParser } from '$lib/utils';
 	import rehypeRaw from 'rehype-raw';
-	import remarkMDC from 'remark-mdc';
 	import Readme from '../../README.md?raw';
 	import Header from './Header.svelte';
 	import { highlightPlugin } from './docs/_highlight';
@@ -18,7 +17,6 @@
 	$: plugins = [
 		...(gfm ? [gfmPlugin()] : []),
 		...(html ? [{ rehypePlugin: rehypeRaw }] : []),
-		{ remarkPlugin: remarkMDC } as Plugin,
 		highlightPlugin,
 		mermaidPlugin
 	];
