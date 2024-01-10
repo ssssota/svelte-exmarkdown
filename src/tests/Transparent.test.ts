@@ -20,6 +20,6 @@ it('should not render children', () => {
 		plugins: [{ renderer: { em: Transparent } }]
 	});
 	expect(ctx.container.children[0]?.innerHTML).toMatchInlineSnapshot(
-		'"<p>test <!--<Renderer>-->em<!--<Renderer>--><!--<Transparent>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"'
+		'"<p>test <!--<Renderer>-->em<!--<Renderer>--><!--<Transparent>--><!--<Renderer>--></p><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"'
 	);
 });
