@@ -25,13 +25,13 @@
 			$components,
 			astNode.tagName
 		)}{#if typeof component === 'string'}{#if Array.isArray(astNode.children) && astNode.children.length !== 0}<Element
-				component={component}
+				{component}
 				{...astNode.properties}
 				>{#each astNode.children as child}<svelte:self
 						astNode={child}
 					/>{/each}</Element
 			>{:else}<Element
-				component={component}
+				{component}
 				{...astNode.properties}
 			/>{/if}{:else if component !== null}{#if Array.isArray(astNode.children) && astNode.children.length !== 0}<svelte:component
 				this={component}
