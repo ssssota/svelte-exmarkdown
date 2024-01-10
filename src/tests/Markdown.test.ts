@@ -311,3 +311,27 @@ describe('HTML', () => {
 		);
 	});
 });
+
+describe('SVG', () => {
+	afterEach(() => cleanup());
+
+	it('should render ElementSVG if svg is used', () => {
+		const { container } = render(Markdown, {
+			md: '<svg xmlns="http://www.w3.org/2000/svg"></svg>',
+			plugins: [{ rehypePlugin: rehypeRaw }]
+		});
+		expect(container.innerHTML).toMatchInlineSnapshot(
+			'"<div><p><svg xmlns=\\"http://www.w3.org/2000/svg\\"></svg><!--<ElementSVG>--><!--<Element>--><!--<Renderer>--></p><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+		);
+	});
+
+	it('should render ElementSVG if path is used', () => {
+		const { container } = render(Markdown, {
+			md: '<path d="M1"></path>',
+			plugins: [{ rehypePlugin: rehypeRaw }]
+		});
+		expect(container.innerHTML).toMatchInlineSnapshot(
+			'"<div><p><path d=\\"M1\\"></path><!--<ElementSVG>--><!--<Element>--><!--<Renderer>--></p><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+		);
+	});
+});
