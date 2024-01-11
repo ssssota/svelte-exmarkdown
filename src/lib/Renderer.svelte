@@ -1,13 +1,14 @@
 <script lang="ts">
+	import SVGElement from './SVGElement.svelte';
 	import {
 		createAstContextValue,
 		getComponentsMap,
 		setAstContext
 	} from './contexts';
 	import type { HastNode } from './types';
-	import { resolveComponent } from './utils';
+	import { resolveComponent, svgTags as typedSvgTags } from './utils';
 	export let astNode: HastNode;
-	import Element from './Element/Element.svelte';
+	const svgTags: readonly string[] = typedSvgTags;
 
 	const components = getComponentsMap();
 
@@ -24,14 +25,23 @@
 		resolveComponent(
 			$components,
 			astNode.tagName
-		)}{#if typeof component === 'string'}{#if Array.isArray(astNode.children) && astNode.children.length !== 0}<Element
-				{component}
+		)}{#if typeof component === 'string'}{#if svgTags.includes(component)}{#if Array.isArray(astNode.children) && astNode.children.length !== 0}<SVGElement
+					__tag={component}
+					{...astNode.properties}
+					>{#each astNode.children as child}<svelte:self
+							astNode={child}
+						/>{/each}</SVGElement
+				>{:else}<SVGElement
+					__tag={component}
+					{...astNode.properties}
+				/>{/if}{:else if Array.isArray(astNode.children) && astNode.children.length !== 0}<svelte:element
+				this={component}
 				{...astNode.properties}
 				>{#each astNode.children as child}<svelte:self
 						astNode={child}
-					/>{/each}</Element
-			>{:else}<Element
-				{component}
+					/>{/each}</svelte:element
+			>{:else}<svelte:element
+				this={component}
 				{...astNode.properties}
 			/>{/if}{:else if component !== null}{#if Array.isArray(astNode.children) && astNode.children.length !== 0}<svelte:component
 				this={component}
