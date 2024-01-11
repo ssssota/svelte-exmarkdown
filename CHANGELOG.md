@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 3.0.3
+
+### Patch Changes
+
+- [#140](https://github.com/ssssota/svelte-exmarkdown/pull/140) [`08b5f99`](https://github.com/ssssota/svelte-exmarkdown/commit/08b5f994b3902ab68da369f030b494c456a8b61c) Thanks [@jacokok](https://github.com/jacokok)! - Fix Katex SVG symbols not rendering namespace issue
+
 ## 3.0.2
 
 ### Patch Changes

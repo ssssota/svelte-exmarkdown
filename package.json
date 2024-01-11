@@ -1,7 +1,7 @@
 {
 	"name": "svelte-exmarkdown",
 	"description": "Svelte component to render markdown. Dynamic and Extensible.",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
