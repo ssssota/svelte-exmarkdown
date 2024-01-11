@@ -110,12 +110,41 @@ const htmlTags = [
 	// Obsolete and deprecated elements
 	'acronym','big','center','content','dir','font','frame','frameset','image','marquee','menuitem','nobr','noembed','noframes','param','plaintext','rb','rtc','shadow','strike','tt','xmp'
 ] as const;
-export type HtmlTag = (typeof htmlTags)[number];
-export const allowlist = (tags: HtmlTag[]): Plugin => ({
+
+/**
+ * https://developer.mozilla.org/en-US/docs/Web/SVG/Element#svg_elements_a_to_z
+ * Excluding html tags
+ */
+// prettier-ignore
+export const svgTags = [
+	/* 'a',  */'animate', 'animateMotion', 'animateTransform',
+	'circle', 'clipPath',
+	'defs', 'desc',
+	'ellipse',
+	'feBlend', 'feColorMatrix', 'feComponentTransfer', 'feComposite', 'feConvolveMatrix', 'feDiffuseLighting', 'feDisplacementMap', 'feDistantLight', 'feDropShadow', 'feFlood', 'feFuncA', 'feFuncB', 'feFuncG', 'feFuncR', 'feGaussianBlur', 'feImage', 'feMerge', 'feMergeNode', 'feMorphology', 'feOffset', 'fePointLight', 'feSpecularLighting', 'feSpotLight', 'feTile', 'feTurbulence', 'filter', 'foreignObject',
+	'g',
+	'hatch', 'hatchpath',
+	/* 'image', */
+	'line', 'linearGradient',
+	'marker', 'mask', 'metadata', 'mpath',
+	'path', 'pattern', 'polygon', 'polyline',
+	'radialGradient', 'rect',
+	/* 'script',  */'set', 'stop', /* 'style',  */'svg', 'switch', 'symbol',
+	'text', 'textPath', /* 'title',  */'tspan',
+	'use',
+	'view'
+] as const;
+
+export const htmlAndSvgTags = [...htmlTags, ...svgTags];
+
+export type Tag = (typeof htmlAndSvgTags)[number];
+export const allowlist = (tags: Tag[]): Plugin => ({
 	renderer: Object.fromEntries(
-		htmlTags.filter((tag) => !tags.includes(tag)).map((tag) => [tag, null])
+		htmlAndSvgTags
+			.filter((tag) => !tags.includes(tag))
+			.map((tag) => [tag, null])
 	)
 });
-export const denylist = (tags: HtmlTag[]): Plugin => ({
+export const denylist = (tags: Tag[]): Plugin => ({
 	renderer: Object.fromEntries(tags.map((tag) => [tag, null]))
 });

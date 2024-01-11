@@ -90,8 +90,8 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('world');
 		expect(el.tagName.toLowerCase()).toBe('p');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(`
-			"<p>hello<!--<Renderer>--></p><!--<Element>--><!--<Renderer>-->
-			<!--<Renderer>--><p>world<!--<Renderer>--></p><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"
+			"<p>hello<!--<Renderer>--></p><!--<Renderer>-->
+			<!--<Renderer>--><p>world<!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"
 		`);
 	});
 
@@ -103,7 +103,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('bold2');
 		expect(el.tagName.toLowerCase()).toBe('strong');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			'"test <!--<Renderer>--><strong>bold1<!--<Renderer>--></strong><!--<Element>--><!--<Renderer>--> test <!--<Renderer>--><strong>bold2<!--<Renderer>--></strong><!--<Element>--><!--<Renderer>-->"'
+			'"test <!--<Renderer>--><strong>bold1<!--<Renderer>--></strong><!--<Renderer>--> test <!--<Renderer>--><strong>bold2<!--<Renderer>--></strong><!--<Renderer>-->"'
 		);
 	});
 
@@ -115,7 +115,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('italic2');
 		expect(el.tagName.toLowerCase()).toBe('em');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			'"test <!--<Renderer>--><em>italic1<!--<Renderer>--></em><!--<Element>--><!--<Renderer>--> test <!--<Renderer>--><em>italic2<!--<Renderer>--></em><!--<Element>--><!--<Renderer>-->"'
+			'"test <!--<Renderer>--><em>italic1<!--<Renderer>--></em><!--<Renderer>--> test <!--<Renderer>--><em>italic2<!--<Renderer>--></em><!--<Renderer>-->"'
 		);
 	});
 
@@ -128,14 +128,14 @@ describe('Markdown(CommonMark)', () => {
 		expect((el as HTMLAnchorElement).href).toBe('https://ssssota.github.io/');
 		expect(el.textContent).toBe('link');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			'"test <!--<Renderer>--><a href=\\"https://ssssota.github.io/\\">link<!--<Renderer>--></a><!--<Element>--><!--<Renderer>-->"'
+			'"test <!--<Renderer>--><a href=\\"https://ssssota.github.io/\\">link<!--<Renderer>--></a><!--<Renderer>-->"'
 		);
 
 		ctx.rerender({ md: 'test [link](https://ssssota.github.io "title")' });
 		el = screen.getByRole('link');
 		expect(el.title).toBe('title');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			'"test <!--<Renderer>--><a href=\\"https://ssssota.github.io\\" title=\\"title\\">link<!--<Renderer>--></a><!--<Element>--><!--<Renderer>-->"'
+			'"test <!--<Renderer>--><a href=\\"https://ssssota.github.io\\" title=\\"title\\">link<!--<Renderer>--></a><!--<Renderer>-->"'
 		);
 	});
 
@@ -144,7 +144,7 @@ describe('Markdown(CommonMark)', () => {
 		const el = screen.getByText('code');
 		expect(el.tagName.toLowerCase()).toBe('code');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			'"test <!--<Renderer>--><code>code<!--<Renderer>--></code><!--<Element>--><!--<Renderer>-->"'
+			'"test <!--<Renderer>--><code>code<!--<Renderer>--></code><!--<Renderer>-->"'
 		);
 	});
 
@@ -160,7 +160,7 @@ describe('Markdown(CommonMark)', () => {
 			"<pre><code>const square = (x: number) =&gt; {
 			  return x * x;
 			};
-			<!--<Renderer>--></code><!--<Element>--><!--<Renderer>--></pre>"
+			<!--<Renderer>--></code><!--<Renderer>--></pre>"
 		`);
 
 		ctx.rerender({ md: '```js\nconst val = 1;\n```' });
@@ -168,7 +168,7 @@ describe('Markdown(CommonMark)', () => {
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
 			"<pre><code class=\\"language-js\\">const val = 1;
-			<!--<Renderer>--></code><!--<Element>--><!--<Renderer>--></pre>"
+			<!--<Renderer>--></code><!--<Renderer>--></pre>"
 		`);
 
 		ctx.rerender({ md: '~~~js\nconst val = `2`;\n~~~' });
@@ -176,7 +176,7 @@ describe('Markdown(CommonMark)', () => {
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
 			"<pre><code class=\\"language-js\\">const val = \`2\`;
-			<!--<Renderer>--></code><!--<Element>--><!--<Renderer>--></pre>"
+			<!--<Renderer>--></code><!--<Renderer>--></pre>"
 		`);
 	});
 
@@ -187,7 +187,7 @@ describe('Markdown(CommonMark)', () => {
 		expect(p1.parentElement?.tagName.toLowerCase()).toBe('blockquote');
 		expect(p1.parentElement?.outerHTML).toMatchInlineSnapshot(`
 			"<blockquote>
-			<!--<Renderer>--><p>test<!--<Renderer>--></p><!--<Element>--><!--<Renderer>-->
+			<!--<Renderer>--><p>test<!--<Renderer>--></p><!--<Renderer>-->
 			<!--<Renderer>--></blockquote>"
 		`);
 
@@ -198,10 +198,10 @@ describe('Markdown(CommonMark)', () => {
 		expect(p3.parentElement?.parentElement).toBe(p2.parentElement);
 		expect(p2.parentElement?.outerHTML).toMatchInlineSnapshot(`
 			"<blockquote>
-			<!--<Renderer>--><p>top<!--<Renderer>--></p><!--<Element>--><!--<Renderer>-->
+			<!--<Renderer>--><p>top<!--<Renderer>--></p><!--<Renderer>-->
 			<!--<Renderer>--><blockquote>
-			<!--<Renderer>--><p>nested<!--<Renderer>--></p><!--<Element>--><!--<Renderer>-->
-			<!--<Renderer>--></blockquote><!--<Element>--><!--<Renderer>-->
+			<!--<Renderer>--><p>nested<!--<Renderer>--></p><!--<Renderer>-->
+			<!--<Renderer>--></blockquote><!--<Renderer>-->
 			<!--<Renderer>--></blockquote>"
 		`);
 	});
@@ -256,14 +256,14 @@ describe('Markdown(CommonMark)', () => {
 	it('should render themantic break', () => {
 		const ctx = render(Markdown, { md: '----------' });
 		expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-			'"<div><hr><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			'"<div><hr><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
 		);
 
 		ctx.rerender({ md: '***\n---\n___' });
 		expect(ctx.container.innerHTML).toMatchInlineSnapshot(`
-			"<div><hr><!--<Element>--><!--<Renderer>-->
-			<!--<Renderer>--><hr><!--<Element>--><!--<Renderer>-->
-			<!--<Renderer>--><hr><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"
+			"<div><hr><!--<Renderer>-->
+			<!--<Renderer>--><hr><!--<Renderer>-->
+			<!--<Renderer>--><hr><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"
 		`);
 	});
 
@@ -307,7 +307,7 @@ describe('HTML', () => {
 		});
 		expect(container.innerHTML.includes('<br>')).toBe(true);
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			'"<div><p>a<!--<Renderer>--><br><!--<Element>--><!--<Renderer>-->b<!--<Renderer>--></p><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			'"<div><p>a<!--<Renderer>--><br><!--<Renderer>-->b<!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
 		);
 	});
 });
@@ -321,7 +321,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			'"<div><p><svg xmlns=\\"http://www.w3.org/2000/svg\\"></svg><!--<ElementSVG>--><!--<Element>--><!--<Renderer>--></p><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			'"<div><p><svg xmlns=\\"http://www.w3.org/2000/svg\\"></svg><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
 		);
 	});
 
@@ -331,7 +331,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			'"<div><p><path d=\\"M1\\"></path><!--<ElementSVG>--><!--<Element>--><!--<Renderer>--></p><!--<Element>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			'"<div><p><path d=\\"M1\\"></path><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
 		);
 	});
 });
