@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script lang="ts">
 	import type { Plugin } from '$lib';
 	import Markdown, { Transparent } from '$lib';

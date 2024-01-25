@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';

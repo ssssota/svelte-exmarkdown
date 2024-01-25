@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script lang="ts">
 	import SvelteExmarkdown from '$lib';
 	import { gfmPlugin } from '$lib/gfm';

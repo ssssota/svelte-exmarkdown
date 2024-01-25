@@ -10,6 +10,10 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		paths: { base: '/svelte-exmarkdown' }
+	},
+
+	compilerOptions: {
+		runes: true
 	}
 };
 
