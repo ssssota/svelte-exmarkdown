@@ -1,5 +1,5 @@
 import type { HastNode, Plugin } from '$lib';
-import type { MdastRoot } from 'remark-rehype/lib';
+import type { Root as MdastRoot } from 'mdast';
 import type { ComponentType, SvelteComponent } from 'svelte';
 import Allowlist from './Allowlist.svelte';
 import AllowlistText from './Allowlist.svelte?raw';
