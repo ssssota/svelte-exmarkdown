@@ -128,14 +128,14 @@ describe('Markdown(CommonMark)', () => {
 		expect((el as HTMLAnchorElement).href).toBe('https://ssssota.github.io/');
 		expect(el.textContent).toBe('link');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			'"test <!--<Renderer>--><a href=\\"https://ssssota.github.io/\\">link<!--<Renderer>--></a><!--<Renderer>-->"'
+			`"test <!--<Renderer>--><a href="https://ssssota.github.io/">link<!--<Renderer>--></a><!--<Renderer>-->"`
 		);
 
 		ctx.rerender({ md: 'test [link](https://ssssota.github.io "title")' });
 		el = screen.getByRole('link');
 		expect(el.title).toBe('title');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			'"test <!--<Renderer>--><a href=\\"https://ssssota.github.io\\" title=\\"title\\">link<!--<Renderer>--></a><!--<Renderer>-->"'
+			`"test <!--<Renderer>--><a href="https://ssssota.github.io" title="title">link<!--<Renderer>--></a><!--<Renderer>-->"`
 		);
 	});
 
@@ -167,7 +167,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('const val = 1;');
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
-			"<pre><code class=\\"language-js\\">const val = 1;
+			"<pre><code class="language-js">const val = 1;
 			<!--<Renderer>--></code><!--<Renderer>--></pre>"
 		`);
 
@@ -175,7 +175,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('const val = `2`;');
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
-			"<pre><code class=\\"language-js\\">const val = \`2\`;
+			"<pre><code class="language-js">const val = \`2\`;
 			<!--<Renderer>--></code><!--<Renderer>--></pre>"
 		`);
 	});
@@ -271,24 +271,24 @@ describe('Markdown(CommonMark)', () => {
 		let el: HTMLImageElement;
 		const ctx = render(Markdown, { md: '![]()' });
 		el = screen.getByAltText('') as HTMLImageElement;
-		expect(el.outerHTML).toMatchInlineSnapshot('"<img src=\\"\\" alt=\\"\\">"');
+		expect(el.outerHTML).toMatchInlineSnapshot(`"<img src="" alt="">"`);
 
 		ctx.rerender({ md: '![](http://example.com)' });
 		el = screen.getByAltText('') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			'"<img src=\\"http://example.com\\" alt=\\"\\">"'
+			`"<img src="http://example.com" alt="">"`
 		);
 
 		ctx.rerender({ md: '![test](http://example.com)' });
 		el = screen.getByAltText('test') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			'"<img src=\\"http://example.com\\" alt=\\"test\\">"'
+			`"<img src="http://example.com" alt="test">"`
 		);
 
 		ctx.rerender({ md: '![test](http://example.com "This is test")' });
 		el = screen.getByAltText('test') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			'"<img src=\\"http://example.com\\" alt=\\"test\\" title=\\"This is test\\">"'
+			`"<img src="http://example.com" alt="test" title="This is test">"`
 		);
 	});
 });
@@ -321,7 +321,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			'"<div><p><svg xmlns=\\"http://www.w3.org/2000/svg\\"></svg><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			`"<div><p><svg xmlns="http://www.w3.org/2000/svg"></svg><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"`
 		);
 	});
 
@@ -331,7 +331,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			'"<div><p><path d=\\"M1\\"></path><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			`"<div><p><path d="M1"></path><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"`
 		);
 	});
 });
