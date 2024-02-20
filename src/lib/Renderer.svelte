@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script lang="ts">
 	import SVGElement from './SVGElement.svelte';
 	import {

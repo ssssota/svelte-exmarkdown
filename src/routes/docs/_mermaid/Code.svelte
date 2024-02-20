@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script lang="ts">
 	import { getAstNode } from '$lib/contexts';
 	import mermaid from 'mermaid';

@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script lang="ts">
 	import 'water.css/out/light.min.css';
 	import '../app.css';

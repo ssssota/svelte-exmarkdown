@@ -1,4 +1,4 @@
-<svelte:options namespace="svg" />
+<svelte:options namespace="svg" runes={false} />
 
 <script lang="ts">
 	export let __tag: string;
