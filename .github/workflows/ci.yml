@@ -37,4 +37,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm coverage
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
