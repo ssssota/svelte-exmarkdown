@@ -10,21 +10,21 @@
 		<link href="../_app/immutable/assets/Header.CDiPosav.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/5.CcZhcTT0.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/index.CGk0_04g.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.ChWCG5Hy.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/entry.Ds-o4o3f.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.DKGAc-z8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/entry.pfUVXl2t.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.Cok7TgDu.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.DEUviKWM.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.CRQN413G.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.MkV5tr54.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/control.CYgJF_JY.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.CWQRQVOk.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.Dt7tgif8.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.BQ24v_F8.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.DfJ3r8Mo.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.BW-vaeSv.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.GFJaRAUq.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.I9KTDWhM.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/each.lGGjstjS.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/Header.D21EFaqr.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Header.DHKhQRXc.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/utils.P31UkBtv.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/5.BgwpBh_t.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/5.DCOzHbCs.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.g5YcAAdQ.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/Markdown.LgPksr5g.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.BsnaWi7F.js"><title>svelte-exmarkdown</title><!-- HEAD_svelte-hhrjmv_START --><meta name="description" content="svelte-exmarkdown. Svelte component to render markdown."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"><!-- HEAD_svelte-hhrjmv_END -->
@@ -61,7 +61,7 @@ console.log('Hello, world!');
 			
 			<script>
 				{
-					__sveltekit_1letddp = {
+					__sveltekit_vb0rtd = {
 						base: new URL("..", location).pathname.slice(0, -1),
 						assets: "/svelte-exmarkdown"
 					};
@@ -71,8 +71,8 @@ console.log('Hello, world!');
 					const data = [null,{"type":"data","data":{docs:[{slug:"01-getting-started",markdown:"# Getting started\n\n## Install\n\n```sh\nnpm install svelte-exmarkdown\n# yarn add svelte-exmarkdown\n# pnpm add svelte-exmarkdown\n```\n\n## Basic usage\n\n```svelte\n\u003Cscript>\n\timport Markdown from 'svelte-exmarkdown';\n\tlet md = '# Hello world!';\n\u003C/script>\n\n\u003Ctextarea bind:value={md} />\n\u003CMarkdown {md} />\n```\n\nwith GFM(GitHub Flavored Markdown)\n\nIf you want to use tables, checkboxes, etc., you can use the GFM plugin.\n\n```svelte\n\u003Cscript>\n\timport Markdown from 'svelte-exmarkdown';\n\timport { gfmPlugin } from 'svelte-exmarkdown/gfm';\n\tlet md = '# Hello world!';\n\tconst plugins = [gfmPlugin()];\n\u003C/script>\n\n\u003Ctextarea bind:value={md} />\n\u003CMarkdown {md} {plugins} />\n```\n"},{slug:"02-plugin-overview",markdown:"# Plugin overview\n\nThis library uses [unified](https://github.com/unifiedjs/unified).\nTherefore, you can use [remark](https://github.com/remarkjs/remark) or [rehype](https://github.com/rehypejs/rehype) plugins.\n\nAnd you can custom hast(Hypertext AST) to svelte component mapping.\n\n## Rendering flow\n\n```mermaid\nflowchart TD\n  Markdown -- string --> remark-parse\n  subgraph unified\n    remark-parse -- mdast --> remarkPlugins\n    remarkPlugins -- mdast --> remark-rehype\n    remark-rehype -- hast --> rehypePlugins\n  end\n  rehypePlugins -- hast-component-mapping --> SvelteComponent\n```\n\n## Plugin API\n\nYou can make a plugin with the following API.\n\n```ts\nimport type { ComponentType, SvelteComponent } from 'svelte';\nimport type { Pluggable } from 'unified';\nexport type ComponentsMap = Record\u003Cstring, ComponentType\u003CSvelteComponent>>;\nexport type Plugin = {\n\tremarkPlugin?: Pluggable;\n\trehypePlugin?: Pluggable;\n\trenderer?: ComponentsMap;\n};\n```\n\nAnd you can set multiple plugins into `plugins` props.\n\n```svelte\n\u003Cscript lang=\"ts\">\n\timport Markdown from 'svelte-exmarkdown';\n\timport type { Plugin } from 'svelte-exmarkdown';\n\tconst plugins: Plugin[] = [];\n\u003C/script>\n\n\u003CMarkdown md=\"# Hello world\" {plugins} />\n```\n\n### Example\n\nThe GFM plugin is in the library. It is implemented as follows.\n\n```ts\nimport remarkGfm from 'remark-gfm';\nimport type { Plugin } from '../types';\nexport const gfmPlugin: Plugin = { remarkPlugin: [remarkGfm] };\n```\n"},{slug:"03-raw-html",markdown:"# Plugin showcase (Raw HTML)\n\nIf you trust the input and you want to use raw HTML, you can use the [rehype-raw](https://github.com/rehypejs/rehype-raw) plugin.\n\n> The [CommonMark specification](https://spec.commonmark.org/) allows raw HTML by default, but this library doesn't allow raw HTML by default. This is because raw HTML has potential security issues.\n\n:raw-html\n"},{slug:"04-skip-render",markdown:"# Skip rendering the element\n\nIf you want to skip rendering the element, you can use `renderer` prop.\n\nYou can use `null` to skip rendering the element.\n\n:skip-rendering\n\n## Allowlist and Denylist\n\nYou can use `allowlist` and `denylist` to control which elements are allowed to render.\n\nThis example is same as above.\n\n:denylist\n\nIf you want to support only some elements, you can use `allowlist`.\n\n:allowlist\n"},{slug:"05-transparent",markdown:"# Transparent component\n\nIf you want to render a component without any wrapper element, you can use the `Transparent` component.\nThis component is convenient when you want to disable some syntax.\n\n:transparent\n"},{slug:"06-components-map",markdown:"# Components map\n\nAs you've seen so far, you can customize renderer via `renderer` object.\n\nIf you set HTML tag name as a value of `renderer` object, it will be rendered as is.\n\n:components-map\n"},{slug:"07-code-highlight",markdown:"# Plugin showcase (Code highlight)\n\nIf you want to highlight code, you can use the [rehype-highlight](https://github.com/rehypejs/rehype-highlight) plugin.\n\n:code-highlight\n"},{slug:"08-math-formula",markdown:"# Plugin showcase (Math formula)\n\nIf you want to render math formula, you can use [remark-math](https://github.com/remarkjs/remark-math) and [rehype-katex](https://github.com/remarkjs/remark-math/tree/main/packages/rehype-katex) plugins.\nOffcourse, you can use [rehype-mathjax](https://github.com/remarkjs/remark-math/tree/main/packages/rehype-mathjax) instead of rehype-katex.\n\n:math-formula\n"},{slug:"09-ast",markdown:"# Access to the AST\n\nYou can access the AST in the your custom component by using the `getAstNode` function.\n\nIt makes powerful to create custom components.\n\n```svelte\n\u003C!-- DumpAst.svelte -->\n\u003Cscript lang=\"ts\">\n\timport { getAstNode } from 'svelte-exmarkdown';\n\n\tconst astContext = getAstNode();\n\u003C/script>\n\n\u003C!-- Dump current node -->\u003Cpre>{JSON.stringify($astContext, null, 2)}\u003C/pre>\n```\n\n:ast\n"}]},"uses":{}},null];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.ChWCG5Hy.js"),
-						import("../_app/immutable/entry/app.CWQRQVOk.js")
+						import("../_app/immutable/entry/start.DKGAc-z8.js"),
+						import("../_app/immutable/entry/app.Dt7tgif8.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2, 5],
