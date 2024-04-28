@@ -23,7 +23,7 @@
 		"release": "pnpm clean && pnpm package && pnpm changeset publish"
 	},
 	"peerDependencies": {
-		"svelte": "^3.47.0 || ^4.0.0"
+		"svelte": "^3.47.0 || ^4.0.0 || >=5.0.0-next.115"
 	},
 	"dependencies": {
 		"remark-gfm": "^4.0.0",
