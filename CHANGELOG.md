@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 3.0.4
+
+### Patch Changes
+
+- [#220](https://github.com/ssssota/svelte-exmarkdown/pull/220) [`383feee`](https://github.com/ssssota/svelte-exmarkdown/commit/383feee31ac8f43307c7a24689ef32eb20f8d9c6) Thanks [@ssssota](https://github.com/ssssota)! - Support svelte5(RC)
+
 ## 3.0.3
 
 ### Patch Changes
