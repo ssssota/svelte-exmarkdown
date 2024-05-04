@@ -7,7 +7,7 @@ export default {
 		environment: 'jsdom',
 		coverage: {
 			reporter: ['clover', 'cobertura', 'lcov', 'text'],
-			include: ['./src/lib/**']
+			include: ['src/lib/**']
 		},
 		dir: 'src'
 	}
