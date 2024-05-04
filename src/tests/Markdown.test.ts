@@ -6,7 +6,7 @@ import Markdown from '../lib/Markdown.svelte';
 describe('Markdown(CommonMark)', () => {
 	afterEach(() => cleanup());
 
-	it('should render headings', () => {
+	it('should render headings', async () => {
 		let el: HTMLElement;
 		const ctx = render(Markdown, { md: '# test1' });
 		el = screen.getByRole('heading', { level: 1 });
@@ -15,35 +15,35 @@ describe('Markdown(CommonMark)', () => {
 			'"<h1>test1<!--<Renderer>--></h1>"'
 		);
 
-		ctx.rerender({ md: '## test2' });
+		await ctx.rerender({ md: '## test2' });
 		el = screen.getByRole('heading', { level: 2 });
 		expect(el.textContent).toBe('test2');
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			'"<h2>test2<!--<Renderer>--></h2>"'
 		);
 
-		ctx.rerender({ md: '### test3' });
+		await ctx.rerender({ md: '### test3' });
 		el = screen.getByRole('heading', { level: 3 });
 		expect(el.textContent).toBe('test3');
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			'"<h3>test3<!--<Renderer>--></h3>"'
 		);
 
-		ctx.rerender({ md: '#### test4' });
+		await ctx.rerender({ md: '#### test4' });
 		el = screen.getByRole('heading', { level: 4 });
 		expect(el.textContent).toBe('test4');
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			'"<h4>test4<!--<Renderer>--></h4>"'
 		);
 
-		ctx.rerender({ md: '##### test5' });
+		await ctx.rerender({ md: '##### test5' });
 		el = screen.getByRole('heading', { level: 5 });
 		expect(el.textContent).toBe('test5');
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			'"<h5>test5<!--<Renderer>--></h5>"'
 		);
 
-		ctx.rerender({ md: '###### test6' });
+		await ctx.rerender({ md: '###### test6' });
 		el = screen.getByRole('heading', { level: 6 });
 		expect(el.textContent).toBe('test6');
 		expect(el.outerHTML).toMatchInlineSnapshot(
@@ -51,14 +51,14 @@ describe('Markdown(CommonMark)', () => {
 		);
 
 		// alt syntax
-		ctx.rerender({ md: 'test1\n====' });
+		await ctx.rerender({ md: 'test1\n====' });
 		el = screen.getByRole('heading', { level: 1 });
 		expect(el.textContent).toBe('test1');
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			'"<h1>test1<!--<Renderer>--></h1>"'
 		);
 
-		ctx.rerender({ md: 'test2\n----' });
+		await ctx.rerender({ md: 'test2\n----' });
 		el = screen.getByRole('heading', { level: 2 });
 		expect(el.textContent).toBe('test2');
 		expect(el.outerHTML).toMatchInlineSnapshot(
@@ -66,7 +66,7 @@ describe('Markdown(CommonMark)', () => {
 		);
 	});
 
-	it('should render paragraph', () => {
+	it('should render paragraph', async () => {
 		let el: HTMLElement;
 		const ctx = render(Markdown, { md: 'para1' });
 		el = screen.getByText('para1');
@@ -75,7 +75,7 @@ describe('Markdown(CommonMark)', () => {
 			'"<p>para1<!--<Renderer>--></p>"'
 		);
 
-		ctx.rerender({ md: 'hello\nworld' });
+		await ctx.rerender({ md: 'hello\nworld' });
 		el = screen.getByText('hello world');
 		expect(el.tagName.toLowerCase()).toBe('p');
 		expect(el.outerHTML).toMatchInlineSnapshot(`
@@ -84,7 +84,7 @@ describe('Markdown(CommonMark)', () => {
 		`);
 
 		// multi paragraph
-		ctx.rerender({ md: 'hello\n\nworld' });
+		await ctx.rerender({ md: 'hello\n\nworld' });
 		el = screen.getByText('hello');
 		expect(el.tagName.toLowerCase()).toBe('p');
 		el = screen.getByText('world');
@@ -119,7 +119,7 @@ describe('Markdown(CommonMark)', () => {
 		);
 	});
 
-	it('should render anchor/link', () => {
+	it('should render anchor/link', async () => {
 		let el: HTMLElement;
 		const ctx = render(Markdown, {
 			md: 'test [link](https://ssssota.github.io/)'
@@ -131,7 +131,9 @@ describe('Markdown(CommonMark)', () => {
 			`"test <!--<Renderer>--><a href="https://ssssota.github.io/">link<!--<Renderer>--></a><!--<Renderer>-->"`
 		);
 
-		ctx.rerender({ md: 'test [link](https://ssssota.github.io "title")' });
+		await ctx.rerender({
+			md: 'test [link](https://ssssota.github.io "title")'
+		});
 		el = screen.getByRole('link');
 		expect(el.title).toBe('title');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
@@ -148,7 +150,7 @@ describe('Markdown(CommonMark)', () => {
 		);
 	});
 
-	it('should render code block', () => {
+	it('should render code block', async () => {
 		let el: HTMLElement;
 		const ctx = render(Markdown, {
 			md: '```\nconst square = (x: number) => {\n  return x * x;\n};\n```'
@@ -163,7 +165,7 @@ describe('Markdown(CommonMark)', () => {
 			<!--<Renderer>--></code><!--<Renderer>--></pre>"
 		`);
 
-		ctx.rerender({ md: '```js\nconst val = 1;\n```' });
+		await ctx.rerender({ md: '```js\nconst val = 1;\n```' });
 		el = screen.getByText('const val = 1;');
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
@@ -171,7 +173,7 @@ describe('Markdown(CommonMark)', () => {
 			<!--<Renderer>--></code><!--<Renderer>--></pre>"
 		`);
 
-		ctx.rerender({ md: '~~~js\nconst val = `2`;\n~~~' });
+		await ctx.rerender({ md: '~~~js\nconst val = `2`;\n~~~' });
 		el = screen.getByText('const val = `2`;');
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
@@ -180,7 +182,7 @@ describe('Markdown(CommonMark)', () => {
 		`);
 	});
 
-	it('should render blockquote', () => {
+	it('should render blockquote', async () => {
 		const ctx = render(Markdown, { md: '> test' });
 		const p1 = screen.getByText('test');
 		expect(p1.tagName.toLowerCase()).toBe('p');
@@ -191,7 +193,7 @@ describe('Markdown(CommonMark)', () => {
 			<!--<Renderer>--></blockquote>"
 		`);
 
-		ctx.rerender({ md: '> top\n> > nested' });
+		await ctx.rerender({ md: '> top\n> > nested' });
 		const p2 = screen.getByText('top');
 		const p3 = screen.getByText('nested');
 		expect(p3.parentElement?.tagName.toLowerCase()).toBe('blockquote');
@@ -206,20 +208,20 @@ describe('Markdown(CommonMark)', () => {
 		`);
 	});
 
-	it('should render unordered list', () => {
+	it('should render unordered list', async () => {
 		const ctx = render(Markdown, { md: '- item1' });
 		const li1 = screen.getByText('item1');
 		expect(li1.tagName.toLowerCase()).toBe('li');
 		expect(li1.parentElement?.tagName.toLowerCase()).toBe('ul');
 
-		ctx.rerender({ md: '- item1\n- item2' });
+		await ctx.rerender({ md: '- item1\n- item2' });
 		const li2 = screen.getByText('item1');
 		const li3 = screen.getByText('item2');
 		expect(li2.tagName.toLowerCase()).toBe('li');
 		expect(li3.tagName.toLowerCase()).toBe('li');
 		expect(li2.parentElement).toBe(li3.parentElement);
 
-		ctx.rerender({ md: '- item1\n  - nested\n- item2' });
+		await ctx.rerender({ md: '- item1\n  - nested\n- item2' });
 		const li4 = screen.getByText('item1');
 		const li5 = screen.getByText('nested');
 		const li6 = screen.getByText('item2');
@@ -229,20 +231,20 @@ describe('Markdown(CommonMark)', () => {
 		);
 	});
 
-	it('should render ordered list', () => {
+	it('should render ordered list', async () => {
 		const ctx = render(Markdown, { md: '1. item1' });
 		const li1 = screen.getByText('item1');
 		expect(li1.tagName.toLowerCase()).toBe('li');
 		expect(li1.parentElement?.tagName.toLowerCase()).toBe('ol');
 
-		ctx.rerender({ md: '1. item1\n2. item2' });
+		await ctx.rerender({ md: '1. item1\n2. item2' });
 		const li2 = screen.getByText('item1');
 		const li3 = screen.getByText('item2');
 		expect(li2.tagName.toLowerCase()).toBe('li');
 		expect(li3.tagName.toLowerCase()).toBe('li');
 		expect(li2.parentElement).toBe(li3.parentElement);
 
-		ctx.rerender({ md: '2. item1\n    1. nested\n1. item2' });
+		await ctx.rerender({ md: '2. item1\n    1. nested\n1. item2' });
 		const li4 = screen.getByText('item1');
 		const li5 = screen.getByText('nested');
 		const li6 = screen.getByText('item2');
@@ -253,39 +255,39 @@ describe('Markdown(CommonMark)', () => {
 		);
 	});
 
-	it('should render themantic break', () => {
+	it('should render themantic break', async () => {
 		const ctx = render(Markdown, { md: '----------' });
 		expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-			'"<div><hr><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			`"<hr><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"`
 		);
 
-		ctx.rerender({ md: '***\n---\n___' });
+		await ctx.rerender({ md: '***\n---\n___' });
 		expect(ctx.container.innerHTML).toMatchInlineSnapshot(`
-			"<div><hr><!--<Renderer>-->
+			"<hr><!--<Renderer>-->
 			<!--<Renderer>--><hr><!--<Renderer>-->
-			<!--<Renderer>--><hr><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"
+			<!--<Renderer>--><hr><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"
 		`);
 	});
 
-	it('should render image', () => {
+	it('should render image', async () => {
 		let el: HTMLImageElement;
 		const ctx = render(Markdown, { md: '![]()' });
 		el = screen.getByAltText('') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(`"<img src="" alt="">"`);
 
-		ctx.rerender({ md: '![](http://example.com)' });
+		await ctx.rerender({ md: '![](http://example.com)' });
 		el = screen.getByAltText('') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			`"<img src="http://example.com" alt="">"`
 		);
 
-		ctx.rerender({ md: '![test](http://example.com)' });
+		await ctx.rerender({ md: '![test](http://example.com)' });
 		el = screen.getByAltText('test') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			`"<img src="http://example.com" alt="test">"`
 		);
 
-		ctx.rerender({ md: '![test](http://example.com "This is test")' });
+		await ctx.rerender({ md: '![test](http://example.com "This is test")' });
 		el = screen.getByAltText('test') as HTMLImageElement;
 		expect(el.outerHTML).toMatchInlineSnapshot(
 			`"<img src="http://example.com" alt="test" title="This is test">"`
@@ -307,7 +309,7 @@ describe('HTML', () => {
 		});
 		expect(container.innerHTML.includes('<br>')).toBe(true);
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			'"<div><p>a<!--<Renderer>--><br><!--<Renderer>-->b<!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"'
+			`"<p>a<!--<Renderer>--><br><!--<Renderer>-->b<!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"`
 		);
 	});
 });
@@ -321,7 +323,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			`"<div><p><svg xmlns="http://www.w3.org/2000/svg"></svg><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"`
+			`"<p><svg xmlns="http://www.w3.org/2000/svg"></svg><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"`
 		);
 	});
 
@@ -331,7 +333,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			`"<div><p><path d="M1"></path><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"`
+			`"<p><path d="M1"></path><!--<SVGElement>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"`
 		);
 	});
 });

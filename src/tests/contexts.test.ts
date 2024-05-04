@@ -8,7 +8,7 @@ afterEach(() => cleanup());
 const skipPositionProperties = (key: string, value: unknown) =>
 	key === 'position' ? undefined : value;
 
-it('Plugin can access context', () => {
+it('Plugin can access context', async () => {
 	const ctx = render(Markdown, {
 		md: 'test',
 		plugins: [{ renderer: { p: RenderAstNode } }]
@@ -26,7 +26,7 @@ it('Plugin can access context', () => {
 		children: [{ type: 'text', value: 'test' }]
 	});
 
-	ctx.rerender({
+	await ctx.rerender({
 		md: 'test *em*',
 		plugins: [{ renderer: { em: RenderAstNode } }]
 	});
