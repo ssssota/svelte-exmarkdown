@@ -4,7 +4,7 @@ import Markdown from '../lib/Markdown.svelte';
 
 afterEach(() => cleanup());
 
-it('should skip rendering p or em element', () => {
+it('should skip rendering p or em element', async () => {
 	const ctx = render(Markdown, {
 		md: 'test',
 		plugins: [{ renderer: { p: null } }]
@@ -12,7 +12,7 @@ it('should skip rendering p or em element', () => {
 
 	expect(ctx.container.textContent).toBe('');
 
-	ctx.rerender({
+	await ctx.rerender({
 		md: 'test *em*',
 		plugins: [{ renderer: { em: null } }]
 	});

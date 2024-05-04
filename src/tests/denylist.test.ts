@@ -11,7 +11,7 @@ it('should render paragraph instead of h1', () => {
 	});
 
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(`
-		"<div><h1>test<!--<Renderer>--></h1><!--<Renderer>-->
-		<!--<Renderer>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>--></div>"
+		"<h1>test<!--<Renderer>--></h1><!--<Renderer>-->
+		<!--<Renderer>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"
 	`);
 });

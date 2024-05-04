@@ -39,7 +39,7 @@
 		"@sveltejs/kit": "^2.4.3",
 		"@sveltejs/package": "^2.2.6",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
-		"@testing-library/svelte": "^4.0.6",
+		"@testing-library/svelte": "^5.1.0",
 		"@types/mdast": "^4.0.3",
 		"@types/node": "^20.11.6",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
