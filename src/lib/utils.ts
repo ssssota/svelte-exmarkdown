@@ -13,7 +13,10 @@ import type {
 export const nonNullable = <T>(value: T | null | undefined): value is T =>
 	value != null;
 
-const transform = (node: HastNode) => {
+const camelToKebab = (str: string) =>
+	str.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
+
+const transformClassName = (node: HastNode) => {
 	// convert className array to class string
 	if (
 		node.type !== 'element' ||
@@ -24,13 +27,28 @@ const transform = (node: HastNode) => {
 	node.properties.class = node.properties.className.join(' ');
 	delete node.properties.className;
 };
+const transformAriaProps = (node: HastNode) => {
+	if (node.type !== 'element' || node.properties === undefined) return;
+	const ariaProps = Object.keys(node.properties).filter((key) =>
+		key.startsWith('aria')
+	);
+	for (const key of ariaProps) {
+		const value = node.properties[key];
+		delete node.properties[key];
+		node.properties[camelToKebab(key)] = value;
+	}
+};
+const transform = (node: HastNode) => {
+	transformClassName(node);
+	transformAriaProps(node);
+};
 
 const visit = (visitor: (node: HastNode) => unknown, node: HastNode) => {
 	visitor(node);
 	node.children?.forEach((child) => visit(visitor, child));
 };
 
-const rehypeReactClassNameToSvelteClass: UnifiedPlugin = () => {
+const rehypeReactPropsToSvelteProps: UnifiedPlugin = () => {
 	return (node: UnistNode, _file, done) => {
 		try {
 			visit(transform, node as HastNode);
@@ -48,7 +66,7 @@ export const createParser = (plugins: Plugin[]): Parser => {
 		.use(plugins.map((plugin) => plugin.remarkPlugin).filter(nonNullable))
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(plugins.map((plugin) => plugin.rehypePlugin).filter(nonNullable))
-		.use(rehypeReactClassNameToSvelteClass);
+		.use(rehypeReactPropsToSvelteProps);
 	return (md: string) => processor.runSync(processor.parse(md), md);
 };
 
