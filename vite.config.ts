@@ -6,7 +6,8 @@ export default {
 	test: {
 		environment: 'jsdom',
 		coverage: {
-			reporter: ['clover', 'cobertura', 'lcov', 'text']
+			reporter: ['clover', 'cobertura', 'lcov', 'text'],
+			include: ['./src/lib/**']
 		},
 		dir: 'src'
 	}
