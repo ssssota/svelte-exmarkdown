@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 3.0.5
+
+### Patch Changes
+
+- [#240](https://github.com/ssssota/svelte-exmarkdown/pull/240) [`79cf4cf`](https://github.com/ssssota/svelte-exmarkdown/commit/79cf4cf8365c03246d3b70475b642c05ca4b1e22) Thanks [@ssssota](https://github.com/ssssota)! - Render aria props correctly
+
 ## 3.0.4
 
 ### Patch Changes
