@@ -44,7 +44,7 @@ importers:
         version: 3.1.0(svelte@4.2.15)(vite@5.2.11(@types/node@20.12.8))
       '@testing-library/svelte':
         specifier: ^5.1.0
-        version: 5.1.0(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.8))(vitest@1.5.2(@types/node@20.12.8)(@vitest/ui@1.5.2)(jsdom@24.0.0))
+        version: 5.1.0(svelte@4.2.15)(vite@5.2.11(@types/node@20.12.8))(vitest@1.5.2(@types/node@20.12.8)(@vitest/ui@1.5.2)(jsdom@24.0.0))
       '@types/mdast':
         specifier: ^4.0.3
         version: 4.0.3
@@ -3944,12 +3944,12 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/svelte@5.1.0(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.8))(vitest@1.5.2(@types/node@20.12.8)(@vitest/ui@1.5.2)(jsdom@24.0.0))':
+  '@testing-library/svelte@5.1.0(svelte@4.2.15)(vite@5.2.11(@types/node@20.12.8))(vitest@1.5.2(@types/node@20.12.8)(@vitest/ui@1.5.2)(jsdom@24.0.0))':
     dependencies:
       '@testing-library/dom': 9.3.4
       svelte: 4.2.15
     optionalDependencies:
-      vite: 5.2.10(@types/node@20.12.8)
+      vite: 5.2.11(@types/node@20.12.8)
       vitest: 1.5.2(@types/node@20.12.8)(@vitest/ui@1.5.2)(jsdom@24.0.0)
 
   '@types/aria-query@5.0.4': {}
