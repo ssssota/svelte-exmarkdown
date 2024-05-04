@@ -38,3 +38,6 @@ jobs:
       - uses: ./.github/actions/setup
       - run: pnpm coverage
       - uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
