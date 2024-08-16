@@ -64,7 +64,10 @@ export const createParser = (plugins: Plugin[]): Parser => {
 	const processor = unified()
 		.use(remarkParse)
 		.use(plugins.map((plugin) => plugin.remarkPlugin).filter(nonNullable))
-		.use(remarkRehype, { allowDangerousHtml: true })
+		.use(remarkRehype, {
+			allowDangerousHtml: true,
+			handlers: plugins.map((plugin) => plugin.handler).filter(nonNullable).reduce((memo, cur) => ({...memo, ...cur}), {})
+		})
 		.use(plugins.map((plugin) => plugin.rehypePlugin).filter(nonNullable))
 		.use(rehypeReactPropsToSvelteProps);
 	return (md: string) => processor.runSync(processor.parse(md), md);
