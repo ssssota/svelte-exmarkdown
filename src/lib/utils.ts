@@ -70,10 +70,10 @@ function fakeDeepMerge<T, K extends keyof T>(agg: T, cur: T, k: K, def: T[K]) {
 	agg[k] ??= def;
 	// Casting here helps avoid adding a billion lines of ts to determine if T[K] is truly an iterable
 	// This is used only internally so its ok to not truly be 'safe'
-	agg[k] = [
-		...(agg[k] as Iterable<unknown>),
+	agg[k] = (Array.isArray(agg[k]) ? [
+		...agg[k],
 		...(cur[k] as unknown as Iterable<unknown>)
-	] as T[K];
+	] : {...agg[k], ...cur[k]}) as T[K];
 	delete cur[k];
 }
 
