@@ -1,6 +1,6 @@
 import type { ComponentType, SvelteComponent } from 'svelte';
 import type { Pluggable, Processor } from 'unified';
-import type { Handlers } from 'mdast-util-to-hast';
+import type { Options } from 'remark-rehype';
 
 export type Component = ComponentType<SvelteComponent>;
 export type ComponentsMap = Record<
@@ -11,7 +11,7 @@ export type Plugin = {
 	remarkPlugin?: Pluggable;
 	rehypePlugin?: Pluggable;
 	renderer?: ComponentsMap;
-	handler?: Handlers
+	remarkToRehypeOptions?: Options
 };
 
 export type UnistNode = ReturnType<Processor['parse']> & {

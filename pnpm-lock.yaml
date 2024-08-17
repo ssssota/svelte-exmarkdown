@@ -87,9 +87,6 @@ importers:
       katex:
         specifier: ^0.16.9
         version: 0.16.10
-      mdast-util-to-hast:
-        specifier: ^13.2.0
-        version: 13.2.0
       mermaid:
         specifier: ^10.7.0
         version: 10.9.0
