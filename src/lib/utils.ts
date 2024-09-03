@@ -60,11 +60,43 @@ const rehypeReactPropsToSvelteProps: UnifiedPlugin = () => {
 	};
 };
 
+/**
+ * Do a merge OF AN ITERABLE on the surface level, then delete the cur[k]
+ * Used for remark2rehype options reduction
+ */
+function fakeDeepMerge<T, K extends keyof T>(agg: T, cur: T, k: K, def: T[K]) {
+	if (!cur[k]) return;
+
+	agg[k] ??= def;
+	// Casting here helps avoid adding a billion lines of ts to determine if T[K] is truly an iterable
+	// This is used only internally so its ok to not truly be 'safe'
+	agg[k] = (
+		Array.isArray(agg[k])
+			? [...agg[k], ...(cur[k] as unknown as Iterable<unknown>)]
+			: { ...agg[k], ...cur[k] }
+	) as T[K];
+	delete cur[k];
+}
+
 export const createParser = (plugins: Plugin[]): Parser => {
 	const processor = unified()
 		.use(remarkParse)
 		.use(plugins.map((plugin) => plugin.remarkPlugin).filter(nonNullable))
-		.use(remarkRehype, { allowDangerousHtml: true })
+		.use(
+			remarkRehype,
+			plugins
+				.map((plugin) => plugin.remarkToRehypeOptions)
+				.filter(nonNullable)
+				.reduce(
+					(agg, cur) => {
+						fakeDeepMerge(agg, cur, 'handlers', {});
+						fakeDeepMerge(agg, cur, 'passThrough', []);
+
+						return { ...agg, ...cur };
+					},
+					{ allowDangerousHtml: true }
+				)
+		)
 		.use(plugins.map((plugin) => plugin.rehypePlugin).filter(nonNullable))
 		.use(rehypeReactPropsToSvelteProps);
 	return (md: string) => processor.runSync(processor.parse(md), md);
