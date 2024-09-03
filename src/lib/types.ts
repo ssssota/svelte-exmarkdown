@@ -11,7 +11,7 @@ export type Plugin = {
 	remarkPlugin?: Pluggable;
 	rehypePlugin?: Pluggable;
 	renderer?: ComponentsMap;
-	remarkToRehypeOptions?: Options
+	remarkToRehypeOptions?: Options;
 };
 
 export type UnistNode = ReturnType<Processor['parse']> & {
