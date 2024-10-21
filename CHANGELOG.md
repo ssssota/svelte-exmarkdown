@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 4.0.0
+
+### Major Changes
+
+- [#263](https://github.com/ssssota/svelte-exmarkdown/pull/263) [`9ba083e`](https://github.com/ssssota/svelte-exmarkdown/commit/9ba083e98272ae585d635ba430b3c4766235bb69) Thanks [@ssssota](https://github.com/ssssota)! - Support svelte5 (Drop svelte3/4 support)
+
 ## 3.0.5
 
 ### Patch Changes
