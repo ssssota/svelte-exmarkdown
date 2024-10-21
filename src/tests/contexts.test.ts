@@ -1,9 +1,7 @@
-import { cleanup, render } from '@testing-library/svelte';
-import { afterEach, expect, it } from 'vitest';
+import { render } from '@testing-library/svelte/svelte5';
+import { expect, it } from 'vitest';
 import Markdown from '../lib';
 import RenderAstNode from './RenderAstNode.svelte';
-
-afterEach(() => cleanup());
 
 const skipPositionProperties = (key: string, value: unknown) =>
 	key === 'position' ? undefined : value;

@@ -5,11 +5,11 @@
 	import rehypeKatex from 'rehype-katex';
 	import remarkMath from 'remark-math';
 
-	let md = '$$\n\\int_0^\\infty x^2 dx\n$$';
+	let md = $state('$$\n\\int_0^\\infty x^2 dx\n$$');
 	const plugins: Plugin[] = [
 		{ remarkPlugin: [remarkMath], rehypePlugin: [rehypeKatex] }
 	];
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} {plugins} />

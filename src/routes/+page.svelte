@@ -9,19 +9,17 @@
 	import { highlightPlugin } from './docs/_highlight';
 	import { mermaidPlugin } from './docs/_mermaid';
 
-	let html = false;
-	let gfm = true;
-	let ast = false;
-	let md = Readme;
-	let plugins: Plugin[];
-	$: plugins = [
+	let html = $state(false);
+	let gfm = $state(true);
+	let ast = $state(false);
+	let md = $state(Readme);
+	let plugins = $derived<Plugin[]>([
 		...(gfm ? [gfmPlugin()] : []),
 		...(html ? [{ rehypePlugin: rehypeRaw }] : []),
 		highlightPlugin,
 		mermaidPlugin
-	];
-	let parse: Parser;
-	$: parse = createParser(plugins);
+	]);
+	let parse = $derived<Parser>(createParser(plugins));
 </script>
 
 <div class="wrapper">
@@ -37,7 +35,7 @@
 		</div>
 	</Header>
 	<main>
-		<textarea class="input" bind:value={md} />
+		<textarea class="input" bind:value={md}></textarea>
 
 		<section class="output">
 			{#if ast}

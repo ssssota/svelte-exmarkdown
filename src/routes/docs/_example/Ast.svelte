@@ -3,9 +3,9 @@
 	import Markdown from '$lib';
 	import DumpAst from './DumpAst.svelte';
 
-	let md = '# Hello World';
+	let md = $state('# Hello World');
 	const plugins: Plugin[] = [{ renderer: { h1: DumpAst } }];
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} {plugins} />

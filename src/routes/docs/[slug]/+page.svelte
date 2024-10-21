@@ -7,7 +7,11 @@
 	import { mermaidPlugin } from '../_mermaid';
 	import { getTitleFromMarkdown } from '../utils';
 	import type { PageData } from './$types';
-	export let data: PageData;
+
+	type Props = {
+		data: PageData;
+	};
+	let { data }: Props = $props();
 
 	const plugins: Plugin[] = [
 		examplePlugin,
@@ -25,14 +29,14 @@
 			{getTitleFromMarkdown(data.prev.markdown)}
 		</a>
 	{:else}
-		<div />
+		<div></div>
 	{/if}
 	{#if data.next}
 		<a href="{base}/docs/{data.next.slug}">
 			{getTitleFromMarkdown(data.next.markdown)}
 		</a>
 	{:else}
-		<div />
+		<div></div>
 	{/if}
 </nav>
 

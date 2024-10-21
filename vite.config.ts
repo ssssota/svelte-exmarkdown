@@ -1,8 +1,9 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import type { UserConfig } from 'vitest/config';
+import { svelteTesting } from '@testing-library/svelte/vite';
+import { defineConfig } from 'vitest/config';
 
-export default {
-	plugins: [sveltekit()],
+export default defineConfig({
+	plugins: [sveltekit(), svelteTesting()],
 	test: {
 		environment: 'jsdom',
 		coverage: {
@@ -11,4 +12,4 @@ export default {
 		},
 		dir: 'src'
 	}
-} satisfies UserConfig;
+});

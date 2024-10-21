@@ -13,10 +13,10 @@ npm install svelte-exmarkdown
 ```svelte
 <script>
 	import Markdown from 'svelte-exmarkdown';
-	let md = '# Hello world!';
+	let md = $state('# Hello world!');
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} />
 ```
 
@@ -28,10 +28,10 @@ If you want to use tables, checkboxes, etc., you can use the GFM plugin.
 <script>
 	import Markdown from 'svelte-exmarkdown';
 	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
-	let md = '# Hello world!';
+	let md = $state('# Hello world!');
 	const plugins = [gfmPlugin()];
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} {plugins} />
 ```

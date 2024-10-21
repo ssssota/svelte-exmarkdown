@@ -7,5 +7,5 @@
 	const plugins: Plugin[] = [{ rehypePlugin: [rehypeRaw] }];
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} {plugins} />

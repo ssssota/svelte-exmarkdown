@@ -5,7 +5,7 @@
 	import 'highlight.js/styles/github.css';
 	import rehypeHighlight from 'rehype-highlight';
 
-	let md = "```typescript\nconsole.log('Hello, world!');\n```";
+	let md = $state("```typescript\nconsole.log('Hello, world!');\n```");
 	const plugins: Plugin[] = [
 		{
 			rehypePlugin: [
@@ -16,5 +16,5 @@
 	];
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} {plugins} />

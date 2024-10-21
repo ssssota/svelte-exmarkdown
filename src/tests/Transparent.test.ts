@@ -1,9 +1,7 @@
-import { cleanup, render } from '@testing-library/svelte';
-import { afterEach, expect, it } from 'vitest';
+import { render } from '@testing-library/svelte/svelte5';
+import { expect, it } from 'vitest';
 import Markdown from '../lib/Markdown.svelte';
 import Transparent from '../lib/Transparent.svelte';
-
-afterEach(() => cleanup());
 
 it('should not render children', async () => {
 	const ctx = render(Markdown, {
@@ -12,7 +10,7 @@ it('should not render children', async () => {
 	});
 
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"test<!--<Renderer>--><!--<Transparent>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"`
+		`"<!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->test"`
 	);
 
 	await ctx.rerender({
@@ -20,6 +18,6 @@ it('should not render children', async () => {
 		plugins: [{ renderer: { em: Transparent } }]
 	});
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<p>test <!--<Renderer>-->em<!--<Renderer>--><!--<Transparent>--><!--<Renderer>--></p><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"`
+		`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->test <!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->em</p>"`
 	);
 });
