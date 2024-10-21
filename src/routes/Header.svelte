@@ -1,14 +1,19 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import type { Snippet } from 'svelte';
+	type Props = {
+		children?: Snippet<[]>;
+	};
+	let { children }: Props = $props();
 </script>
 
 <header>
 	<h1>
 		<a href={base}>svelte-exmarkdown</a>
 	</h1>
-	<div class="spacer" />
+	<div class="spacer"></div>
 	<nav class="right">
-		<slot />
+		{@render children?.()}
 		<div>
 			<a class="link" href="{base}/docs">Docs</a>
 		</div>

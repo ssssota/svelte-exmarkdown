@@ -1,8 +1,6 @@
-import { cleanup, render } from '@testing-library/svelte';
-import { afterEach, expect, it } from 'vitest';
+import { render } from '@testing-library/svelte/svelte5';
+import { expect, it } from 'vitest';
 import Markdown, { allowlist } from '../lib';
-
-afterEach(() => cleanup());
 
 it('should render paragraph instead of h1', () => {
 	const ctx = render(Markdown, {
@@ -11,7 +9,7 @@ it('should render paragraph instead of h1', () => {
 	});
 
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(`
-		"<h1>test<!--<Renderer>--></h1><!--<Renderer>-->
-		<!--<Renderer>--><!--<Renderer>--><!--<Renderer>--><!--<Markdown>-->"
+		"<!----><!----><!----><!----><!----><!----><!----><!----><h1><!----><!----><!----><!---->test</h1><!----><!----><!---->
+		<!----><!----><!----><!---->"
 	`);
 });

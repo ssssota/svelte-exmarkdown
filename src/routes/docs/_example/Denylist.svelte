@@ -2,9 +2,9 @@
 	import type { Plugin } from '$lib';
 	import Markdown, { denylist } from '$lib';
 
-	let md = '# Skipped\n\n## Rendered';
+	let md = $state('# Skipped\n\n## Rendered');
 	const plugins: Plugin[] = [denylist(['h1'])];
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} {plugins} />

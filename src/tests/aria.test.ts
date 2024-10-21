@@ -1,4 +1,4 @@
-import { render } from '@testing-library/svelte';
+import { render } from '@testing-library/svelte/svelte5';
 import rehypeRaw from 'rehype-raw';
 import { expect, it } from 'vitest';
 import Markdown from '../lib';

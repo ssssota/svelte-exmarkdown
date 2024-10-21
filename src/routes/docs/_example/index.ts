@@ -1,6 +1,6 @@
 import type { HastNode, Plugin } from '$lib';
 import type { Root as MdastRoot } from 'mdast';
-import type { ComponentType, SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 import Allowlist from './Allowlist.svelte';
 import AllowlistText from './Allowlist.svelte?raw';
 import Ast from './Ast.svelte';
@@ -20,10 +20,7 @@ import SkipRenderingText from './SkipRendering.svelte?raw';
 import Transparent from './Transparent.svelte';
 import TransparentText from './Transparent.svelte?raw';
 
-const components: Record<
-	string,
-	{ raw: string; component: ComponentType<SvelteComponent> }
-> = {
+const components: Record<string, { raw: string; component: Component }> = {
 	'raw-html': {
 		raw: RawHtmlText,
 		component: RawHtml

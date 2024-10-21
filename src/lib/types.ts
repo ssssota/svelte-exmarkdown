@@ -1,7 +1,7 @@
-import type { ComponentType, SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 import type { Pluggable, Processor } from 'unified';
 
-export type Component = ComponentType<SvelteComponent>;
+export type { Component };
 export type ComponentsMap = Record<
 	string,
 	Component | string | null | undefined

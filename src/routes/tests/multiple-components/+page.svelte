@@ -12,7 +12,7 @@
 	let md = '';
 </script>
 
-<textarea bind:value={md} />
+<textarea bind:value={md}></textarea>
 <Markdown {md} />
 <Markdown {md} plugins={[skipImagePlugin]} />
 <Markdown {md} plugins={[customImagePlugin]} />
