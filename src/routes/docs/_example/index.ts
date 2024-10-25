@@ -15,6 +15,8 @@ import MathFormula from './MathFormula.svelte';
 import MathFormulaText from './MathFormula.svelte?raw';
 import RawHtml from './RawHtml.svelte';
 import RawHtmlText from './RawHtml.svelte?raw';
+import Shiki from './Shiki.svelte';
+import ShikiText from './Shiki.svelte?raw';
 import SkipRendering from './SkipRendering.svelte';
 import SkipRenderingText from './SkipRendering.svelte?raw';
 import Transparent from './Transparent.svelte';
@@ -56,6 +58,10 @@ const components: Record<string, { raw: string; component: Component }> = {
 	ast: {
 		raw: AstText,
 		component: Ast
+	},
+	shiki: {
+		raw: ShikiText,
+		component: Shiki
 	}
 };
 
