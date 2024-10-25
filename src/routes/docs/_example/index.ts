@@ -17,6 +17,8 @@ import RawHtml from './RawHtml.svelte';
 import RawHtmlText from './RawHtml.svelte?raw';
 import Shiki from './Shiki.svelte';
 import ShikiText from './Shiki.svelte?raw';
+import ShikiSync from './ShikiSync.svelte';
+import ShikiSyncText from './ShikiSync.svelte?raw';
 import SkipRendering from './SkipRendering.svelte';
 import SkipRenderingText from './SkipRendering.svelte?raw';
 import Transparent from './Transparent.svelte';
@@ -62,6 +64,10 @@ const components: Record<string, { raw: string; component: Component }> = {
 	shiki: {
 		raw: ShikiText,
 		component: Shiki
+	},
+	'shiki-sync': {
+		raw: ShikiSyncText,
+		component: ShikiSync
 	}
 };
 
