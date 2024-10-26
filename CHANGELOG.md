@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 4.0.1
+
+### Patch Changes
+
+- [#279](https://github.com/ssssota/svelte-exmarkdown/pull/279) [`b8dd7b8`](https://github.com/ssssota/svelte-exmarkdown/commit/b8dd7b85e2552121a575fb8639312ec7bc16674a) Thanks [@ssssota](https://github.com/ssssota)! - Render SVG correctly
+
 ## 4.0.0
 
 ### Major Changes
