@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 4.0.2
+
+### Patch Changes
+
+- [#289](https://github.com/ssssota/svelte-exmarkdown/pull/289) [`b4a3855`](https://github.com/ssssota/svelte-exmarkdown/commit/b4a385583fa3f3b831543aceb9e30efa3491b142) Thanks [@denlukia](https://github.com/denlukia)! - Ensure custom renderers are used during SSR
+
 ## 4.0.1
 
 ### Patch Changes
