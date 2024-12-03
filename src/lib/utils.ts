@@ -90,6 +90,13 @@ export const resolveComponent = (
 	return component;
 };
 
+export const getComponentsFromPlugins = (plugins: Plugin[]) => {
+	return plugins
+		.map((plugin) => plugin.renderer)
+		.filter(nonNullable)
+		.reduce((acc, cur) => ({ ...acc, ...cur }), {});
+};
+
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element
  */
