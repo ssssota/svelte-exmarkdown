@@ -5,7 +5,7 @@
 	} from './contexts';
 	import Renderer from './Renderer.svelte';
 	import type { HastNode, Parser, Plugin } from './types';
-	import { createParser, nonNullable } from './utils';
+	import { createParser, getComponentsFromPlugins } from './utils';
 
 	type Props = {
 		md: string;
@@ -15,14 +15,11 @@
 
 	let parse = $derived<Parser>(createParser(plugins));
 
-	const componentsContextValue = createComponentsContextValue({});
+	const componentsContextValue = createComponentsContextValue(
+		getComponentsFromPlugins(plugins)
+	);
 	$effect(() => {
-		componentsContextValue.set({
-			...plugins
-				.map((plugin) => plugin.renderer)
-				.filter(nonNullable)
-				.reduce((acc, cur) => ({ ...acc, ...cur }), {})
-		});
+		componentsContextValue.set(getComponentsFromPlugins(plugins));
 	});
 	setComponentsContext(componentsContextValue);
 
