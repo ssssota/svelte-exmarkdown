@@ -90,12 +90,12 @@ export const resolveComponent = (
 	return component;
 };
 
-export const getComponentsFromPlugins = (plugins: Plugin[])=> {
+export const getComponentsFromPlugins = (plugins: Plugin[]) => {
 	return plugins
 		.map((plugin) => plugin.renderer)
 		.filter(nonNullable)
 		.reduce((acc, cur) => ({ ...acc, ...cur }), {});
-}
+};
 
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element
@@ -176,4 +176,3 @@ export const allowlist = (tags: Tag[]): Plugin => ({
 export const denylist = (tags: Tag[]): Plugin => ({
 	renderer: Object.fromEntries(tags.map((tag) => [tag, null]))
 });
-
