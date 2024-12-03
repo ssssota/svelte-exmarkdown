@@ -1,3 +1,0 @@
-import"../chunks/disclose-version.Bg9kRutz.js";import{f as i,s as p,q as e,x as f,y as l}from"../chunks/runtime.CV3elkN-.js";import{a as d,t as g}from"../chunks/template.C-tOna3O.js";import{r as x}from"../chunks/attributes.DC7X6D7E.js";import{M as u,b as v}from"../chunks/Markdown.CC1qa6oo.js";import{r as c,a as h}from"../chunks/index.B3ul2jCf.js";var _=g("<textarea></textarea> <!>",1);function P(o){let a=l(`$$
-\\sqrt{2}
-$$`);const s=[{remarkPlugin:[c],rehypePlugin:[h]}];var t=_(),r=i(t);x(r);var m=p(r,2);u(m,{get md(){return e(a)},plugins:s}),v(r,()=>e(a),n=>f(a,n)),d(o,t)}export{P as component};
