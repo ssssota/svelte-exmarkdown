@@ -20,7 +20,14 @@ it('should throw error because circular reference', () => {
 			plugins: [{ renderer: { h1: 'h1' } }]
 		})
 	).toThrowErrorMatchingInlineSnapshot(
-		`[Error: Circular dependency detected: h1 -> h1]`
+		`
+		[Error: Circular dependency detected: h1 -> h1
+
+			in Renderer.svelte
+			in Renderer.svelte
+			in Markdown.svelte
+		]
+	`
 	);
 
 	expect(() =>
@@ -29,6 +36,13 @@ it('should throw error because circular reference', () => {
 			plugins: [{ renderer: { h1: 'h2', h2: 'h1' } }]
 		})
 	).toThrowErrorMatchingInlineSnapshot(
-		`[Error: Circular dependency detected: h1 -> h2 -> h1]`
+		`
+		[Error: Circular dependency detected: h1 -> h2 -> h1
+
+			in Renderer.svelte
+			in Renderer.svelte
+			in Markdown.svelte
+		]
+	`
 	);
 });
