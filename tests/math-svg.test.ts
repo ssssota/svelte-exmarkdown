@@ -10,9 +10,9 @@ test('render images with each plugins', async ({ page }) => {
 			return window.document.querySelector('path')?.namespaceURI;
 		});
 	};
-	expect(getPathNamespace()).resolves.toBe('http://www.w3.org/2000/svg');
+	await expect(getPathNamespace()).resolves.toBe('http://www.w3.org/2000/svg');
 
 	await textarea.clear();
 	await textarea.fill('$$\\sqrt{2}$$');
-	expect(getPathNamespace()).resolves.toBe('http://www.w3.org/2000/svg');
+	await expect(getPathNamespace()).resolves.toBe('http://www.w3.org/2000/svg');
 });
