@@ -3,8 +3,7 @@ description: Setup Node.js/pnpm. Install dependencies.
 runs:
   using: 'composite'
   steps:
-    - run: corepack enable
-      shell: bash
+    - uses: pnpm/action-setup@v4
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
