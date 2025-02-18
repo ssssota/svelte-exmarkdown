@@ -2,9 +2,11 @@ import type { Component } from 'svelte';
 import type { Pluggable, Processor } from 'unified';
 
 export type { Component };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyComponent = Component<any, any>;
 export type ComponentsMap = Record<
 	string,
-	Component | string | null | undefined
+	AnyComponent | string | null | undefined
 >;
 export type Plugin = {
 	remarkPlugin?: Pluggable;
