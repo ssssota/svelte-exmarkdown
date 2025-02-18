@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 4.0.3
+
+### Patch Changes
+
+- [`7015887`](https://github.com/ssssota/svelte-exmarkdown/commit/7015887e0ae1eb66af32ac0436403d63f01e5906) Thanks [@ssssota](https://github.com/ssssota)! - Fix componentMap type
+
 ## 4.0.2
 
 ### Patch Changes
