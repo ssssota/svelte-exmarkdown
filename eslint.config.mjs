@@ -3,9 +3,12 @@ import js from '@eslint/js';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import parser from 'svelte-eslint-parser';
+
+const require = createRequire(import.meta.url);
+const parser = require('svelte-eslint-parser');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
