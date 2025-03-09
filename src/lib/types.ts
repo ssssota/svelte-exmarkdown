@@ -50,3 +50,7 @@ export type HastNode =
 	| HastRaw;
 
 export type Parser = (md: string) => UnistNode;
+export type Readable<T> = {
+	get current(): T;
+	set current(value: T);
+};
