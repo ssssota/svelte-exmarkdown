@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+import { BROWSER } from 'esm-env';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import type { Snippet } from 'svelte';
@@ -188,6 +188,6 @@ export const snippetRenderer = <T extends Record<string, any>>(
 	return function Component($$anchor: any, $$props: T) {
 		let { $$events, $$slots, $$legacy, ...props } = $$props;
 		// @ts-expect-error
-		snippet($$anchor, browser ? () => props : props);
+		snippet($$anchor, BROWSER ? () => props : props);
 	} as unknown as Component<T>;
 };
