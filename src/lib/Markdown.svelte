@@ -2,7 +2,7 @@
 	import {
 		createComponentsContextValue,
 		setComponentsContext
-	} from './contexts';
+	} from './contexts.svelte';
 	import Renderer from './Renderer.svelte';
 	import type { HastNode, Parser, Plugin } from './types';
 	import { createParser, getComponentsFromPlugins } from './utils';
@@ -19,7 +19,7 @@
 		getComponentsFromPlugins(plugins)
 	);
 	$effect(() => {
-		componentsContextValue.set(getComponentsFromPlugins(plugins));
+		componentsContextValue.current = getComponentsFromPlugins(plugins);
 	});
 	setComponentsContext(componentsContextValue);
 

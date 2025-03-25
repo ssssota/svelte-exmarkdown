@@ -5,4 +5,4 @@
 </script>
 
 <!-- Dump current node -->
-<pre>{JSON.stringify($astContext, null, 2)}</pre>
+<pre>{JSON.stringify(astContext.current, null, 2)}</pre>
