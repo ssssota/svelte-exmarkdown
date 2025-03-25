@@ -63,5 +63,5 @@
 		{/if}
 	{/if}
 {:else if astNode.type === 'text' || astNode.type === 'raw'}
-	{astNode.value}
+	{astNode.current}
 {/if}

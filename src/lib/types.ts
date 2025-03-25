@@ -3,7 +3,7 @@ import type { Pluggable, Processor } from 'unified';
 
 export type { Component };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyComponent = Component<any, any>;
+export type AnyComponent = Component<any, any>;
 export type ComponentsMap = Record<
 	string,
 	AnyComponent | string | null | undefined

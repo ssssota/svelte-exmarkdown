@@ -45,7 +45,14 @@
 						'  '
 					)}</pre>
 			{:else}
-				<SvelteExmarkdown {md} {plugins} />
+				<SvelteExmarkdown {md} {plugins}>
+					{#snippet h1(props)}
+						{@const { children, ...rest } = props}
+						<h1 style="border-bottom:1px solid #999" {...rest}>
+							{@render children?.()}
+						</h1>
+					{/snippet}
+				</SvelteExmarkdown>
 			{/if}
 		</section>
 	</main>

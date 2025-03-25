@@ -1,20 +1,42 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+	import type { SvelteHTMLElements } from 'svelte/elements';
 	import { ref, setComponentsContext } from './contexts.svelte';
 	import Renderer from './Renderer.svelte';
 	import type { ComponentsMap, HastNode, Parser, Plugin } from './types';
-	import { createParser, getComponentsFromPlugins } from './utils';
+	import {
+		createParser,
+		getComponentsFromPlugins,
+		snippetRenderer,
+		type Tag
+	} from './utils';
 
-	type Props = {
+	type SnippetRenderers = {
+		[T in Tag]?: T extends keyof SvelteHTMLElements
+			? Snippet<[SvelteHTMLElements[T]]>
+			: never;
+	};
+	type Props = SnippetRenderers & {
 		md: string;
 		plugins?: Plugin[];
 	};
-	let { md, plugins = [] }: Props = $props();
+	let { md, plugins = [], ...snippetRenderers }: Props = $props();
 
 	let parse = $derived<Parser>(createParser(plugins));
 
 	const componentsContextValue = ref<ComponentsMap>({});
 	$effect(() => {
-		componentsContextValue.current = getComponentsFromPlugins(plugins);
+		componentsContextValue.current = getComponentsFromPlugins([
+			...plugins,
+			{
+				renderer: Object.fromEntries(
+					Object.entries(snippetRenderers).map(([tag, renderer]) => [
+						tag,
+						snippetRenderer(renderer)
+					])
+				)
+			}
+		]);
 	});
 	setComponentsContext(componentsContextValue);
 

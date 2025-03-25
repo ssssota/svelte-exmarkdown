@@ -1,5 +1,7 @@
+import { browser } from '$app/environment';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import type { Snippet } from 'svelte';
 import { unified, type Plugin as UnifiedPlugin } from 'unified';
 import type {
 	Component,
@@ -59,7 +61,9 @@ const rehypeReactPropsToSvelteProps: UnifiedPlugin = () => {
 	};
 };
 
-export const createParser = (plugins: Plugin[]): Parser => {
+export const createParser = (
+	plugins: Pick<Plugin, 'remarkPlugin' | 'rehypePlugin'>[]
+): Parser => {
 	const processor = unified()
 		.use(remarkParse)
 		.use(plugins.map((plugin) => plugin.remarkPlugin).filter(nonNullable))
@@ -89,7 +93,9 @@ export const resolveComponent = (
 	return component;
 };
 
-export const getComponentsFromPlugins = (plugins: Plugin[]) => {
+export const getComponentsFromPlugins = (
+	plugins: Pick<Plugin, 'renderer'>[]
+) => {
 	return plugins
 		.map((plugin) => plugin.renderer)
 		.filter(nonNullable)
@@ -175,3 +181,13 @@ export const allowlist = (tags: Tag[]): Plugin => ({
 export const denylist = (tags: Tag[]): Plugin => ({
 	renderer: Object.fromEntries(tags.map((tag) => [tag, null]))
 });
+
+export const snippetRenderer = <T extends Record<string, any>>(
+	snippet: Snippet<[T]>
+): Component<T> => {
+	return function Component($$anchor: any, $$props: T) {
+		let { $$events, $$slots, $$legacy, ...props } = $$props;
+		// @ts-expect-error
+		snippet($$anchor, browser ? () => props : props);
+	} as unknown as Component<T>;
+};
