@@ -182,12 +182,15 @@ export const denylist = (tags: Tag[]): Plugin => ({
 	renderer: Object.fromEntries(tags.map((tag) => [tag, null]))
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const snippetRenderer = <T extends Record<string, any>>(
 	snippet: Snippet<[T]>
 ): Component<T> => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	return function Component($$anchor: any, $$props: T) {
-		let { $$events, $$slots, $$legacy, ...props } = $$props;
-		// @ts-expect-error
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const { $$events, $$slots, $$legacy, ...props } = $$props;
+		// @ts-expect-error snippet has incorrect type
 		snippet($$anchor, BROWSER ? () => props : props);
 	} as unknown as Component<T>;
 };
