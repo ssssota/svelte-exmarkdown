@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      esm-env:
-        specifier: ^1.2.2
-        version: 1.2.2
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
