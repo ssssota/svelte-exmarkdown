@@ -7,12 +7,12 @@ it('should render with snippet', async () => {
 	const ctx = render(Markdown, { md: 'test', p: pRed });
 
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<!----><!----><!----><!----><!----><!----><!----><!----><p class="color:red;"><!----><!----><!----><!---->test<!----></p>"`
+		`"<!----><!----><!----><!----><!----><!----><!----><!----><!----><p class="color:red;"><!----><!----><!----><!---->test<!----></p>"`
 	);
 
 	await ctx.rerender({ md: 'test2', p: pBlue });
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<!----><!----><!----><!----><!----><!----><!----><!----><p class="color:blue;"><!----><!----><!----><!---->test2<!----></p>"`
+		`"<!----><!----><!----><!----><!----><!----><!----><!----><!----><p class="color:blue;"><!----><!----><!----><!---->test2<!----></p>"`
 	);
 
 	await ctx.rerender({ md: 'test2', p: undefined });
