@@ -13,7 +13,7 @@
 
 	type SnippetRenderers = {
 		[T in Tag]?: T extends keyof SvelteHTMLElements
-			? Snippet<[SvelteHTMLElements[T]]>
+			? Snippet<[SvelteHTMLElements[T]]> | Tag
 			: never;
 	};
 	type Props = SnippetRenderers & {
@@ -30,10 +30,13 @@
 			...plugins,
 			{
 				renderer: Object.fromEntries(
-					Object.entries(snippetRenderers).map(([tag, renderer]) => [
-						tag,
-						snippetRenderer(renderer)
-					])
+					Object.entries(snippetRenderers)
+						.map(([tag, renderer]) => {
+							if (typeof renderer === 'string') return [tag, renderer];
+							if (typeof renderer !== 'function') return undefined;
+							return [tag, snippetRenderer(renderer)];
+						})
+						.filter((tuple) => tuple != null)
 				)
 			}
 		]);
