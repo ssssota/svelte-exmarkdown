@@ -1,4 +1,3 @@
-import { BROWSER } from 'esm-env';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import type { Snippet } from 'svelte';
@@ -77,7 +76,7 @@ export const resolveComponent = (
 	map: ComponentsMap,
 	tagName: string,
 	circularCheck: string[] = []
-): Component | string | null => {
+): Component | SnippetRenderer | string | null => {
 	if (circularCheck.includes(tagName)) {
 		circularCheck.push(tagName);
 		throw new Error(
@@ -182,15 +181,17 @@ export const denylist = (tags: Tag[]): Plugin => ({
 	renderer: Object.fromEntries(tags.map((tag) => [tag, null]))
 });
 
+export const snippetRendererMarker = Symbol.for('snippetRenderer');
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SnippetRenderer<T = any> = Snippet<[T]> & {
+	[snippetRendererMarker]: true;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const snippetRenderer = <T extends Record<string, any>>(
 	snippet: Snippet<[T]>
-): Component<T> => {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	return function Component($$anchor: any, $$props: T) {
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { $$events, $$slots, $$legacy, ...props } = $$props;
-		// @ts-expect-error snippet has incorrect type
-		snippet($$anchor, BROWSER ? () => props : props);
-	} as unknown as Component<T>;
+): SnippetRenderer<T> => {
+	const renderer = snippet as SnippetRenderer<T>;
+	renderer[snippetRendererMarker] = true;
+	return renderer;
 };
