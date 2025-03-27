@@ -2,7 +2,7 @@
 	import Renderer from './Renderer.svelte';
 	import { getComponentsMap, ref, setAstContext } from './contexts.svelte';
 	import type { HastNode } from './types';
-	import { isSvgTag, resolveComponent } from './utils';
+	import { isSvgTag, resolveComponent, snippetRendererMarker } from './utils';
 	type Props = {
 		astNode: HastNode;
 	};
@@ -52,7 +52,18 @@
 			<svelte:element this={Component} {...astNode.properties} />
 		{/if}
 	{:else if Component !== null}
-		{#if Array.isArray(astNode.children) && astNode.children.length !== 0}
+		{#if snippetRendererMarker in Component && Component[snippetRendererMarker]}
+			{#if Array.isArray(astNode.children) && astNode.children.length !== 0}
+				{#snippet children()}
+					{#each astNode.children as child}
+						<Renderer astNode={child} />
+					{/each}
+				{/snippet}
+				{@render Component({ ...astNode.properties, children })}
+			{:else}
+				{@render Component(astNode.properties)}
+			{/if}
+		{:else if Array.isArray(astNode.children) && astNode.children.length !== 0}
 			<Component {...astNode.properties}>
 				{#each astNode.children as child}
 					<Renderer astNode={child} />

@@ -1,5 +1,6 @@
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import type { Snippet } from 'svelte';
 import { unified, type Plugin as UnifiedPlugin } from 'unified';
 import type {
 	Component,
@@ -59,7 +60,9 @@ const rehypeReactPropsToSvelteProps: UnifiedPlugin = () => {
 	};
 };
 
-export const createParser = (plugins: Plugin[]): Parser => {
+export const createParser = (
+	plugins: Pick<Plugin, 'remarkPlugin' | 'rehypePlugin'>[]
+): Parser => {
 	const processor = unified()
 		.use(remarkParse)
 		.use(plugins.map((plugin) => plugin.remarkPlugin).filter(nonNullable))
@@ -73,7 +76,7 @@ export const resolveComponent = (
 	map: ComponentsMap,
 	tagName: string,
 	circularCheck: string[] = []
-): Component | string | null => {
+): Component | SnippetRenderer | string | null => {
 	if (circularCheck.includes(tagName)) {
 		circularCheck.push(tagName);
 		throw new Error(
@@ -89,7 +92,9 @@ export const resolveComponent = (
 	return component;
 };
 
-export const getComponentsFromPlugins = (plugins: Plugin[]) => {
+export const getComponentsFromPlugins = (
+	plugins: Pick<Plugin, 'renderer'>[]
+) => {
 	return plugins
 		.map((plugin) => plugin.renderer)
 		.filter(nonNullable)
@@ -175,3 +180,18 @@ export const allowlist = (tags: Tag[]): Plugin => ({
 export const denylist = (tags: Tag[]): Plugin => ({
 	renderer: Object.fromEntries(tags.map((tag) => [tag, null]))
 });
+
+export const snippetRendererMarker = Symbol.for('snippetRenderer');
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SnippetRenderer<T = any> = Snippet<[T]> & {
+	[snippetRendererMarker]: true;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const snippetRenderer = <T extends Record<string, any>>(
+	snippet: Snippet<[T]>
+): SnippetRenderer<T> => {
+	const renderer = snippet as SnippetRenderer<T>;
+	renderer[snippetRendererMarker] = true;
+	return renderer;
+};
