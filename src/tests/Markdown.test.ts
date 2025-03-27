@@ -12,42 +12,42 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByRole('heading', { level: 1 });
 		expect(el.textContent).toBe('test1');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h1><!----><!----><!----><!---->test1</h1>"`
+			`"<h1><!----><!---->test1</h1>"`
 		);
 
 		await ctx.rerender({ md: '## test2' });
 		el = screen.getByRole('heading', { level: 2 });
 		expect(el.textContent).toBe('test2');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h2><!----><!----><!----><!---->test2</h2>"`
+			`"<h2><!----><!---->test2</h2>"`
 		);
 
 		await ctx.rerender({ md: '### test3' });
 		el = screen.getByRole('heading', { level: 3 });
 		expect(el.textContent).toBe('test3');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h3><!----><!----><!----><!---->test3</h3>"`
+			`"<h3><!----><!---->test3</h3>"`
 		);
 
 		await ctx.rerender({ md: '#### test4' });
 		el = screen.getByRole('heading', { level: 4 });
 		expect(el.textContent).toBe('test4');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h4><!----><!----><!----><!---->test4</h4>"`
+			`"<h4><!----><!---->test4</h4>"`
 		);
 
 		await ctx.rerender({ md: '##### test5' });
 		el = screen.getByRole('heading', { level: 5 });
 		expect(el.textContent).toBe('test5');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h5><!----><!----><!----><!---->test5</h5>"`
+			`"<h5><!----><!---->test5</h5>"`
 		);
 
 		await ctx.rerender({ md: '###### test6' });
 		el = screen.getByRole('heading', { level: 6 });
 		expect(el.textContent).toBe('test6');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h6><!----><!----><!----><!---->test6</h6>"`
+			`"<h6><!----><!---->test6</h6>"`
 		);
 
 		// alt syntax
@@ -55,14 +55,14 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByRole('heading', { level: 1 });
 		expect(el.textContent).toBe('test1');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h1><!----><!----><!----><!---->test1</h1>"`
+			`"<h1><!----><!---->test1</h1>"`
 		);
 
 		await ctx.rerender({ md: 'test2\n----' });
 		el = screen.getByRole('heading', { level: 2 });
 		expect(el.textContent).toBe('test2');
 		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<h2><!----><!----><!----><!---->test2</h2>"`
+			`"<h2><!----><!---->test2</h2>"`
 		);
 	});
 
@@ -71,15 +71,13 @@ describe('Markdown(CommonMark)', () => {
 		const ctx = render(Markdown, { md: 'para1' });
 		el = screen.getByText('para1');
 		expect(el.tagName.toLowerCase()).toBe('p');
-		expect(el.outerHTML).toMatchInlineSnapshot(
-			`"<p><!----><!----><!----><!---->para1</p>"`
-		);
+		expect(el.outerHTML).toMatchInlineSnapshot(`"<p><!----><!---->para1</p>"`);
 
 		await ctx.rerender({ md: 'hello\nworld' });
 		el = screen.getByText('hello world');
 		expect(el.tagName.toLowerCase()).toBe('p');
 		expect(el.outerHTML).toMatchInlineSnapshot(`
-			"<p><!----><!----><!----><!---->hello
+			"<p><!----><!---->hello
 			world</p>"
 		`);
 
@@ -90,8 +88,8 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('world');
 		expect(el.tagName.toLowerCase()).toBe('p');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(`
-			"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->hello</p><!----><!----><!---->
-			<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->world</p>"
+			"<!----><!----><!----><!----><!----><!----><p><!----><!---->hello</p><!---->
+			<!----><!----><!----><!----><p><!----><!---->world</p>"
 		`);
 	});
 
@@ -103,7 +101,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('bold2');
 		expect(el.tagName.toLowerCase()).toBe('strong');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!---->test <!----><!----><!----><!----><!----><!----><strong><!----><!----><!----><!---->bold1</strong><!----><!----><!----> test <!----><!----><!----><!----><!----><!----><strong><!----><!----><!----><!---->bold2</strong>"`
+			`"<!----><!---->test <!----><!----><!----><!----><strong><!----><!---->bold1</strong><!----> test <!----><!----><!----><!----><strong><!----><!---->bold2</strong>"`
 		);
 	});
 
@@ -115,7 +113,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('italic2');
 		expect(el.tagName.toLowerCase()).toBe('em');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!---->test <!----><!----><!----><!----><!----><!----><em><!----><!----><!----><!---->italic1</em><!----><!----><!----> test <!----><!----><!----><!----><!----><!----><em><!----><!----><!----><!---->italic2</em>"`
+			`"<!----><!---->test <!----><!----><!----><!----><em><!----><!---->italic1</em><!----> test <!----><!----><!----><!----><em><!----><!---->italic2</em>"`
 		);
 	});
 
@@ -128,7 +126,7 @@ describe('Markdown(CommonMark)', () => {
 		expect((el as HTMLAnchorElement).href).toBe('https://ssssota.github.io/');
 		expect(el.textContent).toBe('link');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!---->test <!----><!----><!----><!----><!----><!----><a href="https://ssssota.github.io/"><!----><!----><!----><!---->link</a>"`
+			`"<!----><!---->test <!----><!----><!----><!----><a href="https://ssssota.github.io/"><!----><!---->link</a>"`
 		);
 
 		await ctx.rerender({
@@ -137,7 +135,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByRole('link');
 		expect(el.title).toBe('title');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!---->test <!----><!----><!----><!----><!----><!----><a href="https://ssssota.github.io" title="title"><!----><!----><!----><!---->link</a>"`
+			`"<!----><!---->test <!----><!----><!----><!----><a href="https://ssssota.github.io" title="title"><!----><!---->link</a>"`
 		);
 	});
 
@@ -146,7 +144,7 @@ describe('Markdown(CommonMark)', () => {
 		const el = screen.getByText('code');
 		expect(el.tagName.toLowerCase()).toBe('code');
 		expect(el.parentElement?.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!---->test <!----><!----><!----><!----><!----><!----><code><!----><!----><!----><!---->code</code>"`
+			`"<!----><!---->test <!----><!----><!----><!----><code><!----><!---->code</code>"`
 		);
 	});
 
@@ -159,7 +157,7 @@ describe('Markdown(CommonMark)', () => {
 		expect(el.tagName.toLowerCase()).toBe('code');
 		expect(el.parentElement?.tagName.toLowerCase()).toBe('pre');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
-			"<pre><!----><!----><!----><!----><!----><!----><!----><code><!----><!----><!----><!---->const square = (x: number) =&gt; {
+			"<pre><!----><!----><!----><!----><!----><code><!----><!---->const square = (x: number) =&gt; {
 			  return x * x;
 			};
 			</code></pre>"
@@ -169,7 +167,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('const val = 1;');
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
-			"<pre><!----><!----><!----><!----><!----><!----><!----><code class="language-js"><!----><!----><!----><!---->const val = 1;
+			"<pre><!----><!----><!----><!----><!----><code class="language-js"><!----><!---->const val = 1;
 			</code></pre>"
 		`);
 
@@ -177,7 +175,7 @@ describe('Markdown(CommonMark)', () => {
 		el = screen.getByText('const val = `2`;');
 		expect(el.className).toBe('language-js');
 		expect(el.parentElement?.outerHTML).toMatchInlineSnapshot(`
-			"<pre><!----><!----><!----><!----><!----><!----><!----><code class="language-js"><!----><!----><!----><!---->const val = \`2\`;
+			"<pre><!----><!----><!----><!----><!----><code class="language-js"><!----><!---->const val = \`2\`;
 			</code></pre>"
 		`);
 	});
@@ -188,8 +186,8 @@ describe('Markdown(CommonMark)', () => {
 		expect(p1.tagName.toLowerCase()).toBe('p');
 		expect(p1.parentElement?.tagName.toLowerCase()).toBe('blockquote');
 		expect(p1.parentElement?.outerHTML).toMatchInlineSnapshot(`
-			"<blockquote><!----><!----><!----><!---->
-			<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->test</p><!----><!----><!---->
+			"<blockquote><!----><!---->
+			<!----><!----><!----><!----><p><!----><!---->test</p><!---->
 			</blockquote>"
 		`);
 
@@ -199,11 +197,11 @@ describe('Markdown(CommonMark)', () => {
 		expect(p3.parentElement?.tagName.toLowerCase()).toBe('blockquote');
 		expect(p3.parentElement?.parentElement).toBe(p2.parentElement);
 		expect(p2.parentElement?.outerHTML).toMatchInlineSnapshot(`
-			"<blockquote><!----><!----><!----><!---->
-			<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->top</p><!----><!----><!---->
-			<!----><!----><!----><!----><!----><!----><blockquote><!----><!----><!----><!---->
-			<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->nested</p><!----><!----><!---->
-			</blockquote><!----><!----><!---->
+			"<blockquote><!----><!---->
+			<!----><!----><!----><!----><p><!----><!---->top</p><!---->
+			<!----><!----><!----><!----><blockquote><!----><!---->
+			<!----><!----><!----><!----><p><!----><!---->nested</p><!---->
+			</blockquote><!---->
 			</blockquote>"
 		`);
 	});
@@ -258,14 +256,14 @@ describe('Markdown(CommonMark)', () => {
 	it('should render themantic break', async () => {
 		const ctx = render(Markdown, { md: '----------' });
 		expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!----><!----><!----><!----><!----><hr>"`
+			`"<!----><!----><!----><!----><!----><!----><hr>"`
 		);
 
 		await ctx.rerender({ md: '***\n---\n___' });
 		expect(ctx.container.innerHTML).toMatchInlineSnapshot(`
-			"<!----><!----><!----><!----><!----><!----><!----><!----><hr><!----><!----><!---->
-			<!----><!----><!----><!----><!----><!----><hr><!----><!----><!---->
-			<!----><!----><!----><!----><!----><!----><hr>"
+			"<!----><!----><!----><!----><!----><!----><hr><!---->
+			<!----><!----><!----><!----><hr><!---->
+			<!----><!----><!----><!----><hr>"
 		`);
 	});
 
@@ -309,7 +307,7 @@ describe('HTML', () => {
 		});
 		expect(container.innerHTML.includes('<br>')).toBe(true);
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->a<!----><!----><!----><!----><!----><!----><br><!----><!----><!---->b</p>"`
+			`"<!----><!----><!----><!----><!----><!----><p><!----><!---->a<!----><!----><!----><!----><br><!---->b</p>"`
 		);
 	});
 });
@@ -323,7 +321,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!----><!----><!----><!----><svg xmlns="http://www.w3.org/2000/svg"></svg></p>"`
+			`"<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!----><!----><!----><svg xmlns="http://www.w3.org/2000/svg"></svg></p>"`
 		);
 	});
 
@@ -333,7 +331,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!----><!----><!----><!----><path xmlns="http://www.w3.org/2000/svg" d="M1"></path></p>"`
+			`"<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!----><!----><!----><path xmlns="http://www.w3.org/2000/svg" d="M1"></path></p>"`
 		);
 	});
 });

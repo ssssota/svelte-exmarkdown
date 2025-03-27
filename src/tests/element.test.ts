@@ -9,7 +9,7 @@ it('should render paragraph instead of h1', () => {
 	});
 
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->test</p>"`
+		`"<!----><!----><!----><!----><!----><!----><p><!----><!---->test</p>"`
 	);
 });
 
