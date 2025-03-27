@@ -13,7 +13,7 @@
 
 	type SnippetRenderers = {
 		[T in Tag]?: T extends keyof SvelteHTMLElements
-			? Snippet<[SvelteHTMLElements[T]]> | Tag
+			? Snippet<[SvelteHTMLElements[T]]>
 			: never;
 	};
 	type Props = SnippetRenderers & {
