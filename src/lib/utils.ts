@@ -163,11 +163,7 @@ export const svgTags = [
 	'use',
 	'view'
 ] as const;
-export const isSvgTag = (tag: string): tag is (typeof svgTags)[number] => {
-	return (svgTags as readonly string[]).includes(tag);
-};
-
-export const htmlAndSvgTags = [...htmlTags, ...svgTags];
+const htmlAndSvgTags = [...htmlTags, ...svgTags];
 
 export type Tag = (typeof htmlAndSvgTags)[number];
 export const allowlist = (tags: Tag[]): Plugin => ({
