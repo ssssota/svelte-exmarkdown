@@ -22,23 +22,25 @@
 	};
 	let { md, plugins = [], ...snippetRenderers }: Props = $props();
 
+	let snippetRenderersPlugin = $derived({
+		renderer: Object.fromEntries(
+			Object.entries(snippetRenderers)
+				.map(([tag, renderer]) => {
+					if (typeof renderer === 'string') return [tag, renderer];
+					if (typeof renderer !== 'function') return undefined;
+					return [tag, snippetRenderer(renderer)];
+				})
+				.filter((tuple) => tuple != null)
+		)
+	});
+
 	let parse = $derived<Parser>(createParser(plugins));
 
 	const componentsContextValue = ref<ComponentsMap>({});
 	$effect(() => {
 		componentsContextValue.current = getComponentsFromPlugins([
 			...plugins,
-			{
-				renderer: Object.fromEntries(
-					Object.entries(snippetRenderers)
-						.map(([tag, renderer]) => {
-							if (typeof renderer === 'string') return [tag, renderer];
-							if (typeof renderer !== 'function') return undefined;
-							return [tag, snippetRenderer(renderer)];
-						})
-						.filter((tuple) => tuple != null)
-				)
-			}
+			snippetRenderersPlugin
 		]);
 	});
 	setComponentsContext(componentsContextValue);

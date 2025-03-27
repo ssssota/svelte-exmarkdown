@@ -10,13 +10,13 @@ it('should render with snippet', async () => {
 		`"<!----><!----><!----><!----><!----><!----><!----><!----><!----><p class="color:red;"><!----><!----><!----><!---->test<!----></p>"`
 	);
 
-	await ctx.rerender({ md: 'test2', p: pBlue });
+	await ctx.rerender({ p: pBlue });
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<!----><!----><!----><!----><!----><!----><!----><!----><!----><p class="color:blue;"><!----><!----><!----><!---->test2<!----></p>"`
+		`"<!----><!----><!----><!----><!----><!----><!----><!----><!----><p class="color:blue;"><!----><!----><!----><!---->test<!----></p>"`
 	);
 
-	await ctx.rerender({ md: 'test2', p: undefined });
+	await ctx.rerender({ p: undefined });
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->test2</p>"`
+		`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->test</p>"`
 	);
 });
