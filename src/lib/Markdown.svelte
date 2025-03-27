@@ -1,10 +1,7 @@
 <script lang="ts">
-	import {
-		createComponentsContextValue,
-		setComponentsContext
-	} from './contexts.svelte';
+	import { ref, setComponentsContext } from './contexts.svelte';
 	import Renderer from './Renderer.svelte';
-	import type { HastNode, Parser, Plugin } from './types';
+	import type { ComponentsMap, HastNode, Parser, Plugin } from './types';
 	import { createParser, getComponentsFromPlugins } from './utils';
 
 	type Props = {
@@ -15,9 +12,7 @@
 
 	let parse = $derived<Parser>(createParser(plugins));
 
-	const componentsContextValue = createComponentsContextValue(
-		getComponentsFromPlugins(plugins)
-	);
+	const componentsContextValue = ref<ComponentsMap>({});
 	$effect(() => {
 		componentsContextValue.current = getComponentsFromPlugins(plugins);
 	});
