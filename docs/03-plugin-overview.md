@@ -52,5 +52,7 @@ The GFM plugin is in the library. It is implemented as follows.
 ```ts
 import remarkGfm from 'remark-gfm';
 import type { Plugin } from '../types';
-export const gfmPlugin: Plugin = { remarkPlugin: [remarkGfm] };
+export const gfmPlugin = (options = {}): Plugin => ({
+	remarkPlugin: [remarkGfm, options]
+});
 ```
