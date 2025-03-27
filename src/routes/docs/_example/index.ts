@@ -21,6 +21,8 @@ import ShikiSync from './ShikiSync.svelte';
 import ShikiSyncText from './ShikiSync.svelte?raw';
 import SkipRendering from './SkipRendering.svelte';
 import SkipRenderingText from './SkipRendering.svelte?raw';
+import Snippet from './Snippet.svelte';
+import SnippetText from './Snippet.svelte?raw';
 import Transparent from './Transparent.svelte';
 import TransparentText from './Transparent.svelte?raw';
 
@@ -68,6 +70,10 @@ const components: Record<string, { raw: string; component: Component }> = {
 	'shiki-sync': {
 		raw: ShikiSyncText,
 		component: ShikiSync
+	},
+	snippet: {
+		raw: SnippetText,
+		component: Snippet
 	}
 };
 
