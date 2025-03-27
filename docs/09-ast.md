@@ -12,7 +12,8 @@ It makes powerful to create custom components.
 	const astContext = getAstNode();
 </script>
 
-<!-- Dump current node --><pre>{JSON.stringify($astContext, null, 2)}</pre>
+<!-- Dump current node -->
+<pre>{JSON.stringify(astContext.current, null, 2)}</pre>
 ```
 
 :ast

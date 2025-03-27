@@ -1,10 +1,6 @@
 <script lang="ts">
 	import Renderer from './Renderer.svelte';
-	import {
-		createAstContextValue,
-		getComponentsMap,
-		setAstContext
-	} from './contexts.svelte';
+	import { getComponentsMap, ref, setAstContext } from './contexts.svelte';
 	import type { HastNode } from './types';
 	import { isSvgTag, resolveComponent } from './utils';
 	type Props = {
@@ -14,7 +10,7 @@
 
 	const components = getComponentsMap();
 
-	const astContext = createAstContextValue(astNode);
+	const astContext = ref(astNode);
 	$effect(() => {
 		astContext.current = astNode;
 	});

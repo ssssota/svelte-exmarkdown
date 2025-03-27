@@ -10,8 +10,7 @@ import type {
 	UnistNode
 } from './types';
 
-export const nonNullable = <T>(value: T | null | undefined): value is T =>
-	value != null;
+export const nonNullable = <T>(value: T | null | undefined) => value != null;
 
 const camelToKebab = (str: string) =>
 	str.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
