@@ -17,10 +17,14 @@
 	setAstContext(astContext);
 </script>
 
-{#if astNode.type === 'root'}
-	{#each astNode.children as child}
-		<Renderer astNode={child} />
+{#snippet children(nodes: HastNode[])}
+	{#each nodes as node}
+		<Renderer astNode={node} />
 	{/each}
+{/snippet}
+
+{#if astNode.type === 'root'}
+	{@render children(astNode.children)}
 {:else if astNode.type === 'element'}
 	{@const Component = resolveComponent(components.current, astNode.tagName)}
 	{#if typeof Component === 'string'}
@@ -31,9 +35,7 @@
 					xmlns="http://www.w3.org/2000/svg"
 					{...astNode.properties}
 				>
-					{#each astNode.children as child}
-						<Renderer astNode={child} />
-					{/each}
+					{@render children(astNode.children)}
 				</svelte:element>
 			{:else}
 				<svelte:element
@@ -44,9 +46,7 @@
 			{/if}
 		{:else if Array.isArray(astNode.children) && astNode.children.length !== 0}
 			<svelte:element this={Component} {...astNode.properties}>
-				{#each astNode.children as child}
-					<Renderer astNode={child} />
-				{/each}
+				{@render children(astNode.children)}
 			</svelte:element>
 		{:else}
 			<svelte:element this={Component} {...astNode.properties} />
@@ -54,20 +54,16 @@
 	{:else if Component !== null}
 		{#if snippetRendererMarker in Component && Component[snippetRendererMarker]}
 			{#if Array.isArray(astNode.children) && astNode.children.length !== 0}
-				{#snippet children()}
-					{#each astNode.children as child}
-						<Renderer astNode={child} />
-					{/each}
+				{#snippet _children()}
+					{@render children(astNode.children)}
 				{/snippet}
-				{@render Component({ ...astNode.properties, children })}
+				{@render Component({ ...astNode.properties, children: _children })}
 			{:else}
 				{@render Component(astNode.properties)}
 			{/if}
 		{:else if Array.isArray(astNode.children) && astNode.children.length !== 0}
 			<Component {...astNode.properties}>
-				{#each astNode.children as child}
-					<Renderer astNode={child} />
-				{/each}
+				{@render children(astNode.children)}
 			</Component>
 		{:else}
 			<Component {...astNode.properties} />
