@@ -1,5 +1,15 @@
 # svelte-exmarkdown
 
+## 5.0.0
+
+### Major Changes
+
+- [#310](https://github.com/ssssota/svelte-exmarkdown/pull/310) [`7739b82`](https://github.com/ssssota/svelte-exmarkdown/commit/7739b82fed4b9612c55e80ee843562cb36bde326) Thanks [@HanielU](https://github.com/HanielU)! - Change API to access AST nodes
+
+### Minor Changes
+
+- [#314](https://github.com/ssssota/svelte-exmarkdown/pull/314) [`fe490d8`](https://github.com/ssssota/svelte-exmarkdown/commit/fe490d8d95d2f45e4ae9f8540e27b48dacd471b2) Thanks [@ssssota](https://github.com/ssssota)! - Snippet as renderer
+
 ## 4.0.3
 
 ### Patch Changes
