@@ -331,7 +331,7 @@ describe('SVG', () => {
 			plugins: [{ rehypePlugin: rehypeRaw }]
 		});
 		expect(container.innerHTML).toMatchInlineSnapshot(
-			`"<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!----><!----><!----><path xmlns="http://www.w3.org/2000/svg" d="M1"></path></p>"`
+			`"<!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!----><!----><path d="M1"></path></p>"`
 		);
 	});
 });

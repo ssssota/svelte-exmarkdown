@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { getContext, setContext } from 'svelte';
+	import type { SvelteHTMLElements } from 'svelte/elements';
 	import Renderer from './Renderer.svelte';
 	import { getComponentsMap, ref, setAstContext } from './contexts.svelte';
 	import type { HastNode } from './types';
-	import { isSvgTag, resolveComponent, snippetRendererMarker } from './utils';
+	import { resolveComponent, snippetRendererMarker } from './utils';
 	type Props = {
 		astNode: HastNode;
 	};
@@ -15,6 +17,20 @@
 		astContext.current = astNode;
 	});
 	setAstContext(astContext);
+
+	type OmitStringIndexSignature<T> = {
+		[K in keyof T as string extends K ? never : K]: T[K];
+	};
+	type KeysWithXmlnsProperty<T> = {
+		[K in keyof T]: 'xmlns' extends keyof T[K] ? K : never;
+	}[keyof T];
+	type XmlnsSupportedElement = KeysWithXmlnsProperty<
+		OmitStringIndexSignature<SvelteHTMLElements>
+	>;
+
+	const svgContextKey = 'svg';
+	if (astNode.type === 'element' && astNode.tagName === 'svg')
+		setContext(svgContextKey, true);
 </script>
 
 {#snippet children(nodes: HastNode[])}
@@ -28,10 +44,11 @@
 {:else if astNode.type === 'element'}
 	{@const Component = resolveComponent(components.current, astNode.tagName)}
 	{#if typeof Component === 'string'}
-		{#if isSvgTag(Component)}
+		{#if getContext(svgContextKey)}
+			{@const svgElement = Component as XmlnsSupportedElement}
 			{#if Array.isArray(astNode.children) && astNode.children.length !== 0}
 				<svelte:element
-					this={Component}
+					this={svgElement}
 					xmlns="http://www.w3.org/2000/svg"
 					{...astNode.properties}
 				>
@@ -39,7 +56,7 @@
 				</svelte:element>
 			{:else}
 				<svelte:element
-					this={Component}
+					this={svgElement}
 					xmlns="http://www.w3.org/2000/svg"
 					{...astNode.properties}
 				/>
