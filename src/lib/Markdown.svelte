@@ -36,7 +36,10 @@
 
 	let parse = $derived<Parser>(createParser(plugins));
 
-	const componentsContextValue = ref<ComponentsMap>({});
+	const componentsContextValue = ref<ComponentsMap>(
+		// svelte-ignore state_referenced_locally
+		getComponentsFromPlugins([...plugins, snippetRenderersPlugin])
+	);
 	$effect(() => {
 		componentsContextValue.current = getComponentsFromPlugins([
 			...plugins,
