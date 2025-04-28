@@ -9,7 +9,7 @@
 	const customImagePlugin: Plugin = {
 		renderer: { img: Image }
 	};
-	let md = '';
+	let md = '![test](https://example.com/test.png)';
 </script>
 
 <textarea bind:value={md}></textarea>
