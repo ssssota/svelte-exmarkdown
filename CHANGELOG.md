@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 5.0.1
+
+### Patch Changes
+
+- [#339](https://github.com/ssssota/svelte-exmarkdown/pull/339) [`bf386e4`](https://github.com/ssssota/svelte-exmarkdown/commit/bf386e4930d9b7fe6673f68b88ae16e458e6d97f) Thanks [@ssssota](https://github.com/ssssota)! - fix: enable custom renderer during ssr
+
 ## 5.0.0
 
 ### Major Changes
