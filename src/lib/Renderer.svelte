@@ -13,7 +13,7 @@
 	const components = getComponentsMap();
 
 	const astContext = ref(astNode);
-	$effect(() => {
+	$effect.pre(() => {
 		astContext.current = astNode;
 	});
 	setAstContext(astContext);
