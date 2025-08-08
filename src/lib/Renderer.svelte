@@ -14,10 +14,7 @@
 
 	const astContext = ref(astNode);
 	$effect.pre(() => {
-		// Pre-flush to mirror astNode into context without triggering another flush cycle
-		if (astContext.current !== astNode) {
-			astContext.current = astNode;
-		}
+		astContext.current = astNode;
 	});
 	setAstContext(astContext);
 
