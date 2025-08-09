@@ -9,7 +9,7 @@ it('should render paragraph instead of h1', () => {
 	});
 
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<!----><!----><!----><!----><!----><!----><p><!----><!---->test</p>"`
+		`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->test</p>"`
 	);
 });
 
@@ -23,6 +23,7 @@ it('should throw error because circular reference', () => {
 		`
 		[Error: Circular dependency detected: h1 -> h1
 
+			in <unknown>
 			in Renderer.svelte
 			in Renderer.svelte
 			in Markdown.svelte
@@ -39,6 +40,7 @@ it('should throw error because circular reference', () => {
 		`
 		[Error: Circular dependency detected: h1 -> h2 -> h1
 
+			in <unknown>
 			in Renderer.svelte
 			in Renderer.svelte
 			in Markdown.svelte
