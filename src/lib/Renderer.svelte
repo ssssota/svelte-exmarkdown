@@ -34,6 +34,7 @@
 </script>
 
 {#snippet children(nodes: HastNode[])}
+	<!-- eslint-disable-next-line svelte/require-each-key -->
 	{#each nodes as node}
 		<Renderer astNode={node} />
 	{/each}

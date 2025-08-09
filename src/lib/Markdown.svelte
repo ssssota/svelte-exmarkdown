@@ -37,7 +37,8 @@
 	let parse = $derived<Parser>(createParser(plugins));
 
 	const componentsContextValue = ref<ComponentsMap>(
-		// eslint-disable-next-line svelte/valid-compile
+		// eslint-disable-next-line svelte/no-unused-svelte-ignore
+		// svelte-ignore state_referenced_locally
 		getComponentsFromPlugins([...plugins, snippetRenderersPlugin])
 	);
 	$effect(() => {

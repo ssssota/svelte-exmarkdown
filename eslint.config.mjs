@@ -1,70 +1,40 @@
-import { FlatCompat } from '@eslint/eslintrc';
+import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import prettier from 'eslint-config-prettier';
+import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
-import { createRequire } from 'node:module';
-import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import ts from 'typescript-eslint';
+import svelteConfig from './svelte.config.js';
 
-const require = createRequire(import.meta.url);
-const parser = require('svelte-eslint-parser');
+const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-	baseDirectory: __dirname,
-	recommendedConfig: js.configs.recommended,
-	allConfig: js.configs.all
-});
-
-export default [
+export default ts.config(
+	includeIgnoreFile(gitignorePath),
+	js.configs.recommended,
+	...ts.configs.recommended,
+	...svelte.configs.recommended,
+	prettier,
+	...svelte.configs.prettier,
 	{
-		ignores: [
-			'node_modules/',
-			'build/',
-			'.svelte-kit/',
-			'dist/',
-			'coverage/',
-			'test-results/'
-		]
-	},
-	...compat.extends(
-		'eslint:recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:svelte/recommended'
-	),
-	{
-		plugins: {
-			'@typescript-eslint': typescriptEslint
-		},
-
 		languageOptions: {
-			globals: {
-				...globals.browser,
-				...globals.node
-			},
-
-			parser: tsParser,
-			ecmaVersion: 2020,
-			sourceType: 'module',
-
-			parserOptions: {
-				extraFileExtensions: ['.svelte']
-			}
+			globals: { ...globals.browser, ...globals.node }
+		},
+		rules: {
+			// typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
+			// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+			'no-undef': 'off'
 		}
 	},
 	{
-		files: ['**/*.svelte'],
-
+		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
 		languageOptions: {
-			parser: parser,
-			ecmaVersion: 5,
-			sourceType: 'script',
-
 			parserOptions: {
-				parser: '@typescript-eslint/parser'
+				projectService: true,
+				extraFileExtensions: ['.svelte'],
+				parser: ts.parser,
+				svelteConfig
 			}
 		}
 	}
-];
+);
