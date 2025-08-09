@@ -8,5 +8,16 @@
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	},
-	"eslint.validate": ["javascript", "svelte"]
+	"eslint.validate": ["javascript", "svelte"],
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"markdown",
+		"json",
+		"jsonc",
+		"svelte"
+	]
 }
