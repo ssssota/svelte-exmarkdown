@@ -1,5 +1,11 @@
 # svelte-exmarkdown
 
+## 5.0.2
+
+### Patch Changes
+
+- [#346](https://github.com/ssssota/svelte-exmarkdown/pull/346) [`81800a2`](https://github.com/ssssota/svelte-exmarkdown/commit/81800a2ec078a75ababfc4fde59933337af82532) Thanks [@jacokok](https://github.com/jacokok)! - fix: use effect.pre to prevent maximum update depth when in loop
+
 ## 5.0.1
 
 ### Patch Changes
