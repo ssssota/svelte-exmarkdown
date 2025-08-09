@@ -71,7 +71,9 @@ describe('Markdown(CommonMark)', () => {
 		const ctx = render(Markdown, { md: 'para1' });
 		el = screen.getByText('para1');
 		expect(el.tagName.toLowerCase()).toBe('p');
-		expect(el.outerHTML).toMatchInlineSnapshot(`"<p><!----><!----><!----><!---->para1</p>"`);
+		expect(el.outerHTML).toMatchInlineSnapshot(
+			`"<p><!----><!----><!----><!---->para1</p>"`
+		);
 
 		await ctx.rerender({ md: 'hello\nworld' });
 		el = screen.getByText('hello world');
