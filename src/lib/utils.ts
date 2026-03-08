@@ -18,13 +18,10 @@ const camelToKebab = (str: string) =>
 
 const transformClassName = (node: HastNode) => {
 	// convert className array to class string
-	if (
-		node.type !== 'element' ||
-		node.properties === undefined ||
-		!Array.isArray(node.properties.className)
-	)
-		return;
-	node.properties.class = node.properties.className.join(' ');
+	if (node.type !== 'element' || node.properties === undefined) return;
+	node.properties.class = Array.isArray(node.properties.className)
+		? node.properties.className.join(' ')
+		: node.properties.className;
 	delete node.properties.className;
 };
 const transformAriaProps = (node: HastNode) => {
