@@ -21,8 +21,10 @@ const transformClassName = (node: HastNode) => {
 	if (
 		node.type !== 'element' ||
 		node.properties === undefined ||
-		(!Array.isArray(node.properties.className) && typeof node.properties.className !== 'string')
-	) return;
+		(!Array.isArray(node.properties.className) &&
+			typeof node.properties.className !== 'string')
+	)
+		return;
 	node.properties.class = Array.isArray(node.properties.className)
 		? node.properties.className.join(' ')
 		: node.properties.className;
