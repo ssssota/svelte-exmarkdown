@@ -18,7 +18,11 @@ const camelToKebab = (str: string) =>
 
 const transformClassName = (node: HastNode) => {
 	// convert className array to class string
-	if (node.type !== 'element' || node.properties === undefined) return;
+	if (
+		node.type !== 'element' ||
+		node.properties === undefined ||
+		(!Array.isArray(node.properties.className) && typeof node.properties.className !== 'string')
+	) return;
 	node.properties.class = Array.isArray(node.properties.className)
 		? node.properties.className.join(' ')
 		: node.properties.className;
