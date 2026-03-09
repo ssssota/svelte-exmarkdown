@@ -1,5 +1,13 @@
 # svelte-exmarkdown
 
+## 5.0.3
+
+### Patch Changes
+
+- [#362](https://github.com/ssssota/svelte-exmarkdown/pull/362) [`78208d5`](https://github.com/ssssota/svelte-exmarkdown/commit/78208d5abee297e759e9243523a6ec31a7e8ac7d) Thanks [@ssssota](https://github.com/ssssota)! - Handle className property correctly
+
+- [#351](https://github.com/ssssota/svelte-exmarkdown/pull/351) [`c01108b`](https://github.com/ssssota/svelte-exmarkdown/commit/c01108bc393bee9e324d32a77d3d0270ce101b25) Thanks [@lutzleonhardt](https://github.com/lutzleonhardt)! - Fix exports for context
+
 ## 5.0.2
 
 ### Patch Changes
