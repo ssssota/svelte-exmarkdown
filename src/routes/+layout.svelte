@@ -1,6 +1,9 @@
 <script lang="ts">
 	import 'water.css/out/light.min.css';
 	import '../app.css';
+	import type { LayoutProps } from './$types';
+
+	let { children }: LayoutProps = $props();
 </script>
 
 <svelte:head>
@@ -21,4 +24,4 @@
 	/>
 </svelte:head>
 
-<slot />
+{@render children?.()}

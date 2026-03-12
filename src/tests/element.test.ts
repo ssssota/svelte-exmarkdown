@@ -9,7 +9,7 @@ it('should render paragraph instead of h1', () => {
 	});
 
 	expect(ctx.container.innerHTML).toMatchInlineSnapshot(
-		`"<!----><!----><!----><!----><!----><!----><!----><!----><p><!----><!----><!----><!---->test</p>"`
+		`"<!----><!----><!----><!----><!----><!----><p><!----><!---->test</p>"`
 	);
 });
 
@@ -27,6 +27,7 @@ it('should throw error because circular reference', () => {
 			in Renderer.svelte
 			in Renderer.svelte
 			in Markdown.svelte
+			in undefined
 		]
 	`
 	);
@@ -44,6 +45,7 @@ it('should throw error because circular reference', () => {
 			in Renderer.svelte
 			in Renderer.svelte
 			in Markdown.svelte
+			in undefined
 		]
 	`
 	);

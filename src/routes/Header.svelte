@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import type { Snippet } from 'svelte';
 	type Props = {
 		children?: Snippet<[]>;
@@ -9,13 +9,13 @@
 
 <header>
 	<h1>
-		<a href={base}>svelte-exmarkdown</a>
+		<a href={resolve('/')}>svelte-exmarkdown</a>
 	</h1>
 	<div class="spacer"></div>
 	<nav class="right">
 		{@render children?.()}
 		<div>
-			<a class="link" href="{base}/docs">Docs</a>
+			<a class="link" href={resolve('/docs')}>Docs</a>
 		</div>
 		<div>
 			<a

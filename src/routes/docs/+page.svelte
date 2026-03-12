@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { base } from '$app/paths';
-	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 
-	goto(`${base}/docs/${$page.data?.docs?.[0]?.slug}`);
+	goto(resolve('/docs/[slug]', { slug: page.data?.docs?.[0]?.slug }));
 </script>
