@@ -57,7 +57,7 @@ test('commonmark tests', async ({ page }) => {
 		const actual = (await output.innerHTML())
 			.replace(/&lt;!--/g, '<!--')
 			.replace(/--&gt;/g, '-->')
-			.replace(/<!--[[\]]?-->/g, '') // Ignore hydration markers
+			.replace(/<!--[[\]]?\d*-->/g, '') // Ignore hydration markers
 			.trim();
 		expect(actual).toBe(expected);
 	}
