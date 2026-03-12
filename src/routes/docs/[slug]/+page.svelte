@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import Markdown, { type Plugin } from '$lib';
 	import { gfmPlugin } from '$lib/gfm';
 	import { examplePlugin } from '../_example';
@@ -25,14 +25,14 @@
 
 <nav>
 	{#if data.prev}
-		<a href="{base}/docs/{data.prev.slug}">
+		<a href={resolve('/docs/[slug]', { slug: data.prev.slug })}>
 			{getTitleFromMarkdown(data.prev.markdown)}
 		</a>
 	{:else}
 		<div></div>
 	{/if}
 	{#if data.next}
-		<a href="{base}/docs/{data.next.slug}">
+		<a href={resolve('/docs/[slug]', { slug: data.next.slug })}>
 			{getTitleFromMarkdown(data.next.markdown)}
 		</a>
 	{:else}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import Header from '../Header.svelte';
 	import type { LayoutData } from './$types';
 	import { getTitleFromMarkdown } from './utils';
@@ -15,7 +15,9 @@
 				<ol>
 					{#each data.docs as { slug, markdown } (slug)}
 						<li>
-							<a href="{base}/docs/{slug}">{getTitleFromMarkdown(markdown)}</a>
+							<a href={resolve(`/docs/[slug]`, { slug })}>
+								{getTitleFromMarkdown(markdown)}
+							</a>
 						</li>
 					{/each}
 				</ol>
