@@ -1,0 +1,1 @@
+import{l as o,e as l,b as t,m as a,g as c}from"./Cp5-FedN.js";function f(e){t===null&&o(),a&&t.l!==null?u(t).m.push(e):l(()=>{const n=c(e);if(typeof n=="function")return n})}function u(e){var n=e.l;return n.u??={a:[],b:[],m:[]}}export{f as o};
