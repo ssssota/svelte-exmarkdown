@@ -42,7 +42,7 @@
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.54.0",
 		"@sveltejs/package": "^2.5.7",
-		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@testing-library/svelte": "^5.3.1",
 		"@types/mdast": "^4.0.4",
 		"@types/node": "^25.4.0",
