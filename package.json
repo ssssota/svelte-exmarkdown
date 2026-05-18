@@ -55,7 +55,7 @@
 		"globals": "^17.4.0",
 		"highlight.js": "^11.11.1",
 		"highlightjs-svelte": "^1.0.6",
-		"jsdom": "^28.1.0",
+		"jsdom": "^29.0.0",
 		"katex": "^0.16.38",
 		"mermaid": "^11.13.0",
 		"prettier": "^3.8.1",
