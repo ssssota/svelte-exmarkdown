@@ -42,11 +42,6 @@ export type HastText = HastLiteral & { type: 'text' };
 export type HastRaw = HastLiteral & { type: 'raw' };
 
 export type HastNode =
-	| HastRoot
-	| HastElement
-	| HastDoctype
-	| HastComment
-	| HastText
-	| HastRaw;
+	HastRoot | HastElement | HastDoctype | HastComment | HastText | HastRaw;
 
 export type Parser = (md: string) => UnistNode;
