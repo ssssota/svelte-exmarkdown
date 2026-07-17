@@ -1,1 +1,0 @@
-import{p as t}from"./DAP13d-2.js";import{s as r}from"./D3rw9dUe.js";const e={get data(){return t.data},get error(){return t.error},get status(){return t.status}};r.updated.check;const o=e;export{o as p};

@@ -1,0 +1,1 @@
+var e=e=>e.trim().match(/^# (.+)$/m)?.[1]??void 0;export{e as t};

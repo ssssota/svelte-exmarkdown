@@ -1,0 +1,3 @@
+import{D as e,G as t,H as n,K as r,T as i,V as a,Y as o,j as s,u as c}from"../chunks/Crgtcipn.js";import"../chunks/xihTtKlq.js";import{t as l}from"../chunks/D3XV9fJM.js";import{n as u,t as d}from"../chunks/DWxILx4V2.js";var f=e(`<textarea></textarea> <!>`,1);function p(e){let p=r(`$$
+\\sqrt{2}
+$$`),m=[{remarkPlugin:[d],rehypePlugin:[u]}];var h=f(),g=a(h);o(g),l(n(g,2),{get md(){return s(p)},get plugins(){return m}}),c(g,()=>s(p),e=>t(p,e)),i(e,h)}export{p as component};
