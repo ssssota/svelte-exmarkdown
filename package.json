@@ -56,7 +56,7 @@
 		"highlight.js": "^11.11.1",
 		"highlightjs-svelte": "^1.0.6",
 		"jsdom": "^29.1.1",
-		"katex": "^0.17.0",
+		"katex": "^0.18.0",
 		"mermaid": "^11.16.0",
 		"prettier": "^3.9.5",
 		"prettier-plugin-svelte": "^4.1.1",
