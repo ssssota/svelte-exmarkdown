@@ -92,7 +92,7 @@
 		"plugin"
 	],
 	"license": "MIT",
-	"packageManager": "pnpm@11.13.1+sha512.b2fc7683b8a6525414e7d13e1ba28caaddde96bf66ec540bfaeb7e702b81f3e0be4d1f295edf7f9fe0396740a8dce4509c582ddf79891f4543fea32d37645f25",
+	"packageManager": "pnpm@11.29.0+sha512.d913f9b37cd5fe6780052e809774edabb7bdcf69a6e6d9b8fd3b38bc052fa8a7d891b6c201a38fb504a07ffce2e5e8c262ef54fb8f57db62f22d353a30bc8a96",
 	"files": [
 		"dist"
 	],
